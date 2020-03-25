@@ -66,7 +66,9 @@ new Filter(undefined, [2000, undefined], undefined)
 
 # APIs
 
-## movies.php?id=
+## movies.php
+
+`?id=`
 
 - [ ] 
 
@@ -148,7 +150,9 @@ new Filter(undefined, [2000, undefined], undefined)
   - Sign up (only if user isn't logged in) `register.php`
 - CSS displays a flexbar on desktop, hamburger menu on mobile
 
-## login.php?last_page= ***Login***
+## login.php ***Login***
+
+`?last_page=`
 
 - [ ] email text box
 - [ ] password text box
@@ -162,7 +166,9 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-## logout.php?last_page= ***Logout***
+## logout.php ***Logout***
+
+`?last_page=`
 
 - [ ] run [logout](#logout)()
 - [ ] displays "Logged out"
@@ -185,7 +191,9 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-## browse-movies.php?q= ***Search***
+## browse-movies.php ***Search***
+
+`?q=`
 
 - [ ] Extract search view from assignment 1
 - [ ] Make the `q` query string set the value of the search query
@@ -196,7 +204,7 @@ new Filter(undefined, [2000, undefined], undefined)
   - [ ] Sort alphabetical and reverse alphabetical by clicking title column header
   - [ ] Sort lex and anti-lex by year
   - [ ] Sort lex and anti-lex by rating
-- [ ] This page should use the [movies.php?id=](#movies.php?id=) API to get it's information
+- [ ] This page should use the [movies.php?id=](#movies.php) API to get it's information
 - [ ] Use event delegation for the movie list buttons
 - [ ] Display a loading animation while the movies are fetched
 
