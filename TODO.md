@@ -20,7 +20,7 @@
 - Displays only the poster with the title below
 - Clicking on either the poster or the title goes to the single-movie page.
 
-# Pages
+- [ ] # Pages
 
 ## login.php
 
@@ -44,9 +44,15 @@
 
 ## about.php
 
+- Brief description of the website:
+  - Web II
+  - Mount Royal University
+  - <professor name>
+  - Winter 2020
+  - <technologies used>
+- Names and Github links for all group members
 
-
-## index.php ***Home***
+- [ ] ## index.php ***Home***
 
 ### When not logged in
 
