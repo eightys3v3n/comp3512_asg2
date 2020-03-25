@@ -85,9 +85,9 @@ new Filter(undefined, [2000, undefined], undefined)
   - [ ] returns true if successful or movie was not favorited
   - [ ] returns false if there was some database error or something
 - [ ] get_movies()
-  - [ ] returns a list of all the movies see [Movie Object](#Movie Object)
+  - [ ] returns a list of all the movies see [Movie Object](#Movie-Object)
 - [ ] get_filtered_movies(Filter)
-  - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie Object), [Filter Object](#Filter Object)
+  - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie-Object), [Filter Object](#Filter-Object)
 
 
 
@@ -181,5 +181,5 @@ new Filter(undefined, [2000, undefined], undefined)
 
 - [ ] User info: country, city, email, first/last name...
 - [ ] Search box & search submit button see [Search element](#Search)
-- [ ] Favorite movies list; see [Poster List element](#Poster List)
-- [ ] Recommendations list; see [Poster List element](#Poster List)
+- [ ] Favorite movies list; see [Poster List element](#Poster-List)
+- [ ] Recommendations list; see [Poster List element](#Poster-List)
