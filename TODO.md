@@ -70,7 +70,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 `?id=`
 
-- [ ] 
+- [ ] Return a list of [movies](#Movie-Object) in JSON.
 
 
 
