@@ -204,7 +204,7 @@ new Filter(undefined, [2000, undefined], undefined)
   - [ ] Sort alphabetical and reverse alphabetical by clicking title column header
   - [ ] Sort lex and anti-lex by year
   - [ ] Sort lex and anti-lex by rating
-- [ ] This page should use the [movies.php?id=](#movies.php) API to get it's information
+- [ ] This page should use the [movies.php?id=](#APIs) API to get it's information
 - [ ] Use event delegation for the movie list buttons
 - [ ] Display a loading animation while the movies are fetched
 
