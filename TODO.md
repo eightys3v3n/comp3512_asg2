@@ -45,25 +45,25 @@
 ## about.php
 
 - Brief description of the website:
-  - Web II
-  - Mount Royal University
-  - <professor name>
-  - Winter 2020
-  - <technologies used>
+  - "Web II"
+  - "Mount Royal University"
+  - professor name
+  - "Winter 2020"
+  - technologies used
 - Names and Github links for all group members
 
-- [ ] ## index.php ***Home***
+## index.php ***Home***
 
 ### When not logged in
 
-- Login button
-- Register button
-- Search box
-- Search submit button
+- [ ] Login button
+- [ ] Register button
+- [ ] Search box
+- [ ] Search submit button
 
 ### When logged in
 
-- User info: country, city, email, first/last name...
-- Search box & search submit button see [Search element](#Search)
-- Favorite movies list; see [Poster List element](#Poster List)
-- Recommendations list; see [Poster List element](#Poster List)
+- [ ] User info: country, city, email, first/last name...
+- [ ] Search box & search submit button see [Search element](#Search)
+- [ ] Favorite movies list; see [Poster List element](#Poster List)
+- [ ] Recommendations list; see [Poster List element](#Poster List)
