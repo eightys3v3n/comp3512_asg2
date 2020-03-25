@@ -66,7 +66,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 # APIs
 
-## movies.php
+## movies.php?id=
 
 - [ ] 
 
@@ -74,27 +74,87 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## db_helpers.php
 
-- [ ] favorite_movie(id):
-  - [ ] returns true if successful or movie was already favorited
-  - [ ] returns false if there was some database error or something
-- [ ] unfavorite_movie(id)
+### favorite_movie
+
+(id)
+
+- [ ] returns true if successful or movie was already favorited
+- [ ] returns false if there was some database error or something
+
+- [ ] unfavorite_movie
+
+  (id)
+
   - [ ] returns true if successful or movie was not favorited
   - [ ] returns false if there was some database error or something
-- [ ] get_movies()
-  - [ ] returns a list of all the movies see [Movie Object](#Movie-Object)
-- [ ] get_filtered_movies(Filter)
+
+### get_movies
+
+()
+
+- [ ] returns a list of all the movies see [Movie Object](#Movie-Object)
+
+- [ ] get_filtered_movies
+
+  (Filter)
+
   - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie-Object), [Filter Object](#Filter-Object)
 
 
 
+### register_user
+
+(first_name, last_name, city, country, email, password)
+
+- [ ] checks that email doesn't already exist in Users database, if it does then returns "Email already taken"
+- [ ] hashes the password
+- [ ] adds the information to a new User row
+- [ ] returns "Successfully registered" if successful
+- [ ] otherwise returns some error string
+
+
+
+### login_user
+
+(email, password)
+
+- [ ] hashes password
+- [ ] if email not in Users, return "Email invalid"
+- [ ] if password not correct for email, return "Password invalid"
+- [ ] return "Logged in" if successful
+- [ ] otherwise returns some error string
+
+
+
+### logout
+
+()
+
+- [ ] modifies session data to remove sessionID
+
+
+
 # Pages
+
+## header.php
+
+- This should be included in all the other pages. It should have a navigation bar and a logo
+- The navigation bar:
+  - Home `index.php`
+  - About `about.php`
+  - Search `browse-movies.php`
+  - Favorites `favorites.php`
+  - Login/Logout (changes depending on whether user is logged in) `login.php`/`logout.php`
+  - Sign up (only if user isn't logged in) `register.php`
+- CSS displays a flexbar on desktop, hamburger menu on mobile
 
 ## login.php?last_page= ***Login***
 
 - [ ] email text box
 - [ ] password text box
 - [ ] Login button:
-  - [ ] Shows red error text if the password or email is wrong
+  - [ ] [login_user](#login_user)(email, password)
+  - [ ] Shows text returned by [login_user](#login_user)()
   - [ ] Save a sessionID as a cookie
   - [ ] Otherwise redirects to `last_page`, or `index.php`
 - [ ] Register button:
@@ -102,15 +162,33 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
+## logout.php?last_page= ***Logout***
+
+- [ ] run [logout](#logout)()
+- [ ] displays "Logged out"
+
+
+
 ## register.php ***Register***
 
+- [ ] first name field
+- [ ] last name field
+- [ ] city field
+- [ ] country field
+- [ ] email field (check to make sure it's an email address)
+- [ ] password field
+- [ ] confirm password field (has to be the same as password)
+- [ ] sign up button:
+  - [ ] [register_user](#register_user)(first_name, last_name, city, country, email, password)
+  - [ ] displays the text returned by register_user
+- [ ] Do we want this to redirect to some page?
 
 
 
-
-## browse-movies.php ***Search***
+## browse-movies.php?q= ***Search***
 
 - [ ] Extract search view from assignment 1
+- [ ] Make the `q` query string set the value of the search query
 - [ ] Ensure that the search view is complete (I don't remember if I finished all the functionality):
   - [ ] All the filters work as expected
 - [ ] Make the view button redirect to `single-movie.php?id=`
@@ -118,8 +196,9 @@ new Filter(undefined, [2000, undefined], undefined)
   - [ ] Sort alphabetical and reverse alphabetical by clicking title column header
   - [ ] Sort lex and anti-lex by year
   - [ ] Sort lex and anti-lex by rating
-- [ ] ***Still checking whether this uses our movies API or accesses the database directly***
+- [ ] This page should use the [movies.php?id=](#movies.php?id=) API to get it's information
 - [ ] Use event delegation for the movie list buttons
+- [ ] Display a loading animation while the movies are fetched
 
 
 
