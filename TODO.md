@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # Elements
 
 ## Search
@@ -149,7 +145,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ### When logged in
 
-- [ ] Display favorites; see [Movie List element](#Movie List)
+- [ ] Display favorites; see [Movie List element](#Movie-List)
 - [ ] Movies should be selectable with check boxes
 - [ ] Select all button
 - [ ] Remove from favorites button; removes all selected movies from favorites
