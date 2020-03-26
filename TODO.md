@@ -85,12 +85,22 @@ new Filter(undefined, [2000, undefined], undefined)
 - [ ] returns true if successful or movie was already favorited
 - [ ] returns false if there was some database error or something
 
-- [ ] unfavorite_movie
+### unfavorite_movie
 
-  (id)
+(id)
 
-  - [ ] returns true if successful or movie was not favorited
-  - [ ] returns false if there was some database error or something
+- [ ] returns true if successful or movie was not favorited
+- [ ] returns false if there was some database error or something
+
+
+
+### favorite_movies
+
+(email/userID)
+
+- [ ] returns a list of movies favorited by a user
+
+
 
 ### get_movies
 
