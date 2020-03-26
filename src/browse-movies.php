@@ -6,14 +6,14 @@
 <section id="search">
 			<div id="filters_box">
 				<form id="filters" title="Movie Filters">
-					<h4>Movie Filters</h3>
+					<h3>Movie Filters</h3>
 					<fieldset>
-						<legend><h5>Title</h5></legend>	
+						<legend><h4>Title</h4></legend>	
 						<input type="text" name="title"/>
 					</fieldset>
 					
 					<fieldset id="year_filters">
-						<legend><h5>Year</h5></legend>
+						<legend><h4>Year</h4></legend>
 						<div>
 						<input type="radio" name="year_selector" value="before" id="before"/>
 						<label>Before</label>
@@ -30,7 +30,7 @@
 						</div>
 					</fieldset>
 					<fieldset id="rating_filters">
-						<legend><h5>Rating</h5></legend>
+						<legend><h4>Rating</h4></legend>
 						<div>
 						<input type="radio" name="rating_selector" id="below"/>
 						<label>Below</label>
@@ -57,11 +57,11 @@
 				</form>
 			</div>
 			<div id="matches">
-				<h4>List / Matches</h4>
+				<h3>List / Matches</h3>
 				<div id="matches-header">
-					<div id="title"><h5>Title</h5></div>
-					<h5>Year</h5>
-					<h5>Rating</h5>
+					<div id="title"><h4>Title</h4></div>
+					<h4>Year</h4>
+					<h4>Rating</h4>
 				</div>
 				<ul>
 					<li></li>
