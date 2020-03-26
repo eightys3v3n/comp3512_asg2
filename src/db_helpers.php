@@ -1,17 +1,17 @@
 <?php
-require_once 'secret.php'
+require_once 'secret.php';
 
 
 function getDatabase() {
     /// This returns a connection to the database. Make sure to set to null when finished.
     try {
-        $pdo = new PDO($SQL_URL, $SQL_USER, $SQL_PASS);
+        $pdo = new PDO(SQL_URL, SQL_USER, SQL_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         die($e->getMessage());
 	}
 
-    return $pdo
+    return $pdo;
 }
 
 // From https://www.youtube.com/watch?v=mcvshAEUeH4
@@ -34,10 +34,7 @@ function runQuery($db, $sql, $data=array()) {
             throw new PDOException;
         }
     }
-    return $statement
+
+    return $statement;
 }
-
-
-$db = getDatabase();
-$res = runQuery($db, "SELECT * FROM USERS");
 ?>
