@@ -70,11 +70,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## favorites table
 
-- [ ] create SQL table for favorites
-
-
-
-
+- [x] create SQL table for favorites
 
 
 
