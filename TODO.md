@@ -223,6 +223,12 @@ That is, create a list containing:
   - Sign up (only if user isn't logged in) `register.php`
 - CSS displays a flexbar on desktop, hamburger menu on mobile
 
+## footer.php
+
+1/10
+
+closes the open body/html tags from header.php
+
 ## login.php ***Login***
 
 `?last_page=`
