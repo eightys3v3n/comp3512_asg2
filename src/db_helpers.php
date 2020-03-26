@@ -17,6 +17,8 @@ function getDatabase() {
 // From https://www.youtube.com/watch?v=mcvshAEUeH4
 // Randy's Web II video
 function runQuery($db, $sql, $data=array()) {
+    /// Takes a db as returned from getDatabase(), an SQL string, and an array (or not) of data.
+    /// $res = runQuery($db, "SELECT * FROM users", undefined);
     if (!is_array($data)) {
         $data = array($data);
     }

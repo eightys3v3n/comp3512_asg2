@@ -115,7 +115,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### favorite_movie
+### favoriteMovie
 
 (id)
 
@@ -126,7 +126,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### unfavorite_movie
+### unfavoriteMovie
 
 (id)
 
@@ -137,7 +137,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### favorite_movies
+### getFavoriteMovies
 
 (email/userID)
 
@@ -147,7 +147,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### get_movies
+### getMovies
 
 ()
 
@@ -157,7 +157,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### register_user
+### registerUser
 
 (first_name, last_name, city, country, email, password)
 
@@ -171,7 +171,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-### login_user
+### loginUser
 
 (email, password)
 
