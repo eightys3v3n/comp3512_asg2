@@ -4,7 +4,7 @@
     Personal github link for Max needed
 -->
 <?php include('header.php'); ?>
-<?php include('footer.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,5 +41,4 @@
     <p>Email:<a href="mailto:rpowe271@mtroyal.ca">rpowe271@mtroyal.ca</a></p>
     <a href="https://github.com/rpowe271">Personal Github</a>
 
-</body>
-</html>
+    <?php include('footer.php'); ?>
