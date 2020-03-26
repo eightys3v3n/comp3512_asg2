@@ -72,7 +72,15 @@ new Filter(undefined, [2000, undefined], undefined)
 
 `?id=`
 
+3/10
+
 - [ ] Return a list of [movies](#Movie-Reference) in JSON.
+
+
+
+## favorites table
+
+- [ ] create SQL table for favorites
 
 
 
@@ -82,12 +90,18 @@ new Filter(undefined, [2000, undefined], undefined)
 
 (id)
 
+3/10
+
 - [ ] returns true if successful or movie was already favorited
 - [ ] returns false if there was some database error or something
+
+
 
 ### unfavorite_movie
 
 (id)
+
+3/10
 
 - [ ] returns true if successful or movie was not favorited
 - [ ] returns false if there was some database error or something
@@ -98,6 +112,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 (email/userID)
 
+3/10
+
 - [ ] returns a list of movies favorited by a user
 
 
@@ -106,19 +122,17 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ()
 
+3/10
+
 - [ ] returns a list of all the movies see [Movie Object](#Movie-Reference)
-
-- [ ] get_filtered_movies
-
-  (Filter)
-
-  - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie-Reference), [Filter Object](#Filter-Object)
 
 
 
 ### register_user
 
 (first_name, last_name, city, country, email, password)
+
+4/10
 
 - [ ] checks that email doesn't already exist in Users database, if it does then returns "Email already taken"
 - [ ] hashes the password
@@ -132,6 +146,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 (email, password)
 
+4/10
+
 - [ ] hashes password
 - [ ] if email not in Users, return "Email invalid"
 - [ ] if password not correct for email, return "Password invalid"
@@ -144,6 +160,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ()
 
+1/10
+
 - [ ] modifies session data to remove sessionID
 
 
@@ -151,6 +169,8 @@ new Filter(undefined, [2000, undefined], undefined)
 # Pages
 
 ## header.php
+
+4/10
 
 - This should be included in all the other pages. It should have a navigation bar and a logo
 - The navigation bar:
@@ -165,6 +185,8 @@ new Filter(undefined, [2000, undefined], undefined)
 ## login.php ***Login***
 
 `?last_page=`
+
+6/10
 
 - [ ] email text box
 - [ ] password text box
@@ -182,12 +204,16 @@ new Filter(undefined, [2000, undefined], undefined)
 
 `?last_page=`
 
+2/10
+
 - [ ] run [logout](#logout)()
 - [ ] displays "Logged out"
 
 
 
 ## register.php ***Register***
+
+
 
 - [ ] first name field
 - [ ] last name field
