@@ -66,6 +66,18 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
+# Other stuff to do
+
+## favorites table
+
+- [ ] create SQL table for favorites
+
+
+
+
+
+
+
 # APIs
 
 ## movies.php
@@ -75,12 +87,6 @@ new Filter(undefined, [2000, undefined], undefined)
 3/10
 
 - [ ] Return a list of [movies](#Movie-Reference) in JSON.
-
-
-
-## favorites table
-
-- [ ] create SQL table for favorites
 
 
 
@@ -165,6 +171,20 @@ new Filter(undefined, [2000, undefined], undefined)
 1/10
 
 - [ ] modifies session data to remove sessionID
+
+
+
+### recommendations
+
+(user_id)
+
+6/10
+
+That is, create a list containing:
+
+• movies with the same release year as one of the favorited movies
+
+• movies with the same (that is, within +/- 0.25) average rating as one of the favorited movies It’s possible that a user hasn’t favorited any movies yet; your algorithm must be able to handle this situation. In that case, show 10-15 of the most highly-rated moves (i.e., highest average rating). If your Movie You May Like algorithm has fewer than 10-15 images, fill it up with the most highly-rated movies
 
 
 
@@ -315,4 +335,5 @@ new Filter(undefined, [2000, undefined], undefined)
 - [ ] User info: country, city, email, first/last name...
 - [ ] Search box & search submit button see [Search element](#Search)
 - [ ] Favorite movies list; see [Poster List element](#Poster-List)
-- [ ] Recommendations list; see [Poster List element](#Poster-List)
+- [ ] Recommendations list; see [Poster List element](#Poster-List):
+  - [ ] 
