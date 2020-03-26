@@ -90,9 +90,28 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
+
+
+
+
 ## db_helpers.php
 
 8/10
+
+### open_database
+
+()
+
+- [ ] opens and returns a connection to the database
+- [ ] does the error checking for that
+
+
+
+### execute_query
+
+(database, sql, data)
+
+- [ ] does either a prepare statement or just a query statement.
 
 ### favorite_movie
 
