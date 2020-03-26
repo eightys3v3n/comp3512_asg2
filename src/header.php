@@ -14,7 +14,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="browse-movies.php">Browse Movies</a></li>
-        <li><a href="favourites.php">Favourites</a></li>
+        <li><a href="favorites.php">Favourites</a></li>
     </ul>
     
     </nav>
