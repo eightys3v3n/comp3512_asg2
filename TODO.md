@@ -86,6 +86,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## db_helpers.php
 
+8/10
+
 ### favorite_movie
 
 (id)
@@ -186,7 +188,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 `?last_page=`
 
-6/10
+6.5/10
 
 - [ ] email text box
 - [ ] password text box
@@ -213,7 +215,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## register.php ***Register***
 
-
+7.5/10
 
 - [ ] first name field
 - [ ] last name field
@@ -233,6 +235,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 `?q=`
 
+8/10
+
 - [ ] Extract search view from assignment 1
 - [ ] Make the `q` query string set the value of the search query
 - [ ] Ensure that the search view is complete (I don't remember if I finished all the functionality):
@@ -250,6 +254,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## single-movie.php ***Movie Details***
 
+4/10
+
 - [ ] Extract details view from assignment 1
 - [ ] This needs to access the database, **not** use the API (says the guidelines)
 - [ ] Remove Speak and Close button
@@ -263,6 +269,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 ## favorites.php ***Favorites***
+
+6/10
 
 ### When not logged in
 
@@ -279,6 +287,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ## about.php ***About***
 
+1.5/10
+
 - [ ] Brief description of the website:
   - [ ] "Web II"
   - [ ] "Mount Royal University"
@@ -290,6 +300,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 ## index.php ***Home***
+
+5/10
 
 ### When not logged in
 
