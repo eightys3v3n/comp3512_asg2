@@ -98,20 +98,22 @@ new Filter(undefined, [2000, undefined], undefined)
 
 8/10
 
-### open_database
+### getDatabase
 
 ()
 
-- [ ] opens and returns a connection to the database
-- [ ] does the error checking for that
+- [x] opens and returns a connection to the database
+- [x] does the error checking for that
 
 
 
-### execute_query
+### runQuery
 
 (database, sql, data)
 
-- [ ] does either a prepare statement or just a query statement.
+- [x] does either a prepare statement or just a query statement.
+
+
 
 ### favorite_movie
 
