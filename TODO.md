@@ -21,7 +21,7 @@
 
 
 
-## Movie Object
+## Movie Reference
 
 - Maybe we should make this an actual object?
 - Then we could have it automatically construct the URLs and what not.
@@ -50,6 +50,10 @@
 
 ## Filter Object
 
+This is a JavaScript thing for Clients. How do we transfer this to PHP?
+
+It's here to stop a client from
+
 ```javascript
 new Filter(title, year_between, rating_between)
 // year_between is [min_year, max_year] inclusive
@@ -62,15 +66,13 @@ new Filter(undefined, [2000, undefined], undefined)
 
 
 
-
-
 # APIs
 
 ## movies.php
 
 `?id=`
 
-- [ ] Return a list of [movies](#Movie-Object) in JSON.
+- [ ] Return a list of [movies](#Movie-Reference) in JSON.
 
 
 
@@ -94,13 +96,13 @@ new Filter(undefined, [2000, undefined], undefined)
 
 ()
 
-- [ ] returns a list of all the movies see [Movie Object](#Movie-Object)
+- [ ] returns a list of all the movies see [Movie Object](#Movie-Reference)
 
 - [ ] get_filtered_movies
 
   (Filter)
 
-  - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie-Object), [Filter Object](#Filter-Object)
+  - [ ] returns a list of all the movies that match the given filter; see [Movie Object](#Movie-Reference), [Filter Object](#Filter-Object)
 
 
 
