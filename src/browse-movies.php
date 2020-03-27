@@ -1,4 +1,4 @@
-<?php //include('header.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,21 +10,7 @@
 		<script src="browse-movies.js"></script>
 	</head>
 	<body>
-		<header>
-			<h2>COMP 3512 Assignment 1</h2>
-			<h3>Terrence Plunkett</h3>
-		</header>
-		<section id="home">
-			<div id="home_box">
-				<h1>Movie Browser</h1>
-				<div id="form">
-					<label for="search_query"><b>Title</b></label>
-					<input type="text" id="search_query">
-					<input type="button" value="Show Matching Movies" name="search">
-					<input type="button" value="Show All Movies" name="all_movies">
-				</div>
-			</div>
-		</section>
+      <?php include('header.php'); ?>
 		<section id="search">
 			<div id="filters_box">
 				<form id="filters" title="Movie Filters">
@@ -112,73 +98,6 @@
 				</ul>
 			</div>
 		</section>
-		<section id="details">
-			<input type="button" name="close" value="Close">
-			<div id="info">
-				<div id="text">
-					<h1>Movie Title!</h1>
-					<input type="button" value="Speak">
-					<div id="movie_stats">
-						<p>
-							<b>Release date:</b> <div id="release_date"></div><br/>
-							<b>Revenue:</b> <div id="revenue"></div><br/>
-							<b>Runtime:</b> <div id="runtime"></div> minutes<br/>
-							<b>Tagline:</b> <div id="tagline"></div><br/>
-							<b>Links:</b> <a href="" id="imdb">IMDB</a>, <a href="" id="tmdb">TMDB</a><br/>
-							<b>Popularity:</b> <div id="popularity"></div><br/>
-							<b>Average rating:</b> <div id="average_rating"></div><br/>
-							<b>Ratings:</b> <div id="ratings"></div><br/>
-
-							<h2>Overview</h2>
-							<div id="overview"></div>
-						</p>
-					</div>
-				</div>
-				<div id="companies" class="border">
-					<h2>Companies</h2>
-					<p>name, name, name</p>
-				</div>
-				<div id="countries" class="border">
-					<h2>Countries</h2>
-					<p>Canada!, United States :(</p>
-				</div>
-				<div id="keywords" class="border">
-					<h2>Keywords</h2>
-					<p>Keyword 1, Keyword 2</p>
-				</div>
-				<div id="genres" class="border">
-					<h2>Genres</h2>
-					<p>Action, Other stuff...</p>
-				</div>
-			</div>
-			<div id="images">
-				<img src="https://marmelab.com/images/blog/ascii-art-converter/homer.png">
-			</div>
-			<div>
-				<div id="cast-crew-buttons">
-					<input type="button" value="Cast" class="active">
-					<input type="button" value="Crew">
-				</div>
-				<div id="castcrew">
-					<div id="cast">
-						<p>Character</p>
-						<p>Name</p>
-						<p>Character</p>
-						<p>Name</p>
-						<p>Character</p>
-						<p>Name</p>
-						<p>Character</p>
-						<p>Name</p>
-					</div>
-					<div id="crew">
-						<p>Department</p><p>Job</p><p>name</p>
-						<p>Department</p><p>Job</p><p>name</p>
-						<p>Department</p><p>Job</p><p>name</p>
-					</div>
-				</div>
-			</div>
-		</section>
+        <?php include('footer.php'); ?>
 	</body>
 </html>
-
-<?php //include('footer.php'); ?>

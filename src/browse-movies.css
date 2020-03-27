@@ -4,15 +4,6 @@ html,body {
 	margin: 0px 0px 0px 0px;
 }
 
-header {
-	text-align: center;
-	background-color: rgb(230, 230, 230);
-	/* TODO: text should be vertically centered */
-	height: 4em;
-	margin-bottom: 10px;
-	padding-top: 5px;
-}
-
 header h2, h3 {
 	margin-bottom: 4px;
 	margin-top: 4px;
@@ -35,49 +26,8 @@ input[type="button"] {
 	border-radius: 4px;
 }
 
-/* Home page */
-#home {
-	background-color: blue;
-	height: 100%;
-	width: 100%;
-	margin: 0px 0px 0px 0px;
-}
-
-#home_box {
-	position: relative;
-	top: 10em;
-	margin-left: auto;
-	margin-right: auto;
-
-	padding: 1em 1em 1em 1em;
-	
-	background-color: white;
-	text-align: center;
-	max-width: 600px;
-}
-
-#home #form {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	grid-gap: 1em;
-
-	padding-top: 1em;
-	padding-left: 2em;
-	padding-right: 2em;
-	padding-bottom: 1em;
-}
-
-#home input[id="search_query"] {
-	grid-column-end: span 2;
-}
-
-#home input[name="search"] {
-	grid-column-start: 2;
-}
-
-/* Search page */
 #search {
-	display: none; /* changed to grid on page switch */
+	display: grid;
 	grid-template-columns: 1fr 2fr;
 	grid-gap: 10px;
 }
@@ -226,86 +176,6 @@ input[type="button"] {
 	background-color: rgb(200, 200, 200);
 	border-radius: 4px;
 	font-weight: bold;
-}
-
-/* Details page */
-#details {
-	display: none; /* changed to grid on page switch */
-	grid-template-columns: 1fr 1fr 1fr;
-	
-	grid-gap: 20px;
-	padding: 20px 20px 20px 20px;
-
-	background-color: rgb(230, 230, 230);
-}
-
-#details input[name="close"] {
-	grid-column-start: 2;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#details #info {
-	grid-column-start: 1;
-}
-
-#details #images img {
-	width: 100%;
-}
-
-#details .border {
-	border: 1px solid black;
-	padding: 15px 15px 15px 15px;
-	margin-top: 10px;
-}
-
-#details #text h1 {
-	display: inline;
-}
-
-#details #text input[type="button"] {
-	float: right;
-}
-
-#details #images {
-	text-align: center;
-}
-
-#details #castcrew {
-	padding: 10px 10px 10px 10px;
-
-	background-color: white;
-}
-
-#details #cast-crew-buttons input[type="button"] {	
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
-}
-
-#details #cast {
-	display: grid; /* This is chagned based on the tabs */
-	grid-template-columns: 1fr 1fr;
-}
-
-#details #crew {
-	display: none; /* This is changed based on the tabs */
-	grid-template-columns: 1fr 1fr 1fr;
-}
-
-#details input[type="button"] {
-	background-color: rgb(200, 200, 200);
-
-	border: 1px solid blue;
-	border-radius: 4px;
-	width: 8em;
-}
-
-#details #cast-crew-buttons .active {
-	background-color: white;
-}
-
-#details #info #text #movie_stats div {
-	display: inline;
 }
 
 @media (max-width: 800px) {
