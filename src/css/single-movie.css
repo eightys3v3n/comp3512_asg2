@@ -1,0 +1,124 @@
+html,body {
+	width: 100%;
+	height: 100vh;
+	margin: 0px 0px 0px 0px;
+}
+
+header {
+	text-align: center;
+	background-color: rgb(230, 230, 230);
+	/* TODO: text should be vertically centered */
+	height: 4em;
+	margin-bottom: 10px;
+	padding-top: 5px;
+}
+
+header h2, h3 {
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+
+h1 {
+	font-size: 1.25em;
+	margin: 10px 0px 0px 0px;
+}
+
+h2 {
+	font-size: 1.15em;
+}
+
+input[type="button"] {
+	height: 2em;
+	width: auto;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+#details {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	
+	grid-gap: 20px;
+	padding: 20px 20px 20px 20px;
+
+	background-color: rgb(230, 230, 230);
+}
+
+#details input[name="close"] {
+	grid-column-start: 2;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#details #info {
+	grid-column-start: 1;
+}
+
+#details #images img {
+	width: 100%;
+}
+
+#details .border {
+	border: 1px solid black;
+	padding: 15px 15px 15px 15px;
+	margin-top: 10px;
+}
+
+#details #text h1 {
+	display: inline;
+}
+
+#details #text input[type="button"] {
+	float: right;
+}
+
+#details #images {
+	text-align: center;
+}
+
+#details #castcrew {
+	padding: 10px 10px 10px 10px;
+
+	background-color: white;
+}
+
+#details #cast-crew-buttons input[type="button"] {	
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#details #cast {
+	display: grid; /* This is chagned based on the tabs */
+	grid-template-columns: 1fr 1fr;
+}
+
+#details #crew {
+	display: none; /* This is changed based on the tabs */
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#details input[type="button"] {
+	background-color: rgb(200, 200, 200);
+
+	border: 1px solid blue;
+	border-radius: 4px;
+	width: 8em;
+}
+
+#details #cast-crew-buttons .active {
+	background-color: white;
+}
+
+#details #info #text #movie_stats div {
+	display: inline;
+}
+
+@media (max-width: 800px) {
+	#details {
+		grid-template-columns: auto;
+	}
+	#details input[name="close"] {
+		grid-column-start: 1;
+	}
+}

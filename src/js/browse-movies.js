@@ -255,11 +255,10 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
-	let view_btn = document.createElement("input");
-	view_btn.type = "button";
-	view_btn.name = "view";
-	view_btn.value = "View";
-	li.appendChild(view_btn);
+	let view_a = document.createElement("a");
+    view_a.href = `single-movie.php?${id=$movie.id}`;
+	view_a.textContent = "View";
+	li.appendChild(view_a);
 
 	element.appendChild(li);
 	li.addEventListener("click", e => {switch_page(pages.Details, movie)});

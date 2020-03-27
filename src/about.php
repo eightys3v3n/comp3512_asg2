@@ -2,9 +2,19 @@
     Our "About" page, linked from the menu bar.
     Only added basic text so far -- styling needed.
     Personal github link for Max needed
--->
-<?php include('header.php'); ?>
-
+  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <?php include('meta.php'); ?>
+    
+    <link rel="stylesheet" href="css/about.css">
+    <script type="text/javascript" src="js/about.js"></script>
+  </head>
+  <body>
+    <?php include('header.php'); ?>
+    <?php include('nav.php'); ?>
+     
     <h1 class="pageTitle">About Our Site</h1>
     <!--
         We can add more things if we feel like it, personal pictures etc.
@@ -32,3 +42,5 @@
     <a href="https://github.com/rpowe271">Personal Github</a>
 
     <?php include('footer.php'); ?>
+  </body>
+</html>
