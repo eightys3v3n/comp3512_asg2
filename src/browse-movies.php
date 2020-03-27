@@ -42,19 +42,19 @@
 						<div>
 						<input type="radio" name="rating_selector" id="below"/>
 						<label>Below</label>
-						<input type="range" id="below_rating" min="0" max="10" value="10"/>
+						<input type="range" id="below_rating" min="0" max="10" value="10" step="0.5"/>
 						<p id="below_range_value" class="range_value">10</p>
 
 						<input type="radio" name="rating_selector" id="above"/>
 						<label>Above</label>
-						<input type="range" id="above_rating" min="0" max="10" value="0"/>
+						<input type="range" id="above_rating" min="0" max="10" value="0" step="0.5"/>
 						<p id="above_range_value" class="range_value">0</p>
 						
 						<input type="radio" name="rating_selector" id="between"/>
 						<label>Between</label>
-						<input type="range" id="between_start" min="0" max="10" value="0"/>
+						<input type="range" id="between_start" min="0" max="10" value="0" step="0.5"/>
 						<p id="between_start_value" class="range_value">0</p>
-						<input type="range" id="between_end" min="0" max="10" value="10"/>
+						<input type="range" id="between_end" min="0" max="10" value="10" step="0.5"/>
 						<p id="between_end_value" class="range_value">10</p>
 						</div>
 					</fieldset>
