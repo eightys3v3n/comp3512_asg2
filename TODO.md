@@ -359,4 +359,16 @@ closes the open body/html tags from header.php
 - [ ] Search box & search submit button see [Search element](#Search)
 - [ ] Favorite movies list; see [Poster List element](#Poster-List)
 - [ ] Recommendations list; see [Poster List element](#Poster-List):
-  - [ ] 
+
+
+
+
+
+# Wished for Changes
+
+## browse-movies.php
+
+- value text on filter boxes should change when slider is moved, not when you let go of the slider.
+
+
+

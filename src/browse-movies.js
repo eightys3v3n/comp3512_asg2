@@ -1,16 +1,10 @@
 document.addEventListener("DOMContentLoaded", main);
 
-const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/";
+const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
 const poster_url = "https://image.tmdb.org/t/p/";
 const tmdb_url = "https://themoviedb.org/movie/";
 const imdb_url = "https://imdb.com/title/";
-const pages = {
-	Home: "home",
-	Search: "search",
-	Details: "details"
-};
 let movies;
-let movie_id;
 
 function Filter(title, year_between, rating_between) {
 	if (title) {
@@ -57,7 +51,7 @@ function get_movies() {
 	if (!movies) {
 		console.log("Downloading movies...");
 		show_loading();
-		fetch(api_url+"movies-brief.php?id=ALL")
+		fetch(api_url)
 			.then(response => response.json())
 			.then(data => {
 				window.localStorage.setItem("movies", JSON.stringify(data));
