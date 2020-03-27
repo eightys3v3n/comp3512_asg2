@@ -1,9 +1,16 @@
-const RANDY_API_URL = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/";
-const API_MODE = "Randy";
-// const API_MODE = "Custom"; // for use with our API once built
-
 document.addEventListener("DOMContentLoaded", main);
-console.log("working");
+
+const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/";
+const poster_url = "https://image.tmdb.org/t/p/";
+const tmdb_url = "https://themoviedb.org/movie/";
+const imdb_url = "https://imdb.com/title/";
+const pages = {
+	Home: "home",
+	Search: "search",
+	Details: "details"
+};
+let movies;
+let movie_id;
 
 function Filter(title, year_between, rating_between) {
 	if (title) {
@@ -29,7 +36,6 @@ function Filter(title, year_between, rating_between) {
 	}
 }
 
-
 function get_movies() {
 	try {
 		movies = JSON.parse(window.localStorage.getItem("movies"));
@@ -51,15 +57,7 @@ function get_movies() {
 	if (!movies) {
 		console.log("Downloading movies...");
 		show_loading();
-        let url;
-        
-        if (API_MODE == "Randy") {
-            url = RANDY_API_URL+"movies-brief.php?id=ALL";
-        } else if (API_MODE == "Custom") {
-            console.error("Custom API mode isn't implemented yet");
-        }
-        
-		fetch(url)
+		fetch(api_url+"movies-brief.php?id=ALL")
 			.then(response => response.json())
 			.then(data => {
 				window.localStorage.setItem("movies", JSON.stringify(data));
@@ -80,12 +78,25 @@ function hide_loading() {
 function main() {
 	get_movies();
 
+	switch_page(pages.Home);
+
 	document.querySelector("#filters")
 		.addEventListener("keyup", e => {
 			if (e.keyCode === 13) {
 				refresh_filters();
 			}
 		});
+	document.querySelector("#home")
+		.addEventListener("keyup", e => {
+			if (e.keyCode === 13) {
+				switch_page(pages.Search, document.querySelector("#home #search_query").value);
+			}
+		});
+
+	document.querySelector("#home input[name='all_movies']")
+		.addEventListener("click", e => { switch_page(pages.Search, ""); });
+	document.querySelector("#home input[name='search']")
+		.addEventListener("click", e => { switch_page(pages.Search, document.querySelector("#home #search_query").value); });
 	document.querySelector("#search #filters_box #hide_filters")
 		.addEventListener("click", toggle_filters);
 	document.querySelector("#search #filters #buttons #update_filters")
@@ -138,6 +149,92 @@ function main() {
 		.addEventListener("click", e => {
 			document.querySelector("#search #filters #rating_filters #between_end_value").textContent = e.target.value;
 		});
+
+	document.querySelector("#details input[name='close']")
+		.addEventListener("click", e => {switch_page(pages.Search)});
+}
+
+function switch_page(page, data) {
+	let home_page = document.querySelector("#home");
+	let search_page = document.querySelector("#search");
+	let details_page = document.querySelector("#details");
+	let header = document.querySelector("header");
+
+	if (!data) {
+		data = "";
+	}
+
+	switch(page) {
+		case pages.Home:
+			home_page.style.display = "";
+			search_page.style.display = "none";
+			details.style.display = "none";
+			header.style.display = "none";
+			break;
+		case pages.Search:
+			home_page.style.display = "none";
+			search_page.style.display = "grid";
+			details.style.display = "none";
+			header.style.display = "";
+			if (data) {
+				document.querySelector("#search #filters input[name='title']").value = data;
+				refresh_filters();
+			}
+			break;
+		case pages.Details:
+			home_page.style.display = "none";
+			search_page.style.display = "none";
+			details.style.display = "grid";
+			header.style.display = "";
+			switch_movie(data);
+			break;
+		default:
+	}
+}
+
+function switch_movie(movie) {
+	// I realize that using querySelector to fill in this information is bad practice.
+	// I should have erased the entire contents of the areas to be modified and recreated them with createElement.
+	// I imagine createElement would have been faster.
+
+	let title = document.querySelector("#details #info #text h1");
+	title.textContent = movie.title;
+
+	let release = document.querySelector("#details #info #text #movie_stats #release_date");
+	release.textContent = movie.release_date;
+
+	let revenue = document.querySelector("#details #info #text #movie_stats #revenue");
+	revenue.textContent = movie.revenue.toLocaleString('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	});
+
+	let runtime = document.querySelector("#details #info #text #movie_stats #runtime");
+	runtime.textContent = movie.runtime;
+
+	let tagline = document.querySelector("#details #info #text #movie_stats #tagline");
+	tagline.textContent = movie.tagline;
+
+	let imdb = document.querySelector("#details #info #text #movie_stats #imdb");
+	imdb.href = imdb_url + movie.imdb_id;
+	
+	let tmdb = document.querySelector("#details #info #text #movie_stats #tmdb");
+	tmdb.href = tmdb_url + movie.tmdb_id;
+	
+	let popularity = document.querySelector("#details #info #text #movie_stats #popularity");
+	popularity.textContent = movie.ratings.popularity;
+
+	let average_rating = document.querySelector("#details #info #text #movie_stats #average_rating");
+	average_rating.textContent = movie.ratings.average;
+
+	let ratings = document.querySelector("#details #info #text #movie_stats #ratings");
+	ratings.textContent = movie.ratings.count;
+	
+	let overview = document.querySelector("#details #info #text #movie_stats #overview");
+	overview.textContent = movie.overview;
+
+	let poster = document.querySelector("#details #images img");
+	poster.src = poster_url + "w500" + movie.poster;
 }
 
 function toggle_filters() {

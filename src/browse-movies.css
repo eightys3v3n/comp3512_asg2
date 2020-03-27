@@ -1,5 +1,318 @@
+html,body {
+	width: 100%;
+	height: 100vh;
+	margin: 0px 0px 0px 0px;
+}
+
+header {
+	text-align: center;
+	background-color: rgb(230, 230, 230);
+	/* TODO: text should be vertically centered */
+	height: 4em;
+	margin-bottom: 10px;
+	padding-top: 5px;
+}
+
+header h2, h3 {
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+
+h1 {
+	font-size: 1.25em;
+	margin: 10px 0px 0px 0px;
+}
+
+h2 {
+	font-size: 1.15em;
+}
+
+input[type="button"] {
+	height: 2em;
+	width: auto;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+/* Home page */
+#home {
+	background-color: blue;
+	height: 100%;
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+}
+
+#home_box {
+	position: relative;
+	top: 10em;
+	margin-left: auto;
+	margin-right: auto;
+
+	padding: 1em 1em 1em 1em;
+	
+	background-color: white;
+	text-align: center;
+	max-width: 600px;
+}
+
+#home #form {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 1em;
+
+	padding-top: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-bottom: 1em;
+}
+
+#home input[id="search_query"] {
+	grid-column-end: span 2;
+}
+
+#home input[name="search"] {
+	grid-column-start: 2;
+}
+
+/* Search page */
 #search {
-    display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 3fr;
+	display: none; /* changed to grid on page switch */
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 10px;
+}
+
+#search #matches #loading {
+	width: 100%;
+}
+
+#search div {
+	background-color: rgb(230, 230, 230);
+}
+
+#search #filters_box {
+	grid-column-start: 1;
+
+	display: grid;
+	grid-template-columns: 10fr 1fr;
+	grid-template-rows: auto auto;
+	align-content: start;
+}
+
+#search #filters_box #filters {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
+#search #filters_box #hide_filters {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: span 3;
+
+	width: 2em;
+	background-color: red;
+}
+
+#search #filters_box #hide_filters p {
+	font-size: 300%;
+	color: rgba(200, 200, 200, 1);
+	position: fixed;
+	top: 50%;
+}
+
+#search #year_filters div {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
+}
+
+#search #rating_filters div {
+	display: grid;
+	grid-template-columns: 1em 4em auto 1em;
+	grid-gap: 10px;
+}
+
+#search fieldset {
+	border: 0px;
+}
+
+#search legend {
+	font-weight: bold;
+}
+
+#search input[name=title] {
+	width: 99%;
+}
+
+#search fieldset div input[type="radio"] {
+	grid-column-start: 1;
+}
+
+#search fieldset div label {
+	grid-column-start: 2;
+}
+
+#search fieldset div input[type="number"], input[type="range"] {
+	grid-column-start: 3;
+	margin: 0px 0px 0px 0px;
+}
+
+#search fieldset div .range_value {
+	grid-column-start: 4;
+	margin: 0px 0px 0px 0px;
+}
+
+#search #buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-bottom: 10px;
+}
+
+#search #buttons input {
+	width: 30%;
+	height: 2em;
+}
+
+#search #matches {
+	grid-column-start: 2;
+	padding-right: 10px;
+	padding-left: 10px;
+	height: 91vh;
+}
+
+#search #matches-header {
+	display: grid;
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+#search #matches-header #title {
+	grid-column-start: 2;
+}
+
+#search #matches ul {
+	/*display: flex;*/
+	flex-direction: column;
+
+	height: 86%;
+	overflow: scroll;
+	padding-left: 0px;
+}
+
+#search #matches li {
+	display: grid;
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+	margin: 5px 0px 5px 0px;
+
+	border: 1px solid red;
+}
+
+#search #matches li .year, .rating {
+	color: grey;
+}
+
+#search ul li img {
+	width: 92px;
+}
+
+#search ul li h3, p, input {
+	margin: auto 0px auto 0px;
+}
+
+#search input[type="button"], input[type="reset"] {
+	border: 1px solid blue;
+	background-color: rgb(200, 200, 200);
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+/* Details page */
+#details {
+	display: none; /* changed to grid on page switch */
+	grid-template-columns: 1fr 1fr 1fr;
+	
+	grid-gap: 20px;
+	padding: 20px 20px 20px 20px;
+
+	background-color: rgb(230, 230, 230);
+}
+
+#details input[name="close"] {
+	grid-column-start: 2;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#details #info {
+	grid-column-start: 1;
+}
+
+#details #images img {
+	width: 100%;
+}
+
+#details .border {
+	border: 1px solid black;
+	padding: 15px 15px 15px 15px;
+	margin-top: 10px;
+}
+
+#details #text h1 {
+	display: inline;
+}
+
+#details #text input[type="button"] {
+	float: right;
+}
+
+#details #images {
+	text-align: center;
+}
+
+#details #castcrew {
+	padding: 10px 10px 10px 10px;
+
+	background-color: white;
+}
+
+#details #cast-crew-buttons input[type="button"] {	
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+#details #cast {
+	display: grid; /* This is chagned based on the tabs */
+	grid-template-columns: 1fr 1fr;
+}
+
+#details #crew {
+	display: none; /* This is changed based on the tabs */
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#details input[type="button"] {
+	background-color: rgb(200, 200, 200);
+
+	border: 1px solid blue;
+	border-radius: 4px;
+	width: 8em;
+}
+
+#details #cast-crew-buttons .active {
+	background-color: white;
+}
+
+#details #info #text #movie_stats div {
+	display: inline;
+}
+
+@media (max-width: 800px) {
+	#details {
+		grid-template-columns: auto;
+	}
+	#details input[name="close"] {
+		grid-column-start: 1;
+	}
 }
