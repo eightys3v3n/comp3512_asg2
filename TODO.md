@@ -369,6 +369,8 @@ closes the open body/html tags from header.php
 ## browse-movies.php
 
 - value text on filter boxes should change when slider is moved, not when you let go of the slider.
+- make the hide filters bar cover the entire screen height.
+- remove the small amount of padding that gets added to the right of the hide filters button when filters are visible.
 
 
 

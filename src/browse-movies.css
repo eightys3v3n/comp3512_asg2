@@ -60,7 +60,6 @@ input[type="button"] {
 	grid-row-end: span 3;
 
 	width: 2em;
-	background-color: red;
 }
 
 #search #filters_box #hide_filters p {
@@ -155,8 +154,6 @@ input[type="button"] {
 	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr;
 	grid-gap: 10px;
 	margin: 5px 0px 5px 0px;
-
-	border: 1px solid red;
 }
 
 #search #matches li .year, .rating {
