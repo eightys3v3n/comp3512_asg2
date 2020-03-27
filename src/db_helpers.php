@@ -14,6 +14,7 @@ function getDatabase() {
     return $pdo;
 }
 
+
 // From https://www.youtube.com/watch?v=mcvshAEUeH4
 // Randy's Web II video
 function runQuery($db, $sql, $data=array()) {
@@ -38,5 +39,23 @@ function runQuery($db, $sql, $data=array()) {
     }
 
     return $statement;
+}
+
+
+function favoriteMovie($movie_id) {
+    /// Gets the user_id from the session data / cookie data.
+    /// Removes movie_id from the favorite table.
+}
+
+
+function unfavoriteMovie($movie_id) {
+    /// Gets the user_id from the session data / cookie data.
+    /// Removes movie_id from the favorite table.
+}
+
+
+function getFavoriteMovies() {
+    /// Gets the user_id from the session data / cookie data.
+    /// Returns a list of movie_ids that are in the users favorites.
 }
 ?>
