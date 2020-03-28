@@ -32,8 +32,8 @@ function Filter(title, year_between, rating_between) {
 
 function get_movies() {
 	try {
-		movies = JSON.parse(window.localStorage.getItem("movies"));
-		movies = movies.sort((a,b) => {
+		movies_t = JSON.parse(window.localStorage.getItem("movies"));
+		movies_t = movies.sort((a,b) => {
 			if (a.title < b.title) {
 				return -1;
 			} else if (a.title > b.title) {
@@ -42,8 +42,9 @@ function get_movies() {
 				return 1;
 			}
 		});
-		populate_movies(movies);
+		populate_movies(movies_t);
 		hide_loading();
+        movies = movies_t
 	} catch(e) {
 		console.log("Failed to get movies from local storage.");
 	}
@@ -255,8 +256,8 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
-	let view_a = document.createElement("a");
-    view_a.href = `single-movie.php?${id=$movie.id}`;
+	let view_a = document.createEleme!nt("a");
+    view_a.href = "single-movie.php?id=${movie.id}`;
 	view_a.textContent = "View";
 	li.appendChild(view_a);
 
