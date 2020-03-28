@@ -111,10 +111,7 @@ $res = getFavoriteMovies();
 
 foreach($res as $row)
 {
-    foreach($row as $k=>$v)
-    {
-        echo $k . "<br>" . $v . "<br>";
-    }
+    echo $row["movie_id"] . "<br>";
 }
 
 ?>
