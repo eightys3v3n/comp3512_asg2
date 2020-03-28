@@ -10,7 +10,8 @@
 <html lang="en">
   <head>
     <?php include('meta.php'); ?>
-
+    <?php include('db_helpers.inc.php'); ?>
+    
     <link rel="stylesheet" href="css/single-movie.css">
     <script type="text/javascript" src="js/single-movie.js"></script>
   </head>
@@ -18,11 +19,16 @@
     <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
 
+    <?php
+    if (isset($_GET["id"])) {
+      $movie = getMovie((int)$_GET["id"]);
+      if ($movie) {
+    ?>
    	<section id="details">
 	  <input type="button" name="close" value="Close">
 	  <div id="info">
 		<div id="text">
-		  <h1>Movie Title!</h1>
+		  <h1><?php echo $movie["title"]; ?></h1>
 		  <input type="button" value="Speak">
 		  <div id="movie_stats">
 			<p>
@@ -84,7 +90,14 @@
 		</div>
 	  </div>
 	</section>
-    
+    <?php
+     } else {
+       echo "Invalid movie id ".$_GET["id"];
+     }
+     } else {
+       echo "Missing movie id";
+     }
+     ?>
     <?php include('footer.php'); ?>
   </body>
 </html>

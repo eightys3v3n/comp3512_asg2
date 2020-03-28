@@ -46,7 +46,9 @@ function runQuery($db, $sql, $data=array()) {
     return $statement;
 }
 
-
+/*
+  Adds a movie_id to the current user's favorites.
+ */
 function favoriteMovie($movie_id)
 {
     try
@@ -66,7 +68,9 @@ function favoriteMovie($movie_id)
     $conn = null;
 }
 
-
+/*
+  Removes a movie_idfrom the current user's favorites.
+ */
 function unfavoriteMovie($movie_id)
 {
     try
@@ -108,6 +112,34 @@ function getFavoriteMovies()
     
     return $result;
 }
+
+/*
+  Get all the information on a movie from the database.
+ */
+function getMovie($movie_id) {
+    try {
+        $conn = getDatabaseConnection();
+        $sql = "SELECT * FROM movie WHERE id=?";
+        $res = runQuery($conn, $sql, $movie_id);
+        if ($res->rowCount() == 0) {
+            $res = null;
+        } else {
+            $res = $res->fetch();
+        }
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+
+    return $res;
+}
+
+
+/*$res = getMovie(2);
+
+echo $res["runtime"];
+foreach ($res as $k=>$v) {
+    echo $k.":".$v."<br>";
+}*/
 
 ?>
 
