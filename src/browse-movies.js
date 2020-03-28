@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", main);
 
-const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/";
 const poster_url = "https://image.tmdb.org/t/p/";
 const tmdb_url = "https://themoviedb.org/movie/";
 const imdb_url = "https://imdb.com/title/";
+const pages = {
+	Home: "home",
+	Search: "search",
+	Details: "details"
+};
 let movies;
+let movie_id;
 
 function Filter(title, year_between, rating_between) {
 	if (title) {
@@ -32,8 +38,8 @@ function Filter(title, year_between, rating_between) {
 
 function get_movies() {
 	try {
-		movies_t = JSON.parse(window.localStorage.getItem("movies"));
-		movies_t = movies.sort((a,b) => {
+		movies = JSON.parse(window.localStorage.getItem("movies"));
+		movies = movies.sort((a,b) => {
 			if (a.title < b.title) {
 				return -1;
 			} else if (a.title > b.title) {
@@ -42,9 +48,8 @@ function get_movies() {
 				return 1;
 			}
 		});
-		populate_movies(movies_t);
+		populate_movies(movies);
 		hide_loading();
-        movies = movies_t
 	} catch(e) {
 		console.log("Failed to get movies from local storage.");
 	}
@@ -52,7 +57,7 @@ function get_movies() {
 	if (!movies) {
 		console.log("Downloading movies...");
 		show_loading();
-		fetch(api_url)
+		fetch(api_url+"movies-brief.php?id=ALL")
 			.then(response => response.json())
 			.then(data => {
 				window.localStorage.setItem("movies", JSON.stringify(data));
@@ -256,10 +261,11 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
-	let view_a = document.createElement("a");
-    view_a.href = "single-movie.php?id=${movie.id}";
-	view_a.textContent = "View";
-	li.appendChild(view_a);
+	let view_btn = document.createElement("input");
+	view_btn.type = "button";
+	view_btn.name = "view";
+	view_btn.value = "View";
+	li.appendChild(view_btn);
 
 	element.appendChild(li);
 	li.addEventListener("click", e => {switch_page(pages.Details, movie)});
