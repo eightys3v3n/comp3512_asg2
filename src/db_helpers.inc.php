@@ -1,9 +1,10 @@
 <?php
 require_once 'secret.php';
 
-
+/*
+  This function returns a connection object to a database.
+ */
 function getDatabaseConnection() {
-    /// This returns a connection to the database. Make sure to set to null when finished.
     try {
         $pdo = new PDO(SQL_URL, SQL_USER, SQL_PASS);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -14,24 +15,28 @@ function getDatabaseConnection() {
     return $pdo;
 }
 
+/*
+  This function runs the specified SQL query using the passed connection and the passed array of parameters (null or undefined if none)
 
-// From https://www.youtube.com/watch?v=mcvshAEUeH4
-// Randy's Web II video
+  From https://www.youtube.com/watch?v=mcvshAEUeH4
+  Randy's Web II video
+*/
 function runQuery($db, $sql, $data=array()) {
-    /// Takes a db as returned from getDatabase(), an SQL string, and an array (or not) of data.
-    /// $res = runQuery($db, "SELECT * FROM users", undefined);
+    // Ensure parameters are in an array
     if (!is_array($data)) {
         $data = array($data);
     }
 
     $statement = null;
     if (count($data) > 0) {
+        // Use a prepared statement of parameters
         $statement = $db->prepare($sql);
         $execOk = $statement->execute($data);
         if (!$execOk) {
             throw new PDOException;
         }
     } else {
+        // Execute a normal query without parameters
         $statement = $db->query($sql);
         if (!$statement) {
             throw new PDOException;
