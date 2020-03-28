@@ -256,7 +256,7 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
-	let view_a = document.createEleme!nt("a");
+	let view_a = document.createElement("a");
     view_a.href = "single-movie.php?id=${movie.id}`;
 	view_a.textContent = "View";
 	li.appendChild(view_a);
