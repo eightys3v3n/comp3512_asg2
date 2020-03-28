@@ -54,7 +54,7 @@ function favoriteMovie($movie_id)
         $conn = getDatabaseConnection();
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $user_id = $_SESSION["u_id"];
-        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id,$movie_id)";
+        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id, $movie_id)";
         $conn->exec($sql);
         echo "Movie has been added to favorites";
     }
