@@ -175,6 +175,15 @@ input[type="button"] {
 	font-weight: bold;
 }
 
+#search a {
+    height: 2em;
+    border: 1px solid blue;
+    background-color: rgb(200, 200, 200);
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+}
+
 @media (max-width: 800px) {
 	#details {
 		grid-template-columns: auto;

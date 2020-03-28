@@ -256,11 +256,7 @@ function add_movie(element, movie) {
 	li.appendChild(rating);
 
 	let view_a = document.createElement("a");
-<<<<<<< HEAD
     view_a.href = `single-movie.php?id=${movie.id}`;
-=======
-    view_a.href = "single-movie.php?id=${movie.id}";
->>>>>>> e39c2cedd6d7aea70a078925e88a0a9db05f6381
 	view_a.textContent = "View";
 	li.appendChild(view_a);
 
