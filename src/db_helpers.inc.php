@@ -54,11 +54,10 @@ function favoriteMovie($movie_id)
     try
     {
         $conn = getDatabaseConnection();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $user_id = $_SESSION["u_id"];
-        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id, $movie_id)";
-        $conn->exec($sql);
-        echo "Movie has been added to favorites";
+        //$user_id = $_SESSION["u_id"];
+        $user_id = 1;
+        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id,$movie_id)";
+        runQuery($conn,$sql,$movie_id);
     }
     catch(PDOException $e)
     {
@@ -69,18 +68,17 @@ function favoriteMovie($movie_id)
 }
 
 /*
-  Removes a movie_idfrom the current user's favorites.
+  Removes a movie_id from the current user's favorites.
  */
 function unfavoriteMovie($movie_id)
 {
     try
     {
         $conn = getDatabaseConnection();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $user_id = $_SESSION["u_id"];
+        //$user_id = $_SESSION["u_id"];
+        $user_id = 1;
         $sql = "DELETE FROM favorite WHERE user_id = $user_id AND movie_id = $movie_id";
-        $conn->exec($sql);
-        echo "Movie has been removed from favorites";
+        runQuery($conn,$sql,$movie_id);
     }
     catch(PDOException $e)
     {
@@ -90,18 +88,20 @@ function unfavoriteMovie($movie_id)
     $conn = null;
 }
 
-
+/*
+  This fuction returns a list of a users favorite movies in the form of movie_ids
+ */
 function getFavoriteMovies()
 {
     try
     {
         $conn = getDatabaseConnection();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $user_id = $_SESSION["u_id"];
-        $sql = $conn->prepare("SELECT movie_id FROM favorites WHERE user_id = $user_id");
-        $sql->execute();
+        //$user_id = $_SESSION["u_id"];
+        $user_id = 1;
+        $sql = "SELECT movie_id FROM favorite WHERE user_id =?";
+        $result = runQuery($conn,$sql,$user_id);
         
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $result->fetchAll();
     }
     catch(PDOException $e)
     {
@@ -115,6 +115,7 @@ function getFavoriteMovies()
 
 /*
   Get all the information on a movie from the database.
+  Returns an associative array or null.
  */
 function getMovie($movie_id) {
     try {
@@ -132,14 +133,6 @@ function getMovie($movie_id) {
 
     return $res;
 }
-
-
-/*$res = getMovie(2);
-
-echo $res["runtime"];
-foreach ($res as $k=>$v) {
-    echo $k.":".$v."<br>";
-}*/
 
 ?>
 
