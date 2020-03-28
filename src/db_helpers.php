@@ -2,7 +2,7 @@
 require_once 'secret.php';
 
 
-function getDatabase() {
+function getDatabaseConnection() {
     /// This returns a connection to the database. Make sure to set to null when finished.
     try {
         $pdo = new PDO(SQL_URL, SQL_USER, SQL_PASS);
@@ -42,20 +42,94 @@ function runQuery($db, $sql, $data=array()) {
 }
 
 
-function favoriteMovie($movie_id) {
-    /// Gets the user_id from the session data / cookie data.
-    /// Removes movie_id from the favorite table.
+function favoriteMovie($movie_id)
+{
+    try
+    {
+        $conn = getDatabaseConnection();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $user_id = $_SESSION["u_id"];
+        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id,$movie_id)";
+        $conn->exec($sql);
+        echo "Movie has been added to favorites";
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    
+    $conn = null;
 }
 
 
-function unfavoriteMovie($movie_id) {
-    /// Gets the user_id from the session data / cookie data.
-    /// Removes movie_id from the favorite table.
+function unfavoriteMovie($movie_id)
+{
+    try
+    {
+        $conn = getDatabaseConnection();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $user_id = $_SESSION["u_id"];
+        $sql = "DELETE FROM favorite WHERE user_id = $user_id AND movie_id = $movie_id";
+        $conn->exec($sql);
+        echo "Movie has been removed from favorites";
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    
+    $conn = null;
 }
 
 
-function getFavoriteMovies() {
-    /// Gets the user_id from the session data / cookie data.
-    /// Returns a list of movie_ids that are in the users favorites.
+function getFavoriteMovies()
+{
+    try
+    {
+        $conn = getDatabaseConnection();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $user_id = $_SESSION["u_id"];
+        $sql = $conn->prepare("SELECT movie_id FROM favorites WHERE user_id = $user_id");
+        $sql->execute();
+        
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    
+    $conn = null;
+    
+    return $result;
 }
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
