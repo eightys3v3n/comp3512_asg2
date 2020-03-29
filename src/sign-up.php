@@ -9,6 +9,7 @@ include('../db_helpers.inc.php');
 
 if(isset($_POST)){
   echo "hello ".$_POST['firstName'];
+  echo "<br>your password is:  ".$_POST['password'];
   }
 
 
