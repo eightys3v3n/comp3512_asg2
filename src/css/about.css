@@ -1,0 +1,44 @@
+.aboutList{
+    float: left;
+    align-items: center;
+    margin: auto;
+}
+
+.aboutList li{
+    display: inline-block;
+    margin: 1em;
+    padding: 0.4em;
+    height: 8em;
+    width: 22em;
+    text-align: center;
+    background-color: #A8A8A8;
+    border-radius: 20px;
+}
+
+.aboutList li a:hover{
+    background-color: #BEBEBE;
+    
+}
+
+#aboutName{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#aboutTop{
+    align-items: center;
+}
+
+.pageTitle{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+#gitLink{
+    text-decoration: underline;
+    padding: 0.25em;
+}
+
