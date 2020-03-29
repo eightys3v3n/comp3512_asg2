@@ -5,11 +5,16 @@
 
 include('../db_helpers.inc.php');
 // require_once '/db_helpers.inc.php';
-
+// $name = '';
 
 if(isset($_POST)){
   echo "hello ".$_POST['firstName'];
   echo "<br>your password is:  ".$_POST['password'];
+  $fName = $_POST['firstName'];
+  $lName = $_POST['lastName'];
+  $city = $_POST['city'];
+  $country = $_POST['country'];
+  $email = $_POST['email'];
   }
 
 
@@ -31,23 +36,23 @@ if(isset($_POST)){
     <ul class="form-list">
     <li>
       <label for="firstName">First Name</label>
-      <input type="text" name="firstName" placeholder="First Name" value="" required>
+      <input type="text" name="firstName" placeholder="First Name" value="<?php echo isset($_POST['firstName']) ? $fName : ''; ?>" required>
     </li>
       <li>
       <label for="lastName">Last Name</label>
-      <input type="text" name="lastName" placeholder="Last Name" value="" required>
+      <input type="text" name="lastName" placeholder="Last Name" value="<?php echo isset($_POST['lastName']) ? $lName : ''; ?>" required>
     </li>
       <li>
       <label for="city">City</label>
-      <input type="text" name="city" placeholder="City" value="" required>
+      <input type="text" name="city" placeholder="City" value="<?php echo isset($_POST['city']) ? $city : ''; ?> " required>
     </li>
       <li>
       <label for="country">Country</label>
-      <input type="text" name="country" placeholder="Country" value="" required>
+      <input type="text" name="country" placeholder="Country" value="<?php echo isset($_POST['country']) ? $country : ''; ?>" required>
     </li>
     <li>
       <label for="email">E-Mail</label>
-      <input type="email" name="email" placeholder="E-Mail" value="" >
+      <input type="email" name="email" placeholder="E-Mail" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" >
     </li>
     <li>
       <label for="password">Password</label>
