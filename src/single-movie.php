@@ -10,7 +10,7 @@
 <html lang="en">
   <head>
     <?php include('meta.php'); ?>
-    <?php include('db_helpers.inc.php'); ?>
+    <?php include('db-helpers.inc.php'); ?>
     
     <link rel="stylesheet" href="css/single-movie.css">
     <script type="text/javascript" src="js/single-movie.js"></script>
