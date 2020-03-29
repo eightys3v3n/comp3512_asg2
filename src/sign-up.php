@@ -1,20 +1,32 @@
 <!--
     This is the sign-up page.
   -->
+<?php
+
+include('../db_helpers.inc.php');
+// require_once '/db_helpers.inc.php';
+
+
+if(isset($_POST)){
+  echo "hello ".$_POST['firstName'];
+  }
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <?php include('header.php'); ?>
 
     <link rel="stylesheet" href="css/sign-up.css">
-    <script type="text/javascript" src="js/sign-up.js"></script>
+    <!-- <script type="text/javascript" src="js/sign-up.js"></script> -->
   </head>
   <body>
-    <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
     <div id="signupContent">
     <h1>Sign Up</h1>
-    <form action="" method="POST">
+    <form  method="POST" action="sign-up.php">
     <ul class="form-list">
     <li>
       <label for="firstName">First Name</label>
