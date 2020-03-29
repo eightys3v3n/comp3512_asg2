@@ -46,6 +46,16 @@ function runQuery($db, $sql, $data=array()) {
     return $statement;
 }
 
+function registerUser(){
+    try{
+
+    }
+    catch
+    {
+        
+    }
+}
+
 /*
   Adds a movie_id to the current user's favorites.
  */
