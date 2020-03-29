@@ -48,11 +48,11 @@ function runQuery($db, $sql, $data=array()) {
 
 function registerUser(){
     try{
-
+        $conn = getDatabaseConnection();
     }
-    catch
+    catch(PDOException $e)
     {
-        
+        echo $sql . "<br>" . $e->getMessage();
     }
 }
 

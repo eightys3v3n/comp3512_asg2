@@ -17,12 +17,12 @@
     <form action="" method="POST">
     <ul class="form-list">
     <li>
-      <label for="firstname">First Name</label>
-      <input type="text" name="firstname" placeholder="First Name" value="" required>
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" placeholder="First Name" value="" required>
     </li>
       <li>
-      <label for="lastname">Last Name</label>
-      <input type="text" name="lastname" placeholder="Last Name" value="" required>
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" placeholder="Last Name" value="" required>
     </li>
       <li>
       <label for="city">City</label>
@@ -31,6 +31,18 @@
       <li>
       <label for="country">Country</label>
       <input type="text" name="country" placeholder="Country" value="" required>
+    </li>
+    <li>
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" placeholder="E-Mail" value="" >
+    </li>
+    <li>
+      <label for="password">Password</label>
+      <input type="password" name="password" minlength="8" placeholder="Password" value="" >
+    </li>
+    <li>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" name="confirmPassword" minlength="8" placeholder="Confirm Password" value="" >
     </li>
 
       <input type="submit" name="submit" class="submit-btn" value="Submit">
