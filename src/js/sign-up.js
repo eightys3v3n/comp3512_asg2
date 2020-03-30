@@ -1,5 +1,3 @@
-const letters = /^[A-Za-z]+$/;
-
 const validInfo = {
     "fname" : {
         "required" : true,
@@ -22,7 +20,7 @@ const validInfo = {
         "pattern" : /^[A-Za-z]+$/
     },
     "email" : {
-        "required" : false,
+        "required" : true,
         "minLength" : 4,
         "pattern" : /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
 
