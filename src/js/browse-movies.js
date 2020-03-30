@@ -255,13 +255,26 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
+    let fav_a = document.createElement("a");
+    fav_a.textContent = "favorite";
+	li.appendChild(fav_a);
+    fav_a.addEventListener("click", e=> {favorite_movie(e)});
+    
 	let view_a = document.createElement("a");
     view_a.href = `single-movie.php?id=${movie.id}`;
 	view_a.textContent = "View";
 	li.appendChild(view_a);
-
+    
 	element.appendChild(li);
 	li.addEventListener("click", e => {switch_page(pages.Details, movie)});
+}
+
+function favorite_movie(e) {
+    if (e.target.textContent == "favorite") {
+        e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
+    } else {
+        e.target.textContent = "favorite";
+    }
 }
 
 function year_of(date_str) {
