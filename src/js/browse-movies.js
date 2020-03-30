@@ -195,14 +195,14 @@ function get_rating_between_filter() {
 
 	if (below.checked) {
 		rating[1] = document.querySelector("#search #filters #rating_filters #below_rating").value;
-		rating[1] = parseInt(rating[1]);
+		rating[1] = parseFloat(rating[1]);
 	} else if (above.checked) {
 		rating[0] = document.querySelector("#search #filters #rating_filters #above_rating").value;
-		rating[0] = parseInt(rating[0]);
+		rating[0] = parseFloat(rating[0]);
 	} else if (between.checked) {
 		rating[0] = document.querySelector("#search #filters #rating_filters #between_start").value;
 		rating[1] = document.querySelector("#search #filters #rating_filters #between_end").value;
-		rating = [parseInt(rating[0]), parseInt(rating[1])];
+		rating = [parseFloat(rating[0]), parseInt(rating[1])];
 	}
 
 	if (rating[0] === "") {
@@ -255,13 +255,26 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
+    let fav_a = document.createElement("a");
+    fav_a.textContent = "favorite";
+	li.appendChild(fav_a);
+    fav_a.addEventListener("click", e=> {favorite_movie(e)});
+    
 	let view_a = document.createElement("a");
     view_a.href = `single-movie.php?id=${movie.id}`;
 	view_a.textContent = "View";
 	li.appendChild(view_a);
-
+    
 	element.appendChild(li);
 	li.addEventListener("click", e => {switch_page(pages.Details, movie)});
+}
+
+function favorite_movie(e) {
+    if (e.target.textContent == "favorite") {
+        e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
+    } else {
+        e.target.textContent = "favorite";
+    }
 }
 
 function year_of(date_str) {

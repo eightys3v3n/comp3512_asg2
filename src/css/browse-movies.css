@@ -125,14 +125,15 @@ input[type="button"] {
 
 #search #matches {
 	grid-column-start: 2;
-	padding-right: 10px;
+	padding-right: 0px;
 	padding-left: 10px;
 	height: 91vh;
 }
 
 #search #matches-header {
 	display: grid;
-	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr;
+    width: calc(100% - 31px);
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
 	grid-gap: 10px;
 }
 
@@ -141,22 +142,20 @@ input[type="button"] {
 }
 
 #search #matches ul {
-	/*display: flex;*/
-	flex-direction: column;
-
 	height: 86%;
 	overflow: scroll;
 	padding-left: 0px;
+    padding-right: 1em;
 }
 
 #search #matches li {
 	display: grid;
-	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr;
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
 	grid-gap: 10px;
 	margin: 5px 0px 5px 0px;
 }
 
-#search #matches li .year, .rating {
+#search #matches li .year, #search #matches li .rating {
 	color: grey;
 }
 
@@ -164,24 +163,21 @@ input[type="button"] {
 	width: 92px;
 }
 
-#search ul li h3, p, input {
+#search ul li h3, #search ul li p, #search ul li a {
 	margin: auto 0px auto 0px;
 }
 
-#search input[type="button"], input[type="reset"] {
+#search input[type="button"], input[type="reset"], #search a {
 	border: 1px solid blue;
 	background-color: rgb(200, 200, 200);
 	border-radius: 4px;
 	font-weight: bold;
+    text-align: center;
+    height: 2em; /* set the height of <a> elements */
 }
 
-#search a {
-    height: 2em;
-    border: 1px solid blue;
-    background-color: rgb(200, 200, 200);
-    border-radius: 4px;
-    font-weight: bold;
-    text-align: center;
+#search #matches ul li a {
+    line-height: 2em; /* Vertically center the "View" text in the <a> buttons */
 }
 
 @media (max-width: 800px) {
