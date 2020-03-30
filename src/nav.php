@@ -8,7 +8,7 @@
           <ul class="nav-list">
             <li><a href="about.php">About</a></li>
             <li><a href="browse-movies.php">Browse Movies</a></li>
-            <li><a href="favorites.php">Favourites</a></li>
+            <li><a href="favorites.php">Favorites</a></li>
             <li><a href="login.php">Login</a></li>
             <li><a href="sign-up.php">Sign-Up</a></li>
           </ul>

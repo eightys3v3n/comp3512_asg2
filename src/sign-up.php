@@ -2,26 +2,24 @@
     This is the sign-up page.
   -->
 <?php
-
-include('db-helpers.inc.php');
+$page_title = 'Sign-Up';
+require_once('db-helpers.inc.php');
 // require_once '/db_helpers.inc.php';
 // $name = '';
 
 if(isset($_POST['submit'])){
 
-  // if (isset($_POST['firstName'])) {$fName = $_POST['firstName'];}
-  $fName = $_POST['firstName'];
-  // if (isset($_POST['lastName']))  {$lName = $_POST['lastName'];}
-  $lName = $_POST['lastName'];
-  // if (isset($_POST['city']))      {$city = $_POST['city'];}
-  $city = $_POST['city'];
-  // if (isset($_POST['country']))   {$country = $_POST['country'];}
-  $country = $_POST['country'];
-  // if (isset($_POST['email']))     {$email = $_POST['email'];}
-  $email = $_POST['email'];
-  // if (isset($_POST['firstName'])) {echo "hello ".$_POST['firstName'];}
+  $fName = $_POST['firstName'];  // if (isset($_POST['firstName'])) {$fName = $_POST['firstName'];}
+  $lName = $_POST['lastName'];   // if (isset($_POST['lastName']))  {$lName = $_POST['lastName'];}
+  $city = $_POST['city'];  // if (isset($_POST['city']))      {$city = $_POST['city'];}
+  $country = $_POST['country'];  // if (isset($_POST['country']))   {$country = $_POST['country'];}
+  if (isset($_POST['email']))    
+  {
+    $email = $_POST['email'];
+    
+  }
   echo "hello ".$_POST['firstName'];
-  // echo "<br>your password is:  ".$_POST['password'];
+
 
   }
 
@@ -31,6 +29,7 @@ if(isset($_POST['submit'])){
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php include('meta.php'); ?>
     <?php include('header.php'); ?>
 
     <link rel="stylesheet" href="css/sign-up.css">

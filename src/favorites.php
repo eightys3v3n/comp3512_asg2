@@ -3,6 +3,7 @@
     The list should work and display the same as on the browse-movies.php page.
     Should display an error if user isn't logged in.
   -->
+  <?php $page_title ='Favorites'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

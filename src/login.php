@@ -1,6 +1,7 @@
 <!--
     This page lets the user login with an email and password. What happens if they are already logged in?
   -->
+  <?php $page_title ='Login'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

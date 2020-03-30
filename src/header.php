@@ -2,7 +2,8 @@
     This is the header content included in every page. It goes in <body>.
   -->
     <header>
-      <title>Movies</title>
+      <title><?php echo $page_title ?></title>
+      <!-- <title>Movies</title> -->
       <link rel="stylesheet" href="css/header.css">
       <script type="text/javascript"  src="js/header.js"></script>
       <!-- Testing out materializecss cdn below -->

@@ -2,6 +2,7 @@
     Our "About" page, linked from the menu bar.
     Only added basic text so far -- styling needed.
   -->
+<?php $page_title ='About'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

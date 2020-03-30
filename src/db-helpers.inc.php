@@ -46,7 +46,20 @@ function runQuery($db, $sql, $data=array()) {
     return $statement;
 }
 
+// Attemps to add user on Sign up form submit
+
 function registerUser($email){
+    try{
+        $conn = getDatabaseConnection();
+        $sql = "SELECT COUNT(*) FROM  users where email LIKE $email";
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+}
+
+function getEmail($email){
     try{
         $conn = getDatabaseConnection();
     }

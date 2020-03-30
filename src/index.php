@@ -3,9 +3,11 @@
     login button, and logout button.
     For logged in users it has a bunch of stuff. See TODO.md
   -->
+  <?php $page_title ='Home - Movies'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php include('meta.php'); ?>
     <?php include('header.php'); ?>
 
     <link rel="stylesheet" href="css/index.css">

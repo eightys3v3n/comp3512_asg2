@@ -2,6 +2,7 @@
     This page lets a user search for movies. Each movie also has a link to the details page for that movie
     and a favorite button. The movies need to be intuatively sortable by all the columns.
   -->
+  <?php $page_title ='Browse Movies'; ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
