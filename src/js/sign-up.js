@@ -50,13 +50,13 @@ let validateForm = () => {
 
      if (pwd.value != pwd2.value) {
         valid = false;
-        alertText = alertText += 'Passwords Need To Match';
+        alertText = alertText += 'Passwords Need To Match \n';
     }
     for (key in validInfo) {
         let field = document.getElementById(key);
         if (field.value.length <= validInfo[key].minLength){
             console.log('bruh');
-            alertText = alertText += `${field.placeholder} Too Short `;
+            alertText = alertText += `${field.placeholder} Too Short \n`;
             valid = false;
         }
         if (validInfo[key].pattern != ""){
@@ -70,7 +70,7 @@ let validateForm = () => {
                 // console.log(field.value)
                 // console.log(validInfo[key].pattern)
                 valid = false;
-                alertText = alertText += `${field.placeholder} Not Valid `;
+                alertText = alertText += `${field.placeholder} Not Valid \n`;
             }
 
         }   
