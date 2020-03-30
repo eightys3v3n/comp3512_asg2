@@ -1,9 +1,16 @@
 #signupContent {
+    /* background-color: var(--maincolor); */
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     /* background: red; */
+}
+
+#signupForm {
+    background-color: var(--maincolor);
+    box-shadow: 5px 5px grey;
+    padding: 10px;
 }
 
 .form-list {

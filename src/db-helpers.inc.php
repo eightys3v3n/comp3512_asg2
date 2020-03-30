@@ -46,7 +46,7 @@ function runQuery($db, $sql, $data=array()) {
     return $statement;
 }
 
-function registerUser(){
+function registerUser($email){
     try{
         $conn = getDatabaseConnection();
     }
