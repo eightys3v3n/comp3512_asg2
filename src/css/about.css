@@ -1,7 +1,12 @@
-.aboutList{
-    float: left;
+ul.aboutList{
+    /* float: left; */
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     margin: auto;
+    padding: 0;
+
 }
 
 .aboutList li{
