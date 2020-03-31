@@ -19,17 +19,13 @@
   <body>
     <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
-
-    <?php
-    if (isset($_GET["id"])) {
-      $movie = getMovie((int)$_GET["id"]);
-      if ($movie) {
-    ?>
-   	<section id="details">
+    <?php include('output-movie.php'); ?>
+    
+<!--   	<section id="details">
 	  <input type="button" name="close" value="Close">
 	  <div id="info">
 		<div id="text">
-		  <h1><?php echo $movie["title"]; ?></h1>
+		  <h1></h1>
 		  <input type="button" value="Speak">
 		  <div id="movie_stats">
 			<p>
@@ -38,15 +34,15 @@
 			  <b>Runtime:</b> <div id="runtime"></div> minutes<br/>
 			  <b>Tagline:</b> <div id="tagline"></div><br/>
 			  <b>Links:</b> <a href="" id="imdb">IMDB</a>, <a href="" id="tmdb">TMDB</a><br/>
-			  <b>Popularity:</b> <div id="popularity"></div><br/>
-			  <b>Average rating:</b> <div id="average_rating"></div><br/>
-			  <b>Ratings:</b> <div id="ratings"></div><br/>
-              
+			  <b>Popularity:</b> <div id="popularity"></div><br/>-->
+			  <!--<b>Average rating:</b> <div id="average_rating"></div><br/>-->
+			  <!--<b>Ratings:</b> <div id="ratings"></div><br/>-->
+<!--              
 			  <h2>Overview</h2>
 			  <div id="overview"></div>
 			</p>
 		  </div>
-		</div>
+		</div>-->
 		<div id="companies" class="border">
 		  <h2>Companies</h2>
 		  <p>name, name, name</p>
@@ -91,14 +87,6 @@
 		</div>
 	  </div>
 	</section>
-    <?php
-     } else {
-       echo "Invalid movie id ".$_GET["id"];
-     }
-     } else {
-       echo "Missing movie id";
-     }
-     ?>
     <?php include('footer.php'); ?>
   </body>
 </html>
