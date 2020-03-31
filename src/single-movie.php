@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <?php $page_title = 'Movie Details'; ?>
     <?php include('meta.php'); ?>
     <?php include('db-helpers.inc.php'); ?>
     
