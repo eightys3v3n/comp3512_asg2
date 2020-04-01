@@ -2,7 +2,6 @@
     This is for the navigation bar that is loaded on every page. It goes in <body> at the beginning.
   -->
     <nav class="navbar">
-      <div class="nav-wrapper">
         <a href="index.php" class="brand-logo">Home</a>
         <!-- <ul class="right hide-on-small-and-down"> -->
           <ul class="nav-list">
@@ -15,5 +14,4 @@
           <button class="navbar-toggle">
             <span></span>
           </button>
-      </div>
     </nav>
