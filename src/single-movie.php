@@ -6,6 +6,12 @@
     This contains the stuff from Terrence's assignment 1. It hasn't been checked, it's just a
     starting point.
   -->
+<?php
+session_start();
+
+// tell the browser we are sending html
+header('Content-Type: text/html; charset=utf-8');
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

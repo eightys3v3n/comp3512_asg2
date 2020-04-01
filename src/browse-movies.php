@@ -3,7 +3,12 @@
     and a favorite button. The movies need to be intuatively sortable by all the columns.
   -->
 <?php
+// start or resume a session with a user
 session_start();
+
+// tell the browser we are sending html
+header('Content-Type: text/html; charset=utf-8');
+
 $page_title ='Browse Movies';
 ?>
 <!DOCTYPE html>

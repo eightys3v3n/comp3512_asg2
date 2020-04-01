@@ -3,7 +3,12 @@
     login button, and logout button.
     For logged in users it has a bunch of stuff. See TODO.md
   -->
-  <?php $page_title ='Home - Movies'; ?>
+<?php
+// tell the browser we are sending html
+header('Content-Type: text/html; charset=utf-8');
+
+$page_title ='Home - Movies';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

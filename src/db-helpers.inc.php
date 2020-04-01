@@ -157,6 +157,24 @@ function getMovie($movie_id) {
     return $res;
 }
 
+/*
+  Get all the movies in the database and their information.
+ */
+function getMovies() {
+    $movies = [];
+    
+    try {
+        $conn = getDatabaseConnection();
+        $sql = "SELECT * FROM movie";
+        $res = runQuery($conn, $sql);
+        $movies = $res->fetchAll();
+    } catch (PDOException $e) {
+        echo $sql."<br>".$e->getMessage();
+    }
+
+    return $movies;
+}
+
 ?>
 
 
