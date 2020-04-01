@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", main);
 
-const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+const api_url = "api/movies.php";
 const poster_url = "https://image.tmdb.org/t/p/";
 const tmdb_url = "https://themoviedb.org/movie/";
 const imdb_url = "https://imdb.com/title/";
