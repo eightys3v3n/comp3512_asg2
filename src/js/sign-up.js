@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", main);
+
+
+function main() {
+    if (signup_attempt_status == "success") {
+        document.querySelector("#success").style.display = "block";
+        document.querySelector("#signupForm").style.display = "none";
+    } else if (signup_attempt_status == "failure") {
+        document.querySelector("#failure").style.display = "block";
+    } else {
+        console.warning("Invalid signup attempt status: '"+signup_attempt_status+"'");
+    }
+}
+
+
 const validInfo = {
     "fname" : {
         "required" : true,

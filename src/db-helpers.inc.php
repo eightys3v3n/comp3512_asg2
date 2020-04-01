@@ -47,17 +47,41 @@ function runQuery($db, $sql, $data=array()) {
 }
 
 /*
-  Attemps to add user on Sign up form submit
+  Attemps to add user on Sign up form submit.
+
+  Returns false if email is already registered.
+  Returns true if registration is successful.
  */
-function registerUser($email){
+function registerUser($fName, $lName, $city, $country, $email, $password){
+    // SEE THIS LINK for how to do this. Terrence chose to use password_hash instead of a manual hash function.
+    // https://www.sitepoint.com/hashing-passwords-php-5-5-password-hashing-api/
+
+    $fName = ucfirst(strtolower($fName));
+    $lName = ucfirst(strtolower($lName));
+    $city = ucfirst(strtolower($city));
+    $country = ucfirst(strtolower($country));
+    $email = strtolower($email);
+    $pass_hash = password_hash($password, PASSWORD_DEFAULT);
+    
     try{
         $conn = getDatabaseConnection();
-        $sql = "SELECT COUNT(*) FROM  users where email LIKE $email";
+        $res = runQuery($conn,
+                        "SELECT COUNT(*) FROM user WHERE email=?",
+                        $email);
+        if ($res->fetch()[0] > 0) {
+            return false; // email already in use
+        }
+
+        $res = runQuery($conn,
+                        "INSERT INTO user(firstname, lastname, city, country, email, password) VALUES(?, ?, ?, ?, ?, ?)",
+                        [$fName, $lName, $city, $country, $email, $pass_hash]);
     }
     catch(PDOException $e)
     {
         echo $sql . "<br>" . $e->getMessage();
     }
+
+    return true;
 }
 
 /*
@@ -67,6 +91,8 @@ function registerUser($email){
   Returns false if password or email was incorrect.
 */
 function login($email, $password) {
+    $email = strtolower($email);
+    
     // Get the PHP password hash+salt
     $conn = getDatabaseConnection();
     $res = runQuery($conn, "SELECT id, password FROM user WHERE email=?", $email);

@@ -34,3 +34,11 @@
 label {
     padding-right: 10px;
 }
+
+#failure {
+    display: none;
+}
+
+#success {
+    display: none;
+}
