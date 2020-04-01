@@ -5,4 +5,12 @@
     align-items: center;
     margin-top: 10px;
     height: 40vh;
- }
+}
+
+#success {
+    display: none;
+}
+
+#failure {
+    display: none;
+}

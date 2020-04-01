@@ -4,6 +4,8 @@
     For logged in users it has a bunch of stuff. See TODO.md
   -->
 <?php
+session_start();
+
 // tell the browser we are sending html
 header('Content-Type: text/html; charset=utf-8');
 
@@ -22,7 +24,13 @@ $page_title ='Home - Movies';
     <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
 
-    Your stuff here
+    <?php
+       if (isset($_SESSION['u_id'])) {
+           ?>You are logged in :D<?php
+       } else {
+           ?>You are not logged in :(<?php
+       }
+    ?>
     
     <?php include('footer.php'); ?>
   </body>

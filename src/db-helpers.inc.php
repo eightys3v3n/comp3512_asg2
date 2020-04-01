@@ -46,8 +46,9 @@ function runQuery($db, $sql, $data=array()) {
     return $statement;
 }
 
-// Attemps to add user on Sign up form submit
-
+/*
+  Attemps to add user on Sign up form submit
+ */
 function registerUser($email){
     try{
         $conn = getDatabaseConnection();
@@ -56,6 +57,31 @@ function registerUser($email){
     catch(PDOException $e)
     {
         echo $sql . "<br>" . $e->getMessage();
+    }
+}
+
+/*
+  Tries to log user in.
+
+  Returns true if password and email was correct.
+  Returns false if password or email was incorrect.
+*/
+function login($email, $password) {
+    // Get the PHP password hash+salt
+    $conn = getDatabaseConnection();
+    $res = runQuery($conn, "SELECT password FROM user WHERE email=?", $email);
+    if ($res->rowCount() == 0) {
+        return false;
+    }
+    // get the [0] element because fetch returns an array even though we only got password.
+    $corr_password = $res->fetch()[0];
+
+    // check if the password is the correct password.
+    if (password_verify($password, $corr_password)) {
+        $_SESSION['u_id'] = $email;
+        return true;
+    } else {
+        return false;
     }
 }
 
