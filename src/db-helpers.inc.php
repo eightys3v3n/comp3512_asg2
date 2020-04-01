@@ -69,16 +69,16 @@ function registerUser($email){
 function login($email, $password) {
     // Get the PHP password hash+salt
     $conn = getDatabaseConnection();
-    $res = runQuery($conn, "SELECT password FROM user WHERE email=?", $email);
+    $res = runQuery($conn, "SELECT id, password FROM user WHERE email=?", $email);
     if ($res->rowCount() == 0) {
         return false;
     }
-    // get the [0] element because fetch returns an array even though we only got password.
-    $corr_password = $res->fetch()[0];
+
+    [$u_id, $corr_password] = $res->fetch();
 
     // check if the password is the correct password.
     if (password_verify($password, $corr_password)) {
-        $_SESSION['u_id'] = $email;
+        $_SESSION['u_id'] = $u_id;
         return true;
     } else {
         return false;
@@ -103,10 +103,9 @@ function favoriteMovie($movie_id)
     try
     {
         $conn = getDatabaseConnection();
-        //$user_id = $_SESSION["u_id"];
-        $user_id = 1;
-        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES ($user_id,$movie_id)";
-        runQuery($conn,$sql,$movie_id);
+        $user_id = $_SESSION["u_id"];
+        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES (?,?)";
+        runQuery($conn,$sql,[$user_id,$movie_id]);
     }
     catch(PDOException $e)
     {
