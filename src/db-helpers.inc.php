@@ -205,6 +205,13 @@ function getMovie($movie_id) {
         echo $sql . "<br>" . $e->getMessage();
     }
 
+    $res['production_companies'] = json_decode($res['production_companies'], true);
+    $res['production_countries'] = json_decode($res['production_countries'], true);
+    $res['crew'] = json_decode($res['crew'], true);
+    $res['genres'] = json_decode($res['genres'], true);
+    $res['keywords'] = json_decode($res['keywords'], true);
+    $res['cast'] = json_decode($res['cast'], true);
+
     return $res;
 }
 
