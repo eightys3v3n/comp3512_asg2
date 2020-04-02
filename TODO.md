@@ -82,7 +82,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 3/10
 
-- [ ] Return a list of [movies](#Movie-Reference) in JSON.
+- [x] Return a list of [movies](#Movie-Reference) in JSON.
 
 
 
@@ -117,8 +117,8 @@ new Filter(undefined, [2000, undefined], undefined)
 
 3/10
 
-- [ ] returns true if successful or movie was already favorited
-- [ ] returns false if there was some database error or something
+- [x] returns true if successful or movie was already favorited
+- [x] returns false if there was some database error or something
 
 
 
@@ -149,7 +149,7 @@ new Filter(undefined, [2000, undefined], undefined)
 
 3/10
 
-- [ ] returns a list of all the movies see [Movie Object](#Movie-Reference)
+- [x] returns a list of all the movies see [Movie Object](#Movie-Reference)
 
 
 
@@ -159,11 +159,11 @@ new Filter(undefined, [2000, undefined], undefined)
 
 4/10
 
-- [ ] checks that email doesn't already exist in Users database, if it does then returns "Email already taken"
-- [ ] hashes the password
-- [ ] adds the information to a new User row
-- [ ] returns "Successfully registered" if successful
-- [ ] otherwise returns some error string
+- [x] checks that email doesn't already exist in Users database, if it does then returns "Email already taken"
+- [x] hashes the password
+- [x] adds the information to a new User row
+- [x] returns "Successfully registered" if successful
+- [x] otherwise returns some error string
 
 
 
@@ -173,11 +173,11 @@ new Filter(undefined, [2000, undefined], undefined)
 
 4/10
 
-- [ ] hashes password
-- [ ] if email not in Users, return "Email invalid"
-- [ ] if password not correct for email, return "Password invalid"
-- [ ] return "Logged in" if successful
-- [ ] otherwise returns some error string
+- [x] hashes password
+- [x] if email not in Users, return "Email invalid"
+- [x] if password not correct for email, return "Password invalid"
+- [x] return "Logged in" if successful
+- [x] otherwise returns some error string
 
 
 
@@ -280,16 +280,16 @@ closes the open body/html tags from header.php
 
 8/10
 
-- [ ] Extract search view from assignment 1
+- [x] Extract search view from assignment 1
 - [ ] Make the `q` query string set the value of the search query
 - [ ] Ensure that the search view is complete (I don't remember if I finished all the functionality):
   - [ ] All the filters work as expected
-- [ ] Make the view button redirect to `single-movie.php?id=`
+- [x] Make the view button redirect to `single-movie.php?id=`
 - [ ] Make the movie list sortable by different columns:
   - [ ] Sort alphabetical and reverse alphabetical by clicking title column header
   - [ ] Sort lex and anti-lex by year
   - [ ] Sort lex and anti-lex by rating
-- [ ] This page should use the [movies.php?id=](#APIs) API to get it's information
+- [x] This page should use the [movies.php?id=](#APIs) API to get it's information
 - [ ] Use event delegation for the movie list buttons
 - [ ] Display a loading animation while the movies are fetched
 
@@ -299,8 +299,8 @@ closes the open body/html tags from header.php
 
 4/10
 
-- [ ] Extract details view from assignment 1
-- [ ] This needs to access the database, **not** use the API (says the guidelines)
+- [x] Extract details view from assignment 1
+- [x] This needs to access the database, **not** use the API (says the guidelines)
 - [ ] Remove Speak and Close button
 - [ ] Complete Crew and Cast information
 - [ ] "Add to Favorites" button next to view button:
@@ -332,8 +332,8 @@ closes the open body/html tags from header.php
 
 1.5/10
 
-- [ ] Brief description of the website:
-  - [ ] "Web II"
+- [x] Brief description of the website:
+  - [x] "Web II"
   - [ ] "Mount Royal University"
   - [ ] professor name
   - [ ] "Winter 2020"
