@@ -1,0 +1,17 @@
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+#content > div {
+    border: 1px solid red;
+    padding: 10px 10px 10px 10px;
+}
+
+#user_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
