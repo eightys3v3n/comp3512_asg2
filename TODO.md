@@ -334,11 +334,11 @@ closes the open body/html tags from header.php
 
 - [x] Brief description of the website:
   - [x] "Web II"
-  - [ ] "Mount Royal University"
-  - [ ] professor name
-  - [ ] "Winter 2020"
+  - [x] "Mount Royal University"
+  - [x] professor name
+  - [x] "Winter 2020"
   - [ ] technologies used
-- [ ] Names and Github links for all group members
+- [x] Names and Github links for all group members
 
 
 
