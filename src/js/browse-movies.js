@@ -71,6 +71,7 @@ function hide_loading() {
 
 function main() {
 	get_movies();
+    refresh_filters();
 
 	document.querySelector("#filters")
 		.addEventListener("keyup", e => {
@@ -154,8 +155,8 @@ function refresh_filters() {
 	let year_between = get_year_between_filter();
 	let rating_between = get_rating_between_filter();
 
-	console.log(rating_between);
 	filter = new Filter(title, year_between, rating_between);
+    console.log(filter);
 	filtered_movies = filter_movies(filter);
 	populate_movies(filtered_movies);
 }
@@ -202,7 +203,7 @@ function get_rating_between_filter() {
 	} else if (between.checked) {
 		rating[0] = document.querySelector("#search #filters #rating_filters #between_start").value;
 		rating[1] = document.querySelector("#search #filters #rating_filters #between_end").value;
-		rating = [parseFloat(rating[0]), parseInt(rating[1])];
+		rating = [parseFloat(rating[0]), parseFloat(rating[1])];
 	}
 
 	if (rating[0] === "") {
