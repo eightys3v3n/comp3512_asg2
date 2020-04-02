@@ -18,8 +18,8 @@ if (isset($_GET["id"]))
         $vote_average = $movie["vote_average"];
         $ratings = $movie["vote_count"];
         $overview = $movie["overview"];
-        $poster = $movie["poster_path"];
-        $companies = json_decode($movie["production_companies"]);
+        $poster = "https://image.tmdb.org/t/p/w342/" . $movie["poster_path"];
+        $companies = $movie["production_companies"];
         $countries = $movie["production_countries"];
         $genres = $movie["genres"];
         $keywords = $movie["keywords"];
@@ -28,15 +28,39 @@ if (isset($_GET["id"]))
         
         function printCompanies($companies)
         {
-            foreach($companies as $company => $value)
+            foreach ($companies as $company)
             {
-                foreach($value as $val => $v)
-                {
-                    echo $v;
-                }
+                echo $company["name"];
+                echo '<br>';
             }
         }
     
+        function printCountries($countries)
+        {
+            foreach ($countries as $country)
+            {
+                echo $country["name"];
+                echo '<br>';
+            }
+        }
+    
+        function printKeywords($keywords)
+        {
+            foreach ($keywords as $keyword)
+            {
+                echo $keyword["name"];
+                echo '<br>';
+            }
+        }
+    
+        function printGenres($genres)
+        {
+            foreach ($genres as $genre)
+            {
+                echo $genre["name"];
+                echo '<br>';
+            }
+        }
     
         echo '<section id="details">';
             echo '<input type="button" name="close" value="Close">';
@@ -63,6 +87,23 @@ if (isset($_GET["id"]))
                     echo '<h2>Companies</h2>';
                     echo '<p>' . printCompanies($companies) . '</p>';
                 echo '</div>';
+                echo '<div id="countries" class="border">';
+                    echo '<h2>Countries</h2>';
+                    echo '<p>' . printCountries($countries) . '</p>';
+                echo '</div>';
+                echo '<div id="keywords" class="border">';
+                    echo '<h2>Keywords</h2>';
+                    echo '<p>' . printKeywords($keywords) . '</p>';
+                echo '</div>';
+                echo '<div id="genres" class="border">';
+                    echo '<h2>Genres</h2>';
+                    echo '<p>' . printGenres($genres) . '</p>';
+                echo '</div>';
+            echo '</div>';
+            echo '<div id="images">';
+                echo '<img src=' . $poster . '>';
+            echo '</div>';
+    
     }
 
 ?>
