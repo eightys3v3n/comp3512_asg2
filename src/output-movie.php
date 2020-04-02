@@ -19,13 +19,25 @@ if (isset($_GET["id"]))
         $ratings = $movie["vote_count"];
         $overview = $movie["overview"];
         $poster = $movie["poster_path"];
-        $companies = $movie["production_companies"];
+        $companies = json_decode($movie["production_companies"]);
         $countries = $movie["production_countries"];
         $genres = $movie["genres"];
         $keywords = $movie["keywords"];
         $cast = $movie["cast"];
         $crew = $movie["crew"];
         
+        function printCompanies($companies)
+        {
+            foreach($companies as $company => $value)
+            {
+                foreach($value as $val => $v)
+                {
+                    echo $v;
+                }
+            }
+        }
+    
+    
         echo '<section id="details">';
             echo '<input type="button" name="close" value="Close">';
             echo '<div id="info">';
@@ -47,6 +59,38 @@ if (isset($_GET["id"]))
                         echo '</p>';
                     echo '</div>';
                 echo '</div>';
+                echo '<div id="companies" class="border">';
+                    echo '<h2>Companies</h2>';
+                    echo '<p>' . printCompanies($companies) . '</p>';
+                echo '</div>';
     }
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
