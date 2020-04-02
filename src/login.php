@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $login_attempt['status'] = "success";
 
         // redirect to home page on sucessful login
-        header("location: index.php");
+        header('refresh:5,url=index.php');
     } else {
         $login_attempt['status'] = "failure";
     }

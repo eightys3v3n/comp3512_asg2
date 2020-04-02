@@ -40,8 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         // auto-login the user because they just signed up
         login($signup_attempt['email'], $signup_attempt['password']);
 
-        // redirect to home page
-        header("location: index.php");
+        header('refresh:5,url=index.php');
     } else {
         $signup_attempt['status'] = 'failure';
     }

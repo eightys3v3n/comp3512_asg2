@@ -12,7 +12,6 @@ function main() {
     }
 }
 
-
 const validInfo = {
     "fname" : {
         "required" : true,
