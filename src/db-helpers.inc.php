@@ -28,19 +28,24 @@ function runQuery($db, $sql, $data=array()) {
     }
 
     $statement = null;
-    if (count($data) > 0) {
-        // Use a prepared statement of parameters
-        $statement = $db->prepare($sql);
-        $execOk = $statement->execute($data);
-        if (!$execOk) {
-            throw new PDOException;
+
+    try {
+        if (count($data) > 0) {
+            // Use a prepared statement of parameters
+            $statement = $db->prepare($sql);
+            $execOk = $statement->execute($data);
+            if (!$execOk) {
+                throw new PDOException;
+            }
+        } else {
+            // Execute a normal query without parameters
+            $statement = $db->query($sql);
+            if (!$statement) {
+                throw new PDOException;
+            }
         }
-    } else {
-        // Execute a normal query without parameters
-        $statement = $db->query($sql);
-        if (!$statement) {
-            throw new PDOException;
-        }
+    } catch (PDOException $e) {
+        die($e->getMessage);
     }
 
     return $statement;
@@ -92,16 +97,17 @@ function registerUser($fName, $lName, $city, $country, $email, $password){
 */
 function login($email, $password) {
     $email = strtolower($email);
-    
+
     // Get the PHP password hash+salt
     $conn = getDatabaseConnection();
     $res = runQuery($conn, "SELECT id, password FROM user WHERE email=?", $email);
     if ($res->rowCount() == 0) {
         return false;
     }
-
+    
     [$u_id, $corr_password] = $res->fetch();
-
+    $conn = null;
+    
     // check if the password is the correct password.
     if (password_verify($password, $corr_password)) {
         $_SESSION['u_id'] = $u_id;
@@ -111,14 +117,24 @@ function login($email, $password) {
     }
 }
 
-function getEmail($email){
-    try{
-        $conn = getDatabaseConnection();
-    }
-    catch(PDOException $e)
-    {
-        echo $sql . "<br>" . $e->getMessage();
-    }
+/*
+  Gets the user information in an associative array
+ */
+function getUserInfo($user_id) {
+    $conn = getDatabaseConnection();
+    $res = runQuery($conn, "SELECT * FROM user WHERE id=?", $user_id);
+        
+    $user_info = $res->fetch();
+
+    // remove secret fields that should never be used
+    unset($user_info['password']);
+    unset($user_info[6]);
+    unset($user_info['password_sha256']);
+    unset($user_info[7]);
+    unset($user_info['salt']);
+    unset($user_info[8]);
+
+    return $user_info;
 }
 
 /*
@@ -149,10 +165,9 @@ function unfavoriteMovie($movie_id)
     try
     {
         $conn = getDatabaseConnection();
-        //$user_id = $_SESSION["u_id"];
-        $user_id = 1;
-        $sql = "DELETE FROM favorite WHERE user_id = $user_id AND movie_id = $movie_id";
-        runQuery($conn,$sql,$movie_id);
+        $user_id = $_SESSION["u_id"];
+        $sql = "DELETE FROM favorite WHERE user_id=? AND movie_id=?";
+        runQuery($conn,$sql,[$user_id, $movie_id]);
     }
     catch(PDOException $e)
     {
