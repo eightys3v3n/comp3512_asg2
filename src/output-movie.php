@@ -62,6 +62,25 @@ if (isset($_GET["id"]))
             }
         }
     
+        function printCast($cast)
+        {
+            foreach ($cast as $c)
+            {
+                echo '<p>Character: ' . $c["character"] . '</p>';
+                echo '<p>Name: ' . $c["name"] . '</p>';
+            }
+        }
+    
+        function printCrew($crew)
+        {
+            foreach ($crew as $c)
+            {
+                echo '<p>Department: ' . $c["department"] . '</p>';
+                echo '<p>Job: ' . $c["job"] . '</p>';
+                echo '<p>Name: ' . $c["name"] . '</p>';
+            }
+        }
+    
         echo '<section id="details">';
             echo '<input type="button" name="close" value="Close">';
             echo '<div id="info">';
@@ -103,6 +122,21 @@ if (isset($_GET["id"]))
             echo '<div id="images">';
                 echo '<img src=' . $poster . '>';
             echo '</div>';
+            echo '<div>';
+                echo '<div id="cast-crew-buttons">';
+                    echo '<input type="button" value="Cast" class="active">';
+                    echo '<input type="button" value="Crew" class="hidden">';
+                echo '</div>';
+                echo '<div id="castcrew">';
+                    echo '<div id="cast">';
+                    printCast($cast);
+                    echo '</div>';
+                echo '<div id="crew">';
+                printCrew($crew);
+                echo '</div>';
+            echo '</div>';
+        echo '</div>';
+    echo '</section>';    
     
     }
 
