@@ -66,7 +66,7 @@ let validateForm = () => {
     }
     for (key in validInfo) {
         let field = document.getElementById(key);
-        if (field.value.length <= validInfo[key].minLength){
+        if (field.value.length < validInfo[key].minLength){
             alertText = alertText += `${field.placeholder} Too Short \n`;
             valid = false;
         }
