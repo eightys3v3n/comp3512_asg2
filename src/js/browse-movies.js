@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 
-const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+//const api_url = "http://www.randyconnolly.com/funwebdev/3rd/api/movie/movies-brief.php?id=ALL";
+const api_url = "api/movies-brief.php";
 const poster_url = "https://image.tmdb.org/t/p/";
 const tmdb_url = "https://themoviedb.org/movie/";
 const imdb_url = "https://imdb.com/title/";
@@ -307,7 +308,8 @@ function filter_movies(filter) {
 			continue;
 		if (filter.year.after && filter.year.after > date.getFullYear())
 			continue;
-
+        
+        console.log(movie);
 		let rating = movie.ratings.average;
 		if (filter.rating.below && rating > filter.rating.below)
 			continue;

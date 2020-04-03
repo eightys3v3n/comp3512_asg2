@@ -272,25 +272,41 @@ function getBriefMovies($id) {
                     unset($movie[$k]);
                 }
             }
+
+            $movie['id'] = (int)$movie['id'];
+            $movie['tmdb_id'] = (int)$movie['tmdb_id'];
+            $movie['runtime'] = (int)$movie['runtime'];
+            $movie['revenue'] = (int)$movie['revenue'];
             
             unset($movie['production_companies']);
-            unset($movie[13]);
             unset($movie['production_countries']);
-            unset($movie[14]);
             unset($movie['genres']);
-            unset($movie[15]);
             unset($movie['keywords']);
-            unset($movie[16]);
             unset($movie['cast']);
-            unset($movie[17]);
             unset($movie['crew']);
-            unset($movie[18]);
+
+            $movie['ratings'] = [
+                'average' => (float)$movie['vote_average'],
+                'count' => (int)$movie['vote_count'],
+                'popularity' => (float)$movie['popularity']
+            ];
+            unset($movie['vote_average']);
+            unset($movie['vote_count']);
+            unset($movie['popularity']);
+
+            $movie['poster'] = $movie['poster_path'];
+            unset($movie['poster_path']);
+
             array_push($movies, $movie);
         }
     } catch (PDOException $e) {
         die($e->getMessage);
     }
 
+    if (isset($id) && $id != 'ALL') {
+        $movies = $movies[0];
+    }
+    
     return $movies;
 }
 ?>
