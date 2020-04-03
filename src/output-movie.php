@@ -82,11 +82,9 @@ if (isset($_GET["id"]))
         }
     
         echo '<section id="details">';
-            echo '<input type="button" name="close" value="Close">';
             echo '<div id="info">';
                 echo '<div id="text">';
                     echo '<h1>' . $title . '</h1>';
-                    echo '<input type="button" value="Speak">';
                     echo '<div id="movie_stats">';
                         echo '<p>';
                             echo '<b>Release date: ' . $release_date . '</b> <div id="release_date"></div><br/>';
