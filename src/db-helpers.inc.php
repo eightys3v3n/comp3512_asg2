@@ -45,7 +45,7 @@ function runQuery($db, $sql, $data=array()) {
             }
         }
     } catch (PDOException $e) {
-        die($e->getMessage);
+        die($e->getMessage());
     }
 
     return $statement;
