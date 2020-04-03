@@ -26,6 +26,39 @@ input[type="button"] {
 	border-radius: 4px;
 }
 
+a:visited {
+	color: blue;
+}
+
+a:hover {
+	color: red;
+	cursor: pointer;
+}
+
+center:hover{
+	cursor: context-menu;
+}
+
+.title:hover {
+	cursor: pointer;
+}
+
+.icon:hover {
+	cursor: pointer;
+}
+
+.year:hover {
+	cursor: context-menu;
+}
+
+.rating:hover {
+	cursor: context-menu;
+}
+
+#matches-header:hover {
+	cursor: context-menu;
+}
+
 #search {
 	display: grid;
 	grid-template-columns: 1fr 2fr;
