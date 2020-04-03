@@ -148,7 +148,7 @@ if (isset($_GET['rating_above']) && ! isset($_GET['rating_below'])) {
 		  <h2>Rating</h2>
 		</div>
 		<div id="loading">
-		  <img src="https://media.giphy.com/media/WiIuC6fAOoXD2/giphy.gif" title="Loading">
+		  <img src="public\ping.gif" title="Loading">
 		  <p>Loading...</p>
 		</div>
 		<p id="no_matches">No matches found</p>
