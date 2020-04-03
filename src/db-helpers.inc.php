@@ -236,21 +236,63 @@ function getMovie($movie_id) {
 /*
   Get all the movies in the database and their information.
  */
-function getMovies() {
-    $movies = [];
+// function getMovies() {
+    // $movies = [];
     
+    // try {
+        // $conn = getDatabaseConnection();
+        // $sql = "SELECT * FROM movie";
+        // $res = runQuery($conn, $sql);
+        // $movies = $res->fetchAll();
+    // } catch (PDOException $e) {
+        // echo $sql."<br>".$e->getMessage();
+    // }
+
+    // return $movies;
+// }
+
+/*
+  Get all the movies in the database but without the companies, countries, keywords, genres, cast, and crew.
+*/
+function getBriefMovies($id) {
+    $movies = [];
+
     try {
         $conn = getDatabaseConnection();
-        $sql = "SELECT * FROM movie";
-        $res = runQuery($conn, $sql);
-        $movies = $res->fetchAll();
+
+        if (isset($id) && $id != 'ALL') {
+            $res = runQuery($conn, "SELECT * FROM movie WHERE id=?", $id);
+        } else {
+            $res = runQuery($conn, "SELECT * FROM movie");
+        }
+
+        foreach ($res as $movie) {
+            foreach ($movie as $k=>$v) {
+                if (is_integer($k)) {
+                    unset($movie[$k]);
+                }
+            }
+            
+            unset($movie['production_companies']);
+            unset($movie[13]);
+            unset($movie['production_countries']);
+            unset($movie[14]);
+            unset($movie['genres']);
+            unset($movie[15]);
+            unset($movie['keywords']);
+            unset($movie[16]);
+            unset($movie['cast']);
+            unset($movie[17]);
+            unset($movie['crew']);
+            unset($movie[18]);
+            array_push($movies, $movie);
+        }
     } catch (PDOException $e) {
-        echo $sql."<br>".$e->getMessage();
+        die($e->getMessage);
     }
 
     return $movies;
 }
-
 ?>
 
 
