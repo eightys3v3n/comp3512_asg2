@@ -47,3 +47,7 @@ p{
     padding: 0.25em;
 }
 
+a:visited {
+    color: blue;
+}
+
