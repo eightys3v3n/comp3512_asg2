@@ -81,6 +81,8 @@ input[type="button"] {
 	padding: 10px 10px 10px 10px;
 
 	background-color: white;
+    overflow: scroll;
+    height: 47em;
 }
 
 #details #cast-crew-buttons input[type="button"] {	
