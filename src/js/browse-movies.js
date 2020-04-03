@@ -156,7 +156,6 @@ function refresh_filters() {
 	let rating_between = get_rating_between_filter();
 
 	filter = new Filter(title, year_between, rating_between);
-    console.log(filter);
 	filtered_movies = filter_movies(filter);
 	populate_movies(filtered_movies);
 }
@@ -257,9 +256,11 @@ function add_movie(element, movie) {
 	li.appendChild(rating);
 
     let fav_a = document.createElement("a");
-    fav_a.textContent = "favorite";
+    fav_a.textContent = "Favorite";
 	li.appendChild(fav_a);
-    fav_a.addEventListener("click", e=> {favorite_movie(e)});
+    fav_a.addEventListener("click", e=> {
+        favorite_movie(e, movie);
+    });
     
 	let view_a = document.createElement("a");
     view_a.href = `single-movie.php?id=${movie.id}`;
@@ -267,15 +268,23 @@ function add_movie(element, movie) {
 	li.appendChild(view_a);
     
 	element.appendChild(li);
-	li.addEventListener("click", e => {switch_page(pages.Details, movie)});
+	li.addEventListener("click", e => { window.location = view_a.href; });
 }
 
-function favorite_movie(e) {
-    if (e.target.textContent == "favorite") {
-        e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
-    } else {
-        e.target.textContent = "favorite";
-    }
+function favorite_movie(e, movie) {
+    e.stopPropagation();
+
+    fetch(`api/favorite-movie.php?movie_id=${movie.id}`)
+        .then(data => {
+            console.log(data);
+            e.target.textContent = data;
+        });
+    
+    // if (e.target.textContent == "Favorite") {
+        // e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
+    // } else {
+        // e.target.textContent = "Favorite";
+    // }
 }
 
 function year_of(date_str) {

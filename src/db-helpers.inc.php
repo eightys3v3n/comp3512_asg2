@@ -140,21 +140,24 @@ function getUserInfo($user_id) {
 /*
   Adds a movie_id to the current user's favorites.
  */
-function favoriteMovie($movie_id)
+function favoriteMovie($user_id, $movie_id)
 {
     try
     {
         $conn = getDatabaseConnection();
-        $user_id = $_SESSION["u_id"];
         $sql = "INSERT INTO favorite (user_id, movie_id) VALUES (?,?)";
-        runQuery($conn,$sql,[$user_id,$movie_id]);
+        runQuery($conn, $sql, [$user_id, $movie_id]);
+        $conn = null;
     }
     catch(PDOException $e)
     {
-        echo $sql . "<br>" . $e->getMessage();
+        $conn = null;
+        print_r($e);
+        return false;
     }
+
     
-    $conn = null;
+    return true;
 }
 
 /*
