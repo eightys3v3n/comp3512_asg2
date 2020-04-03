@@ -82,21 +82,19 @@ if (isset($_GET["id"]))
         }
     
         echo '<section id="details">';
-            echo '<input type="button" name="close" value="Close">';
             echo '<div id="info">';
                 echo '<div id="text">';
                     echo '<h1>' . $title . '</h1>';
-                    echo '<input type="button" value="Speak">';
                     echo '<div id="movie_stats">';
                         echo '<p>';
-                            echo '<b>Release date: ' . $release_date . '</b> <div id="release_date"></div><br/>';
-                            echo '<b>Revenue: $' . $revenue . '</b> <div id="revenue"></div><br/>';
+                            echo '<b>Release date: </b>'  . $release_date . '<div id="release_date"></div><br/>';
+                            echo '<b>Revenue: </b>$'  . $revenue . '<div id="revenue"></div><br/>';
                             echo '<b>Runtime: </b>' . $runtime . '<div id="runtime"></div> minutes<br/>';
                             echo '<b>Tagline: </b>' . $tagline . '<div id="tagline"></div><br/>';
                             echo '<b>Links:</b> <a href=' . $imdb_id . '>IMDB </a>' . '<a href=' . $tmdb_id . 'id="tmdb">TMDB</a><br/>';
-                            echo '<b>Popularity: ' . $popularity . '</b> <div id="popularity"></div><br/>';
-                            echo '<b>Average rating: ' . $vote_average . '</b> <div id="average_rating"></div><br/>';
-                            echo '<b>Ratings: ' . $ratings . '</b> <div id="ratings"></div><br/>';
+                            echo '<b>Popularity: </b>'  . $popularity . ' <div id="popularity"></div><br/>';
+                            echo '<b>Average rating: </b>' . $vote_average . '<div id="average_rating"></div><br/>';
+                            echo '<b>Ratings: </b>' . $ratings . '<div id="ratings"></div><br/>';
                             echo '<h2>Overview</h2>';
                             echo '<div id="overview">' . $overview . '</div>';
                         echo '</p>';
