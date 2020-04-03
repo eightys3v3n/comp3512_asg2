@@ -1,6 +1,5 @@
 # Ignore the login file for the SQL database.
 secret.php
-
 # Ignore emacs temp files.
 \#*#
 .#*
