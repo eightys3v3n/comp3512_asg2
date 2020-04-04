@@ -141,13 +141,14 @@ function getUserInfo($user_id) {
 /*
   Adds a movie_id to the current user's favorites.
  */
-function favoriteMovie($user_id, $movie_id)
+function favoriteMovie($user_id, $movie_list)
 {
     try
-    {
+    {    
         $conn = getDatabaseConnection();
-        $sql = "INSERT INTO favorite (user_id, movie_id) VALUES (?,?)";
-        runQuery($conn, $sql, [$user_id, $movie_id]);
+        $sql = "SELECT * FROM movie WHERE id IN ($movie_list)";
+        $result = runQuery($conn, $sql);
+        return $result->fetchAll();
         $conn = null;
     }
     catch(PDOException $e)
@@ -163,15 +164,13 @@ function favoriteMovie($user_id, $movie_id)
 
 /*
   Removes a movie_id from the current user's favorites.
+  Update April 4: changing from a db query to array splice of "fav_movies" 
  */
 function unfavoriteMovie($movie_id)
 {
     try
     {
-        $conn = getDatabaseConnection();
-        $user_id = $_SESSION["u_id"];
-        $sql = "DELETE FROM favorite WHERE user_id=? AND movie_id=?";
-        runQuery($conn,$sql,[$user_id, $movie_id]);
+
     }
     catch(PDOException $e)
     {
@@ -193,7 +192,6 @@ function getFavoriteMovies()
         $user_id = 1;
         $sql = "SELECT movie_id FROM favorite WHERE user_id =?";
         $result = runQuery($conn,$sql,$user_id);
-        
         $result = $result->fetchAll();
     }
     catch(PDOException $e)

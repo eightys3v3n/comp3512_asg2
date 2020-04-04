@@ -25,24 +25,24 @@ header('Content-Type: text/html; charset=utf-8');
 
 
 if (isset($_SESSION["u_id"])) {
-  $name = $_SESSION["u_id"];
   echo "<h2> Favorite movies </h2>";
   if (isset($_SESSION['fav_movies']) && count($_SESSION['fav_movies']) > 0) {
     echo "<input type='submit' value='Remove All Favorites'></input>";
+    $name = $_SESSION["u_id"];
     $movs = $_SESSION['fav_movies'];
     $fav_movies = join(",", $movs);
-    $conn = getDatabaseConnection();
-    $sql = "SELECT * FROM movie WHERE id IN ($fav_movies)";
-    $result = runQuery($conn, $sql);
-    while ($row = $result->fetch()) {
+    $result = favoriteMovie($user_id, $fav_movies);
+    foreach ($result as $row) {
       echo "<div class='fav_movie'>";
       echo "<h3>" . $row['title'] . "</h3>". "<br>";
       echo "<img src='https://image.tmdb.org/t/p/w92". $row['poster_path'] . "' />";
+
+    }
     }
   } else {
     echo "<p>No Favorite Movies</p>";
   }
-  }
+  
 ?>
 
     <?php include('footer.php'); ?>
