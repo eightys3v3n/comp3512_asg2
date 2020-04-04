@@ -266,11 +266,11 @@ function add_movie(element, movie) {
 	//Create Favorite Movie Button
     let fav_a = document.createElement("a");
 	fav_a.textContent = "Favorite";
-	fav_a.href = `favorite-movie.php?mov_id=${movie.id}`;
+	// fav_a.href = `favorite-movie.php?mov_id=${movie.id}`;
 	li.appendChild(fav_a);
-    // fav_a.addEventListener("click", e=> {
-    //     favorite_movie(e, movie);
-    // });
+    fav_a.addEventListener("click", e=> {
+        favorite_movie(e, movie);
+    });
 
     // let fav_a = document.createElement("a");
     // fav_a.textContent = "Favorite";
@@ -288,24 +288,37 @@ function add_movie(element, movie) {
 	li.addEventListener("click", e => { window.location = view_a.href; });
 }
 
-function favorite_movie(e, movie) {
+ function favorite_movie(e, movie) {
     e.stopPropagation();
 
-    fetch(`api/favorite-movie.php?movie_id=${movie.id}`)
-        .then(res => {
-            console.log(res.json());
-            console.log(Object.getOwnPropertyNames(res));
-			// e.target.textContent = data;
-			return res.json();
-		})
-		.then(data => {
-			// e.target.textContent = data;
-			console.log('hu')
-			console.log(data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}`,{
+		method: 'post'
+	})
+	.then((res) => {
+		fav_a.textContent = "Penis";
+		console.log('hi')
+		return res.json()
+	})
+	.then(data => console.log(data))
+	.catch((err) => {
+		console.log(err);
+	})
+
+
+        // .then(res => {
+        //     console.log(res.json());
+        //     console.log(Object.getOwnPropertyNames(res));
+		// 	// e.target.textContent = data;
+		// 	return res.json();
+		// })
+		// .then(data => {
+		// 	// e.target.textContent = data;
+		// 	console.log('hu')
+		// 	console.log(data);
+		// })
+		// .catch(error => {
+		// 	console.log(error);
+		// });
     
     // if (e.target.textContent == "Favorite") {
         // e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
