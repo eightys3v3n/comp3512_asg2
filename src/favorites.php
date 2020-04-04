@@ -28,9 +28,8 @@ if (isset($_SESSION["u_id"])) {
   echo "<h2> Favorite movies </h2>";
   if (isset($_SESSION['fav_movies']) && count($_SESSION['fav_movies']) > 0) {
     echo "<input type='submit' value='Remove All Favorites'></input>";
-    $name = $_SESSION["u_id"];
-    $movs = $_SESSION['fav_movies'];
-    $fav_movies = join(",", $movs);
+    $user_id = $_SESSION["u_id"];
+    $fav_movies = $_SESSION['fav_movies'];
     $result = favoriteMovie($user_id, $fav_movies);
     foreach ($result as $row) {
       echo "<div class='fav_movie'>";

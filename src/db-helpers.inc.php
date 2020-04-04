@@ -145,9 +145,19 @@ function favoriteMovie($user_id, $movie_list)
 {
     try
     {    
+        $fav_movies_string = join(",", $movie_list);
         $conn = getDatabaseConnection();
-        $sql = "SELECT * FROM movie WHERE id IN ($movie_list)";
+        $sql = "SELECT * FROM movie WHERE id IN ($fav_movies_string)";
         $result = runQuery($conn, $sql);
+        $words = "dsfgsdrg";
+        echo '<script>console.log("' . gettype($sql) . '")</script>';
+         foreach($movie_list as $movie_id){
+            echo '<script>console.log("' . gettype($movie_id) . '")</script>';
+            $usernum = (int)$user_id;
+            $movie_id = (int)$movie_id;
+            $db_sql = "INSERT INTO favorite VALUES($usernum, $movie_id) ON DUPLICATE KEY UPDATE user_id = $usernum";
+            runQuery($conn, $db_sql);
+        }
         return $result->fetchAll();
         $conn = null;
     }
