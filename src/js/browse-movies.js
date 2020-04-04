@@ -256,12 +256,21 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
+	//Create Favorite Movie Button
     let fav_a = document.createElement("a");
-    fav_a.textContent = "Favorite";
+	fav_a.textContent = "Favorite";
+	fav_a.href = `favorite-movie.php?mov_id=${movie.id}`;
 	li.appendChild(fav_a);
-    fav_a.addEventListener("click", e=> {
-        favorite_movie(e, movie);
-    });
+    // fav_a.addEventListener("click", e=> {
+    //     favorite_movie(e, movie);
+    // });
+
+    // let fav_a = document.createElement("a");
+    // fav_a.textContent = "Favorite";
+	// li.appendChild(fav_a);
+    // fav_a.addEventListener("click", e=> {
+    //     favorite_movie(e, movie);
+    // });
     
 	let view_a = document.createElement("a");
     view_a.href = `single-movie.php?id=${movie.id}`;
@@ -276,10 +285,20 @@ function favorite_movie(e, movie) {
     e.stopPropagation();
 
     fetch(`api/favorite-movie.php?movie_id=${movie.id}`)
-        .then(data => {
-            console.log(data);
-            e.target.textContent = data;
-        });
+        .then(res => {
+            console.log(res.json());
+            console.log(Object.getOwnPropertyNames(res));
+			// e.target.textContent = data;
+			return res.json();
+		})
+		.then(data => {
+			// e.target.textContent = data;
+			console.log('hu')
+			console.log(data);
+		})
+		.catch(error => {
+			console.log(error);
+		});
     
     // if (e.target.textContent == "Favorite") {
         // e.target.textContent = "NOT IMPLEMENTED"; // change this to Unfavorite if successful.
@@ -309,7 +328,7 @@ function filter_movies(filter) {
 		if (filter.year.after && filter.year.after > date.getFullYear())
 			continue;
         
-        console.log(movie);
+        // console.log(movie);
 		let rating = movie.ratings.average;
 		if (filter.rating.below && rating > filter.rating.below)
 			continue;
