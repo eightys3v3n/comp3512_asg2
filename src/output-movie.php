@@ -122,8 +122,8 @@ if (isset($_GET["id"]))
             echo '</div>';
             echo '<div>';
                 echo '<div id="cast-crew-buttons">';
-                    echo '<input type="button" value="Cast" class="active">';
-                    echo '<input type="button" value="Crew" class="hidden">';
+                    echo '<input id="castBtn" type="button" value="Cast" class="active">';
+                    echo '<input id="crewBtn" type="button" value="Crew" class="hidden">';
                 echo '</div>';
                 echo '<div id="castcrew">';
                     echo '<div id="cast">';
