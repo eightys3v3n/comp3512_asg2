@@ -64,10 +64,17 @@ function get_movies() {
 
 function show_loading() {
 	document.querySelector("#search #matches #loading").style.display = "";
+	document.querySelector("#matches").style.backgroundColor = "white";
+	document.querySelector("#loading").style.backgroundColor = "white";
+	document.querySelector("#matches-header").style.backgroundColor = "white";
+	document.querySelector("#title").style.backgroundColor = "white";
+	document.querySelector("#no_matches").style.display = "none";
+	document.querySelector("#loading").style.cursor = "progress";
 }
 
 function hide_loading() {
 	document.querySelector("#search #matches #loading").style.display = "none";
+	document.querySelector("#search #matches").style.backgroundColor = "rgb(230, 230, 230)";
 }
 
 function main() {
