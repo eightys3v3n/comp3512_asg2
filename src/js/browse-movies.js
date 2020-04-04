@@ -295,7 +295,6 @@ function add_movie(element, movie) {
 		method: 'post'
 	})
 	.then((res) => {
-		fav_a.textContent = "Penis";
 		console.log('hi')
 		return res.json()
 	})
