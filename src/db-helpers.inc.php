@@ -110,6 +110,7 @@ function login($email, $password) {
     
     // check if the password is the correct password.
     if (password_verify($password, $corr_password)) {
+        $_SESSION['fav_movies'] = array(2, 11);
         $_SESSION['u_id'] = $u_id;
         return true;
     } else {
