@@ -158,8 +158,8 @@ function favoriteMovie($user_id, $movie_list)
             $db_sql = "INSERT INTO favorite VALUES($usernum, $movie_id) ON DUPLICATE KEY UPDATE user_id = $usernum";
             runQuery($conn, $db_sql);
         }
-        return $result->fetchAll();
         $conn = null;
+        return $result->fetchAll();
     }
     catch(PDOException $e)
     {
