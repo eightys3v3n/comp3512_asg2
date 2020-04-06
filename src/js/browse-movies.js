@@ -294,11 +294,6 @@ function add_movie(element, movie) {
 	fetch(`api/favorite-movie.php?movie_id=${movie.id}`,{
 		method: 'post'
 	})
-	.then((res) => {
-		console.log('hi')
-		return res.json()
-	})
-	.then(data => console.log(data))
 	.catch((err) => {
 		console.log(err);
 	})

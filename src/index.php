@@ -48,6 +48,7 @@ $page_title ='Home - Movies';
        </div>
        <div id="favorites">
          This is the favorites box!
+         
        </div>
        <div id="recommendations">
          I recommend you go watch some movies

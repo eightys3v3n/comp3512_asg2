@@ -3,6 +3,7 @@
     Only added basic text so far -- styling needed.
   -->
 <?php
+session_start();
 // tell the browser we are sending html
 header('Content-Type: text/html; charset=utf-8');
 
@@ -12,12 +13,12 @@ $page_title ='About';
 <html lang="en">
   <head>
     <?php include('meta.php'); ?>
+    <?php include('header.php'); ?>
     
     <link rel="stylesheet" href="css/about.css">
     <script type="text/javascript" src="js/about.js"></script>
   </head>
   <body>
-    <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
      
     <h1 class="pageTitle">About Our Site</h1>

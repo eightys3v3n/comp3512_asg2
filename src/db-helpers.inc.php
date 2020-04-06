@@ -138,6 +138,16 @@ function getUserInfo($user_id) {
     return $user_info;
 }
 
+// function unfavoriteAllMovies()
+// {
+//     try
+//     {
+
+//     } catch {
+
+//     }
+// }
+
 /*
   Adds a movie_id to the current user's favorites.
  */
@@ -147,12 +157,13 @@ function favoriteMovie($user_id, $movie_list)
     {    
         $fav_movies_string = join(",", $movie_list);
         $conn = getDatabaseConnection();
-        $sql = "SELECT * FROM movie WHERE id IN ($fav_movies_string)";
+        $sql = "SELECT * FROM movie WHERE id IN ($fav_movies_string) ORDER BY title ASC";
         $result = runQuery($conn, $sql);
         $words = "dsfgsdrg";
-        echo '<script>console.log("' . gettype($sql) . '")</script>';
-         foreach($movie_list as $movie_id){
-            echo '<script>console.log("' . gettype($movie_id) . '")</script>';
+        // echo '<script>console.log("' . gettype($sql) . '")</script>';
+        // echo '<div class=';
+        foreach($movie_list as $movie_id){
+            // echo '<script>console.log("' . gettype($movie_id) . '")</script>';
             $usernum = (int)$user_id;
             $movie_id = (int)$movie_id;
             $db_sql = "INSERT INTO favorite VALUES($usernum, $movie_id) ON DUPLICATE KEY UPDATE user_id = $usernum";
