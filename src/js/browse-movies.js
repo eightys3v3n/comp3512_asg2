@@ -462,13 +462,33 @@ function sort_movies(movies) {
         movies = sort_by_year(movies);
     } else if (sort_mode == SORT_MODES.DESC_YEAR) {
         movies = sort_by_year(movies).reverse();
+    } else if (sort_mode == SORT_MODES.ASC_RATING) {
+        movies = sort_by_rating(movies);
+    } else if (sort_mode == SORT_MODES.DESC_RATING) {
+        movies = sort_by_rating(movies).reverse();
     }
 
     return movies;
 }
 
 /**
-   Sorts the input list by the year in ascending order.
+   Sorts input list by .ratings.average in ascending order.
+  */
+function sort_by_rating(movies) {
+    movies = movies.sort((a, b) => {
+        if (a.ratings.average < b.ratings.average) {
+            return -1;
+        } else if (a.ratings.average > b.ratings.average) {
+            return 1;
+        } else {
+            return 1;
+        }
+    });
+    return movies;
+}
+
+/**
+   Sorts the input list by the year of .release_date in ascending order.
   */
 function sort_by_year(movies) {
     movies = movies.sort((a, b) => {
