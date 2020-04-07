@@ -143,9 +143,9 @@ if (isset($_GET['rating_above']) && ! isset($_GET['rating_below'])) {
 	  <div id="matches">
 		<h1><center>List / Matches<center></h1>
 		<div id="matches-header">
-		  <div id="title"><h2>Title</h2></div>
-		  <h2>Year</h2>
-		  <h2>Rating</h2>
+		  <span id="title"><h2>Title</h2></span>
+		  <span id="year"><h2>Year</h2></span>
+		  <span id="rating"><h2>Rating</h2></span>
 		</div>
 		<div id="loading">
 		  <img src="public\ping.gif" title="Loading">
