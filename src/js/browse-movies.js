@@ -6,11 +6,15 @@ const api_url = "api/movies-brief.php";
 const poster_url = "https://image.tmdb.org/t/p/";
 const tmdb_url = "https://themoviedb.org/movie/";
 const imdb_url = "https://imdb.com/title/";
+const up_arrow = "&#8679;";
+const down_arrow = "&#8681;";
 let movies;
+
+
+// FILTERS - Variables
 let filtered_movies;
 let filter;
 
-// FILTERS - Variables
 function Filter(title, year_between, rating_between) {
 	if (title) {
 		this.title = title.toLowerCase();
@@ -49,12 +53,16 @@ let SORT_MODES = { // how to sort the matched movies
     ASC_RATING: "ascending rating",
     DESC_RATING: "descending rating",
 };
-let sort_mode = SORT_MODES.ALPHA; // alpha, rev-alpha, year, rev-year, rating, rev-rating
+let sort_mode; // default set in main
+let undo_sort_indicator;
 
 
 // MAIN STUFF - Code
 
 function main() {
+    // Expects an event as second argument. So we fake an event.
+    switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});
+    
     get_movies(); // get all the movies and populate `movies`
     display_movies(); // display all the movies after updating the filters and sorting.
 
@@ -133,15 +141,15 @@ function main() {
     // change the sort mode when a heading title is clicked
     document.querySelector("#search #matches-header #title")
         .addEventListener("click", e => {
-            switch_sort_mode(SORT_MODES.ALPHA)
+            switch_sort_mode(SORT_MODES.ALPHA, e);
         });
     document.querySelector("#search #matches-header #year")
         .addEventListener("click", e => {
-            switch_sort_mode(SORT_MODES.ASC_YEAR)
+            switch_sort_mode(SORT_MODES.ASC_YEAR, e);
         });
     document.querySelector("#search #matches-header #rating")
         .addEventListener("click", e => {
-            switch_sort_mode(SORT_MODES.ASC_RATING)
+            switch_sort_mode(SORT_MODES.ASC_RATING, e);
         });
 }
 
@@ -443,11 +451,49 @@ function get_rating_between_filter() {
    Figures out how the movies should be sorted given the desired mode.
    If the desired mode is alphabetical, but that's already in effect, it reverses it.
   */
-function switch_sort_mode(new_mode) {
-    sort_mode = get_sort_mode(new_mode, sort_mode);
-    
-    filtered_movies = sort_movies(filtered_movies);
-    populate_movies(filtered_movies);
+function switch_sort_mode(new_mode, event) {
+    if (! sort_mode) {
+        sort_mode = new_mode;
+    } else {
+        sort_mode = get_sort_mode(new_mode, sort_mode);
+    }
+
+    switch_sort_indicator(sort_mode, event.target);
+
+    if (movies) {    
+        filtered_movies = sort_movies(filtered_movies);
+        populate_movies(filtered_movies);
+    }
+}
+
+/**
+   Handles moving the arrow (sort indicator) between headings when sort mode is switched.
+  */
+function switch_sort_indicator(sort_mode, element) {
+    // undo previous indicator
+    if (undo_sort_indicator) {
+        undo_sort_indicator();
+    } else {
+        console.log("No previous sort indicator to undo");
+    }
+
+    if (element) {
+        if (sort_mode == SORT_MODES.ALPHA) {
+            element.innerHTML = "<h2>Title "+down_arrow+"</h2>";
+            
+            undo_sort_indicator = () => {
+                element.innerHTML = "<h2>Title</h2>";
+            }
+        } else if (sort_mode == SORT_MODES.REV_ALPHA) {
+            element.innerHTML = "<h2>Title "+up_arrow+"</h2>";
+            
+            undo_sort_indicator = () => {
+                element.innerHTML = "<h2>Title</h2>";
+            }
+        }
+    } else {
+        console.warn("No element to switch sort mode indicator");
+    }
 }
 
 /**
