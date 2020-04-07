@@ -21,13 +21,15 @@ header('Content-Type: text/html; charset=utf-8');
   </head>
   <body>
     <?php include('nav.php'); ?>
+    <h2> Favorite movies </h2>
+    <input type='submit' id='removeFavBtn' value='Remove All Favorites'></input>
     <?php 
 
 
 if (isset($_SESSION["u_id"])) {
-  echo "<h2> Favorite movies </h2>";
+  // echo "<h2> Favorite movies </h2>";
   if (isset($_SESSION['fav_movies']) && count($_SESSION['fav_movies']) > 0) {
-    echo "<input type='submit' id='removeFavBtn' value='Remove All Favorites'></input>";
+    // echo "<input type='submit' id='removeFavBtn' value='Remove All Favorites'></input>";
     $user_id = $_SESSION["u_id"];
     $fav_movies = $_SESSION['fav_movies'];
     $result = favoriteMovie($user_id, $fav_movies);

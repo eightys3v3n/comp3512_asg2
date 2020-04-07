@@ -7,8 +7,8 @@ include '../db-helpers.inc.php';
 if (isset($_SESSION["u_id"])) {
     if (isset($_GET["movie_id"])) {
         $mov_id = $_GET["movie_id"];
-        return json_encode(array_push($_SESSION['fav_movies'], $mov_id));
-         
+        array_push($_SESSION['fav_movies'], $mov_id);
+        echo  
         // if (favoriteMovie($_SESSION["u_id"], $_GET["movie_id"])) {
         //     echo "success";
         // } else {
@@ -22,19 +22,5 @@ if (isset($_SESSION["u_id"])) {
     return json_encode(false);
 }
 
-
-// if (isset($_SESSION["u_id"])) {
-//     if (isset($_GET["movie_id"])) {
-//         if (favoriteMovie($_SESSION["u_id"], $_GET["movie_id"])) {
-//             echo "success";
-//         } else {
-//             echo "failure";
-//         }
-//     } else {
-//         echo "Missing movie_id";
-//     }
-// } else {
-//     echo "User not logged in";
-// }
 
 ?>
