@@ -62,7 +62,7 @@ function main() {
 	document.querySelector("#filters")
 		.addEventListener("keyup", e => {
 			if (e.keyCode === 13) {
-				refresh_filters();
+				display_movies();
 			}
 		});
 
@@ -458,8 +458,31 @@ function sort_movies(movies) {
         movies = sort_by_title(movies);
     } else if (sort_mode == SORT_MODES.REV_ALPHA) {
         movies = sort_by_title(movies).reverse();
+    } else if (sort_mode == SORT_MODES.ASC_YEAR) {
+        movies = sort_by_year(movies);
+    } else if (sort_mode == SORT_MODES.DESC_YEAR) {
+        movies = sort_by_year(movies).reverse();
     }
 
+    return movies;
+}
+
+/**
+   Sorts the input list by the year in ascending order.
+  */
+function sort_by_year(movies) {
+    movies = movies.sort((a, b) => {
+        a_year = parseInt(year_of(a.release_date));
+        b_year = parseInt(year_of(b.release_date));
+
+        if (a_year < b_year) {
+            return -1;
+        } else if (a_year > b_year) {
+            return 1;
+        } else {
+            return 1;
+        }
+    });
     return movies;
 }
 
@@ -467,7 +490,7 @@ function sort_movies(movies) {
    Sorts the input list by the title in alphabetical order.
   */
 function sort_by_title(movies) {
-    movies = movies.sort((a,b) => {
+    movies = movies.sort((a, b) => {
 		if (a.title < b.title) {
 			return -1;
 		} else if (a.title > b.title) {
