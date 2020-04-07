@@ -290,8 +290,8 @@ function add_movie(element, movie) {
 
  function favorite_movie(e, movie) {
     e.stopPropagation();
-
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}`,{
+	console.log(movie);
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,{
 		method: 'post'
 	})
 	.catch((err) => {

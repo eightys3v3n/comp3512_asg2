@@ -22,22 +22,27 @@ header('Content-Type: text/html; charset=utf-8');
   <body>
     <?php include('nav.php'); ?>
     <h2> Favorite movies </h2>
-    <input type='submit' id='removeFavBtn' value='Remove All Favorites'></input>
+    <form action="" method="post">
+      <input type='submit' id='removeFavBtn' value='Remove All Favorites' />
+    </form>
     <?php 
+// var_dump($_SESSION['fav_movies']);
+if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
+  $_SESSION['fav_movies'] = array();
+}
 
-
-if (isset($_SESSION["u_id"])) {
-  // echo "<h2> Favorite movies </h2>";
-  if (isset($_SESSION['fav_movies']) && count($_SESSION['fav_movies']) > 0) {
-    // echo "<input type='submit' id='removeFavBtn' value='Remove All Favorites'></input>";
+if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0) {
+  $hi = count($_SESSION['fav_movies']);
+  if (isset($_SESSION['fav_movies'])) {
     $user_id = $_SESSION["u_id"];
     $fav_movies = $_SESSION['fav_movies'];
-    $result = favoriteMovie($user_id, $fav_movies);
+    // $result = favoriteMovie($user_id, $fav_movies);
     echo "<div id='movies'>";
-    foreach ($result as $row) {
+    $keys = array_keys($fav_movies);
+    for ($i = 0; $i < count($fav_movies); $i++) {
       echo "<div class='fav_movie'>";
-      echo "<h3>" . $row['title'] . "</h3>". "<br>";
-      echo "<img src='https://image.tmdb.org/t/p/w92". $row['poster_path'] . "' />";
+      echo "<h3>" . $fav_movies[$keys[$i]]['title'] . "</h3>". "<br>";
+      echo "<img src='https://image.tmdb.org/t/p/w92". $fav_movies[$keys[$i]]['poster'] . "' />";
       echo "</div>";
     }
     echo '</div>'; 
