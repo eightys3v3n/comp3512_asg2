@@ -9,7 +9,7 @@ const imdb_url = "https://imdb.com/title/";
 const up_arrow = "&#8679;";
 const down_arrow = "&#8681;";
 let movies;
-
+const params = new URLSearchParams(window.location.search);
 
 // FILTERS - Variables
 let filtered_movies;
@@ -60,6 +60,9 @@ let undo_sort_indicator;
 // MAIN STUFF - Code
 
 function main() {
+    // set the values of the filters using the URL query string values.
+    query_to_filters();
+    
     // Expects an event as second argument. So we fake an event.
     switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});
     
@@ -458,7 +461,7 @@ function switch_sort_mode(new_mode, event) {
         sort_mode = get_sort_mode(new_mode, sort_mode);
     }
 
-    switch_sort_indicator(sort_mode, event.target);
+    switch_sort_indicator(sort_mode);
 
     if (movies) {    
         filtered_movies = sort_movies(filtered_movies);
@@ -469,30 +472,30 @@ function switch_sort_mode(new_mode, event) {
 /**
    Handles moving the arrow (sort indicator) between headings when sort mode is switched.
   */
-function switch_sort_indicator(sort_mode, element) {
-    // undo previous indicator
-    if (undo_sort_indicator) {
-        undo_sort_indicator();
-    } else {
-        console.log("No previous sort indicator to undo");
-    }
+function switch_sort_indicator(sort_mode) {
+    // Tried just feeding in the event as an argument to this function.
+    // However event.target was changing in an unexpected way and I couldn't get it to work.
+    // This is inefficient because the event Should have been giving the required elements.
+    let title = document.querySelector("#search #matches #matches-header #title h2");
+    let year = document.querySelector("#search #matches #matches-header #year h2");
+    let rating = document.querySelector("#search #matches #matches-header #rating h2");
 
-    if (element) {
-        if (sort_mode == SORT_MODES.ALPHA) {
-            element.innerHTML = "<h2>Title "+down_arrow+"</h2>";
-            
-            undo_sort_indicator = () => {
-                element.innerHTML = "<h2>Title</h2>";
-            }
-        } else if (sort_mode == SORT_MODES.REV_ALPHA) {
-            element.innerHTML = "<h2>Title "+up_arrow+"</h2>";
-            
-            undo_sort_indicator = () => {
-                element.innerHTML = "<h2>Title</h2>";
-            }
-        }
-    } else {
-        console.warn("No element to switch sort mode indicator");
+    title.textContent = "Title";
+    year.textContent = "Year";
+    rating.textContent = "Rating";
+    
+    if (sort_mode == SORT_MODES.ALPHA) {
+        title.innerHTML = "Title "+down_arrow;
+    } else if (sort_mode == SORT_MODES.REV_ALPHA) {
+        title.innerHTML = "Title "+up_arrow;
+    } else if (sort_mode == SORT_MODES.ASC_YEAR) {
+        year.innerHTML = "Year "+down_arrow;
+    } else if (sort_mode == SORT_MODES.DESC_YEAR) {
+        year.innerHTML = "Year "+up_arrow;
+    } else if (sort_mode == SORT_MODES.ASC_RATING) {
+        rating.innerHTML = "Rating "+down_arrow;
+    } else if (sort_mode == SORT_MODES.DESC_RATING) {
+        rating.innerHTML = "Rating "+up_arrow;
     }
 }
 
