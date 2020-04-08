@@ -82,7 +82,7 @@ $page_title ='Browse Movies';
 		  </fieldset>
 		  <div id="buttons">
 			<input type="button" id="update_filters" value="Filter"/>
-			<input type="reset" value="Clear"/>
+			<input type="reset" id="reset_filters" value="Clear"/>
 		  </div>
 		</form>
 		<div id="hide_filters">

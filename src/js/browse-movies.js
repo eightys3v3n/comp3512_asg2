@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", main);
 
-
 // MAIN STUFF - Variables
 const api_url = "api/movies-brief.php";
 const poster_url = "https://image.tmdb.org/t/p/";
@@ -86,6 +85,13 @@ function main() {
 		.addEventListener("click", e => {
             display_movies();
         });
+
+    // make sure to also reset the range values
+    document.querySelector("#search #filters #buttons #reset_filters")
+		.addEventListener("click", e => {
+            reset_filters();
+        });
+
 
     // check the associated ratio whenever a filter is changed on (YEARS)
 	document.querySelector("#search #filters #year_filters #before_year")
@@ -255,7 +261,6 @@ function reset_filters()
 
     document.querySelector("#rating_filters #between_end_rating").value = 10;
     document.querySelector("#rating_filters #between_end_value").textContent = 10;
-
 }
 
 /**
