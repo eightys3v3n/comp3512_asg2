@@ -222,6 +222,13 @@ center:hover{
     line-height: 2em; /* Vertically center the "View" text in the <a> buttons */
 }
 
+#no_matches
+{
+    margin-left: 40%;
+    margin-top: 25%;
+    font-size: 300%;
+}
+
 @media (max-width: 800px) {
 	#details {
 		grid-template-columns: auto;
