@@ -12,6 +12,15 @@ header('Content-Type: text/html; charset=utf-8');
 $page_title ='Browse Movies';
  
 ?>
+<script type="text/javascript">
+<?php
+//   if (isset($_SESSION['fav_movies'])) {
+//       foreach ($movie in $_SESSION['fav_movies']) {
+//           echo $movie."<br>";
+//       }
+//   }
+// ?>
+</script>
 <!DOCTYPE html>
 <html lang="en">
   <head>
