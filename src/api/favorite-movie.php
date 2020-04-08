@@ -37,4 +37,7 @@ if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
     // return json_encode(false);
     // what is this return for? There's no function here.
 }
+
+// This is terrence's comment
+
 ?>
