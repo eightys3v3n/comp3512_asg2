@@ -10,7 +10,8 @@ session_start();
 header('Content-Type: text/html; charset=utf-8');
 
 $page_title ='Browse Movies';
-
+ 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

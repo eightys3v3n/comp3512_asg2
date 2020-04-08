@@ -61,7 +61,7 @@ let undo_sort_indicator;
 
 function main() {
     // set the values of the filters using the URL query string values.
-    query_to_filters();
+    // query_to_filters();
     
     // Expects an event as second argument. So we fake an event.
     switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});

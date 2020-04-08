@@ -28,9 +28,10 @@ header('Content-Type: text/html; charset=utf-8');
     <?php 
 // var_dump($_SESSION['fav_movies']);
 if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
-  // if ($_POST["name"]){
-  //   echo "hihihihi";
-  // }
+   if ($_POST["hi"]){
+     echo $_POST["id"];
+     echo $_POST["name"];
+   }
   $_SESSION['fav_movies'] = array();
 }
 
@@ -39,18 +40,13 @@ if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0) {
   if (isset($_SESSION['fav_movies'])) {
     $user_id = $_SESSION["u_id"];
     $fav_movies = $_SESSION['fav_movies'];
-    // $result = favoriteMovie($user_id, $fav_movies);
-    // $keys = array_keys($fav_movies);
-    // for ($i = 0; $i < count($fav_movies); $i++) {
-      // var_dump($fav_movies[$keys[$i]]['poster']);
+
       foreach($fav_movies as $mov) {
       echo "<div class='fav_movie'>";
-      // echo "<h3><a href='single-movie.php?id=" . $mov['id'] . " >" . $mov['id'] . "</a></h3>". "<br>";
       echo "<h3><a href='single-movie.php?id=" . $mov['id'] . "' >" . $mov['title'] . "</a></h3>". "<br>";
       echo "<a href='single-movie.php?id=" . $mov['id'] . "'><img src='https://image.tmdb.org/t/p/w92/". $mov['poster'] . "' /></a>";
       echo "<form action='' method='post'>"; 
-      echo "<button onclick='location.href='single-movie.php?id='". $mov['id'] ."'>Full Details</button>";
-      echo "<input type='submit' value='Remove From Favorites' value='". $mov['poster']. "' />";
+      echo "<input type='submit' name='hi' id='" . $mov['id'] . "' value='Remove From Favorites' />";
       echo "</form>";
       echo "</div>";
     }
