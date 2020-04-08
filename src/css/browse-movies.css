@@ -66,7 +66,10 @@ center:hover{
 }
 
 #search #matches #loading {
+    /* display is set by JavaScript between block and none */
 	width: 100%;
+    background-color: "white";
+    cursor: "progress";
 }
 
 #search div {
@@ -168,18 +171,24 @@ center:hover{
     width: calc(100% - 31px);
 	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
 	grid-gap: 10px;
+    overflow: none;
 }
 
 #search #matches-header #title {
 	grid-column-start: 2;
 }
 
+#search #matches #no_matches {
+    display: none;
+}
+
 #search #matches ul {
+    /* display is set by JavaScript between block and none */
 	height: 86%;
 	overflow: scroll;
 	padding-left: 0px;
     padding-right: 1em;
-}
+}   
 
 #search #matches li {
 	display: grid;
