@@ -9,7 +9,7 @@ const imdb_url = "https://imdb.com/title/";
 const up_arrow = "&#8679;";
 const down_arrow = "&#8681;";
 let movies;
-const params = new URLSearchParams(window.location.search);
+const q_string = new URLSearchParams(window.location.search); // the query string parameters
 
 // FILTERS - Variables
 let filtered_movies;
@@ -61,7 +61,7 @@ let undo_sort_indicator;
 
 function main() {
     // set the values of the filters using the URL query string values.
-    // query_to_filters();
+    query_to_filters();
     
     // Expects an event as second argument. So we fake an event.
     switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});
@@ -89,55 +89,55 @@ function main() {
 
     // check the associated ratio whenever a filter is clicked on (YEARS)
 	document.querySelector("#search #filters #year_filters #before_year")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #before").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #after_year")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #after").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #between_start")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #between").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #between_end")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #between").checked = true;
 		});
 
     // check the associated ratio whenever a filter is clicked on (RATINGS)
 	document.querySelector("#search #filters #rating_filters #below_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #below").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #above_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #above").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #between_start")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #between_end")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between").checked = true;
 		});
 
     // update the value text when a filter value is changed
 	document.querySelector("#search #filters #rating_filters #below_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #below_range_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #above_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #above_range_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #between_start")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between_start_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #between_end")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between_end_value").textContent = e.target.value;
 		});
 
@@ -154,6 +154,17 @@ function main() {
         .addEventListener("click", e => {
             switch_sort_mode(SORT_MODES.ASC_RATING, e);
         });
+}
+
+/**
+   Interprets the query string in the URL into the filters panel.
+  */
+function query_to_filters() {
+    let title = document.querySelector('#search #filters_box #filters #title');
+    
+    if (q_string.has('title')) {
+        title.value = q_string.get('title');
+    }
 }
 
 /**
