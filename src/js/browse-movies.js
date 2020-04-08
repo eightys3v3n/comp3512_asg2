@@ -90,57 +90,57 @@ function main() {
     // reset the filters and their values
     document.querySelector("#reset_filters").addEventListener("click", e => reset_filters());
 
-    // check the associated ratio whenever a filter is clicked on (YEARS)
+    // check the associated ratio whenever a filter is changed on (YEARS)
 	document.querySelector("#search #filters #year_filters #before_year")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #before").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #after_year")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #after").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #between_start")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #between").checked = true;
 		});
 	document.querySelector("#search #filters #year_filters #between_end")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #year_filters #between").checked = true;
 		});
 
-    // check the associated ratio whenever a filter is clicked on (RATINGS)
+    // check the associated ratio whenever a filter is changed on (RATINGS)
 	document.querySelector("#search #filters #rating_filters #below_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #below").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #above_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #above").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #between_start_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between").checked = true;
 		});
 	document.querySelector("#search #filters #rating_filters #between_end_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between").checked = true;
 		});
 
     // update the value text when a filter value is changed
 	document.querySelector("#search #filters #rating_filters #below_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #below_range_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #above_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #above_range_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #between_start_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between_start_value").textContent = e.target.value;
 		});
 	document.querySelector("#search #filters #rating_filters #between_end_rating")
-		.addEventListener("click", e => {
+		.addEventListener("change", e => {
 			document.querySelector("#search #filters #rating_filters #between_end_value").textContent = e.target.value;
 		});
 

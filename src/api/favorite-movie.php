@@ -3,7 +3,7 @@
 session_start();
 include '../db-helpers.inc.php';
 // return exit(http_response_code(404));
-
+//abc
 if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_GET["movie_id"]) && isset($_GET["poster"]) && isset($_GET["title"])) {
         
@@ -36,5 +36,7 @@ if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
     echo "User not logged in";
     // return json_encode(false);
     // what is this return for? There's no function here.
-}
+
 ?>
+
+
