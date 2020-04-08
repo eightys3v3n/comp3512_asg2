@@ -53,11 +53,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <?php include('meta.php'); ?>
 
+    <?php include('header.php'); ?>
     <link rel="stylesheet" href="css/login.css">
     <script type="text/javascript" src="js/login.js"></script>
   </head>
   <body>
-    <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
     
     <span id="success">Logged in. Redirecting to home page...</span>

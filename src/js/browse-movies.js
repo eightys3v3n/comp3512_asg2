@@ -315,6 +315,17 @@ function add_movie(element, movie) {
 	li.addEventListener("click", e => { window.location = view_a.href; });
 }
 
+function favorite_movie(e, movie) {
+    e.stopPropagation();
+	console.log(movie);
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,{
+		method: 'post'
+	})
+	.catch((err) => {
+		console.log(err);
+	})
+}
+
 
 
 
