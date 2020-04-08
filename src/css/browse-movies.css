@@ -171,6 +171,7 @@ center:hover{
     width: calc(100% - 31px);
 	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
 	grid-gap: 10px;
+    overflow: none;
 }
 
 #search #matches-header #title {
