@@ -210,20 +210,27 @@ function hide_loading() {
     document.querySelector("#search #matches ul").style.display = "block";
 }
 
-function favorite_movie(e, movie) {
-    e.stopPropagation();
-
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}`,{
-		method: 'post'
-	})
-	.then((res) => {
-		console.log('hi')
-		return res.json()
-	})
-	.then(data => console.log(data))
-	.catch((err) => {
-		console.log(err);
-	})
+/**
+   Adds a movie to the users favorites and changes the button text to Favorited if successful.
+  */
+function favorite_movie(e, movie) { 
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,
+          {method: 'post'})
+        .then(resp => {
+            resp.text().then(body => {
+                body = body.trim();
+                if (body == "" || body == "Already favorited") {
+                    e.target.textContent = "Favorited";
+                    console.log(`Favorited movie "${movie.title}"`);
+                } else {
+                    console.warn(`Failed to favorite movie "${movie.title}"`);
+                    console.warn(body);
+                }
+            })
+        })
+	    .catch((err) => {
+		    console.warn("Failed to favorite movie: "+err);
+	    });
 }
 
 // Resets the filters and their values
@@ -237,20 +244,16 @@ function reset_filters()
     document.querySelector("#between_end").value = "";
 
     document.querySelector("#below_rating").value = 10;
-    document.querySelector("#below_range_value").value = 20;
     document.querySelector("#below_range_value").textContent = 10;
 
     document.querySelector("#above_rating").value = 0;
-    document.querySelector("#above_range_value").value = 0;
     document.querySelector("#above_range_value").textContent = 0;
 
-    document.querySelector("#between_start_rating").value = 0;
-    document.querySelector("#between_start_value").value = 5;
-    document.querySelector("#between_start_value").textContent = 0;
+    document.querySelector("#rating_filters #between_start_rating").value = 0;
+    document.querySelector("#rating_filters #between_start_value").textContent = 0;
 
-    document.querySelector("#between_end_rating").value = 10;
-    document.querySelector("#between_end_value").value = 5;
-    document.querySelector("#between_end_value").textContent = 10;
+    document.querySelector("#rating_filters #between_end_rating").value = 10;
+    document.querySelector("#rating_filters #between_end_value").textContent = 10;
 
 }
 
