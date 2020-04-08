@@ -315,6 +315,9 @@ function add_movie(element, movie) {
 	li.addEventListener("click", e => { window.location = view_a.href; });
 }
 
+/**
+   Adds a movie to the user's favorites.
+  */
 function favorite_movie(e, movie) {
     e.stopPropagation();
 	console.log(movie);
