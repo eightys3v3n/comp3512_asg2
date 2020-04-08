@@ -30,7 +30,7 @@ $page_title ='Browse Movies';
 		  <h1><center>Movie Filters</center></h1>
 		  <fieldset>
 			<legend><h2>Title</h2></legend>	
-			<input type="text" name="title"/>
+			<input id="title" type="text" name="title"/>
 		  </fieldset>
 		  
 		  <fieldset id="year_filters">
