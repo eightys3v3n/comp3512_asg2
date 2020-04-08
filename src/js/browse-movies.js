@@ -9,7 +9,7 @@ const imdb_url = "https://imdb.com/title/";
 const up_arrow = "&#8679;";
 const down_arrow = "&#8681;";
 let movies;
-const params = new URLSearchParams(window.location.search);
+const q_string = new URLSearchParams(window.location.search); // the query string parameters
 
 // FILTERS - Variables
 let filtered_movies;
@@ -61,7 +61,7 @@ let undo_sort_indicator;
 
 function main() {
     // set the values of the filters using the URL query string values.
-    // query_to_filters();
+    query_to_filters();
     
     // Expects an event as second argument. So we fake an event.
     switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});
@@ -86,9 +86,6 @@ function main() {
 		.addEventListener("click", e => {
             display_movies();
         });
-    
-    // reset the filters and their values
-    document.querySelector("#reset_filters").addEventListener("click", e => reset_filters());
 
     // check the associated ratio whenever a filter is changed on (YEARS)
 	document.querySelector("#search #filters #year_filters #before_year")
@@ -160,6 +157,17 @@ function main() {
 }
 
 /**
+   Interprets the query string in the URL into the filters panel.
+  */
+function query_to_filters() {
+    let title = document.querySelector('#search #filters_box #filters #title');
+    
+    if (q_string.has('title')) {
+        title.value = q_string.get('title');
+    }
+}
+
+/**
    Tries to populate the `movies` global variable using local storage, or the `api_url`.
    Also populated `filtered_movies` with a sorted version of `movies`.
   */
@@ -216,6 +224,34 @@ function favorite_movie(e, movie) {
 	.catch((err) => {
 		console.log(err);
 	})
+}
+
+// Resets the filters and their values
+function reset_filters()
+{
+    //console.log("test");
+    document.querySelector("#title").value = "";
+    document.querySelector("#before_year").value = "";
+    document.querySelector("#after_year").value = "";
+    document.querySelector("#between_start").value = "";
+    document.querySelector("#between_end").value = "";
+
+    document.querySelector("#below_rating").value = 10;
+    document.querySelector("#below_range_value").value = 20;
+    document.querySelector("#below_range_value").textContent = 10;
+
+    document.querySelector("#above_rating").value = 0;
+    document.querySelector("#above_range_value").value = 0;
+    document.querySelector("#above_range_value").textContent = 0;
+
+    document.querySelector("#between_start_rating").value = 0;
+    document.querySelector("#between_start_value").value = 5;
+    document.querySelector("#between_start_value").textContent = 0;
+
+    document.querySelector("#between_end_rating").value = 10;
+    document.querySelector("#between_end_value").value = 5;
+    document.querySelector("#between_end_value").textContent = 10;
+
 }
 
 /**
@@ -296,7 +332,6 @@ function add_movie(element, movie) {
 	//Create Favorite Movie Button
     let fav_a = document.createElement("a");
 	fav_a.textContent = "Favorite";
-	// fav_a.href = `favorite-movie.php?mov_id=${movie.id}`;
 	li.appendChild(fav_a);
     fav_a.addEventListener("click", e=> {
         favorite_movie(e, movie);
@@ -319,17 +354,29 @@ function add_movie(element, movie) {
 }
 
 /**
-   Adds a movie to the user's favorites.
+   Adds a movie to the user's favorites. If successful, set the button to "Unfavorite"
   */
-function favorite_movie(e, movie) {
+function favorite_movie(e, movie) { 
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,
+          {method: 'post'})
+        .then(resp => {
+            resp.text().then(body => {
+                body = body.trim();
+                if (body == "" || body == "Already favorited") {
+                    console.log(e.target);
+                    e.target.textContent = "Unfavorite";
+                    console.log(`Favorited movie "${movie.title}"`);
+                } else {
+                    console.warn(`Failed to favorite movie "${movie.title}"`);
+                    console.warn(body);
+                }
+            })
+        })
+	    .catch((err) => {
+		    console.warn("Failed to favorite movie: "+err);
+	    })
+    
     e.stopPropagation();
-	console.log(movie);
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,{
-		method: 'post'
-	})
-	.catch((err) => {
-		console.log(err);
-	})
 }
 
 
@@ -345,34 +392,6 @@ function refresh_filters() {
 	let rating_between = get_rating_between_filter();
 
 	filter = new Filter(title, year_between, rating_between);
-}
-
-// Resets the filters and their values
-function reset_filters()
-{
-    //console.log("test");
-    document.querySelector("#title").value = "";
-    document.querySelector("#before_year").value = "";
-    document.querySelector("#after_year").value = "";
-    document.querySelector("#between_start").value = "";
-    document.querySelector("#between_end").value = "";
-    
-    document.querySelector("#below_rating").value = 10;
-    document.querySelector("#below_range_value").value = 20;
-    document.querySelector("#below_range_value").textContent = 10;
-    
-    document.querySelector("#above_rating").value = 0;
-    document.querySelector("#above_range_value").value = 0;
-    document.querySelector("#above_range_value").textContent = 0;
-    
-    document.querySelector("#between_start_rating").value = 0;
-    document.querySelector("#between_start_value").value = 5;
-    document.querySelector("#between_start_value").textContent = 0;
-    
-    document.querySelector("#between_end_rating").value = 10;
-    document.querySelector("#between_end_value").value = 5;
-    document.querySelector("#between_end_value").textContent = 10;
-    
 }
 
 /**
