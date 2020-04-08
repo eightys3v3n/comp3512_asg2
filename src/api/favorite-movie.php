@@ -38,7 +38,7 @@ if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
     // what is this return for? There's no function here.
 
 // Max's comment now
-
+}
 ?>
 
 
