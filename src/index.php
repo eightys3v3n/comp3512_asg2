@@ -47,8 +47,31 @@ $page_title ='Home - Movies';
          </form>  
        </div>
        <div id="favorites">
-         This is the favorites box!
-         
+       
+        <?php
+        if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0)
+        {
+            $hi = count($_SESSION['fav_movies']);
+            
+            if (isset($_SESSION['fav_movies']))
+            {
+                $user_id = $_SESSION["u_id"];
+                $fav_movies = $_SESSION['fav_movies'];
+
+                foreach($fav_movies as $mov)
+                {
+                    echo "<div class='fav_movie'>";
+                    echo "<h3><a href='single-movie.php?id=" . $mov['id'] . "' >" . $mov['title'] . "</a></h3>". "<br>";
+                    echo "<a href='single-movie.php?id=" . $mov['id'] . "'><img src='https://image.tmdb.org/t/p/w92/". $mov['poster'] . "' /></a>";
+                    echo "<form action='' method='post'>"; 
+                    echo "<input type='submit' name='hi' id='" . $mov['id'] . "' value='Remove From Favorites' />";
+                    echo "</form>";
+                    echo "</div>";
+                }
+            }
+        }
+        ?>
+        
        </div>
        <div id="recommendations">
          I recommend you go watch some movies
