@@ -36,7 +36,7 @@ $page_title ='Browse Movies';
 		  <fieldset id="year_filters">
 			<legend><h2>Year</h2></legend>
 			<div>
-                 <input type="radio" name="year_selector" value="before" id="before"/>
+               <input type="radio" name="year_selector" value="before" id="before"/>
 			  <label>Before</label>
 			  <input type="number" id="before_year" min="1000" value=""/>
               
@@ -65,15 +65,15 @@ $page_title ='Browse Movies';
 			  
 			  <input type="radio" name="rating_selector" id="between"/>
 			  <label>Between</label>
-			  <input type="range" id="between_start" min="0" max="10" step="0.1" value="0"/>
+			  <input type="range" id="between_start_rating" min="0" max="10" step="0.1" value="0"/>
 			  <p id="between_start_value" class="range_value">0</p>
-			  <input type="range" id="between_end" min="0" max="10" step="0.1" value="10"/>
+			  <input type="range" id="between_end_rating" min="0" max="10" step="0.1" value="10"/>
 			  <p id="between_end_value" class="range_value">10</p>
 			</div>
 		  </fieldset>
 		  <div id="buttons">
 			<input type="button" id="update_filters" value="Filter"/>
-			<input type="reset" value="Clear"/>
+			<input type="button" id="reset_filters" value="Clear"/>
 		  </div>
 		</form>
 		<div id="hide_filters">
