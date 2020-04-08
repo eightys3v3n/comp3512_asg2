@@ -304,7 +304,6 @@ function add_movie(element, movie) {
 	//Create Favorite Movie Button
     let fav_a = document.createElement("a");
 	fav_a.textContent = "Favorite";
-	// fav_a.href = `favorite-movie.php?mov_id=${movie.id}`;
 	li.appendChild(fav_a);
     fav_a.addEventListener("click", e=> {
         favorite_movie(e, movie);
@@ -327,17 +326,29 @@ function add_movie(element, movie) {
 }
 
 /**
-   Adds a movie to the user's favorites.
+   Adds a movie to the user's favorites. If successful, set the button to "Unfavorite"
   */
-function favorite_movie(e, movie) {
+function favorite_movie(e, movie) { 
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,
+          {method: 'post'})
+        .then(resp => {
+            resp.text().then(body => {
+                body = body.trim();
+                if (body == "" || body == "Already favorited") {
+                    console.log(e.target);
+                    e.target.textContent = "Unfavorite";
+                    console.log(`Favorited movie "${movie.title}"`);
+                } else {
+                    console.warn(`Failed to favorite movie "${movie.title}"`);
+                    console.warn(body);
+                }
+            })
+        })
+	    .catch((err) => {
+		    console.warn("Failed to favorite movie: "+err);
+	    })
+    
     e.stopPropagation();
-	console.log(movie);
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,{
-		method: 'post'
-	})
-	.catch((err) => {
-		console.log(err);
-	})
 }
 
 
