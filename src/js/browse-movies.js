@@ -233,10 +233,11 @@ function favorite_movie(e, movie) {
 	    });
 }
 
-// Resets the filters and their values
+/**
+   Resets the filters and their values
+  */
 function reset_filters()
 {
-    //console.log("test");
     document.querySelector("#title").value = "";
     document.querySelector("#before_year").value = "";
     document.querySelector("#after_year").value = "";
