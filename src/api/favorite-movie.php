@@ -10,16 +10,24 @@ if (isset($_SESSION["u_id"])  && $_SERVER['REQUEST_METHOD'] == "POST") {
         $mov_id = $_GET["movie_id"];
         $poster = $_GET["poster"];
         $title = $_GET["title"];
-        if(!array_key_exists($mov_id, $_SESSION['fav_movies'])){
+        $found = false;
+        foreach($_SESSION['fav_movies'] as $movie){
+                if($movie['id'] == $mov_id){
+                    $found = true;
+                }          
+        }
+        if (!$found){
             $new_data  = array(
+                "id" => $mov_id,
                 "poster" => $poster,
                 "title" => $title 
             );
-            $_SESSION['fav_movies'][$mov_id] = $new_data; 
-
+            array_push($_SESSION['fav_movies'], $new_data); 
+        } else {
+            echo "Already Exists";
         }
     } else {
-        echo "Missing movie_id";
+        echo "Missing parameter";
     }
 } else {
     echo "User not logged in";
