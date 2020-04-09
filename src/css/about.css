@@ -47,7 +47,11 @@ p{
     padding: 0.25em;
 }
 
-a:visited {
+#gitLink:visited {
+    color: blue;
+}
+
+#emLink:visited {
     color: blue;
 }
 
