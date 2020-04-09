@@ -7,7 +7,9 @@ function main() {
 
     singleMovieform.addEventListener('click', async (event) => {
         event.preventDefault();
-        let movieId = event.target.parentNode.id;
+        let movieId = event.currentTarget.parentNode.id;
+        console.log(movieId);
+
         fetch(`api/unfavorite-movie.php?movie_id=${movieId}`)
         .then(res => {
             console.log(res);
