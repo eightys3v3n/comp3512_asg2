@@ -36,26 +36,26 @@ $page_title ='About';
     <ul class="aboutList">
       <li>
         <p id="aboutName">Max Tiblenko</p>
-        <p>Contact: <a href="mailto:mtibl397@mtroyal.ca">mtibl397@mtroyal.ca</a></p>
-        <a href="https://github.com/MAXL4RD">Link to Personal Github</a>
+        <p>Contact: <a href="mailto:mtibl397@mtroyal.ca" id="emLink">mtibl397@mtroyal.ca</a></p>
+        <a href="https://github.com/MAXL4RD" id="gitLink">Link to Personal Github</a>
       </li>
 
       <li>
         <p id="aboutName">Terrence Plunkett</p>
-        <p class="perLink">Contact: <a href="mailto:tplun878@mtroyal.ca">tplun878@mtroyal.ca</a></p>
-        <a href="https://github.com/eightys3v3n/">Link to Personal Github</a>
+        <p class="perLink">Contact: <a href="mailto:tplun878@mtroyal.ca" id="emLink">tplun878@mtroyal.ca</a></p>
+        <a href="https://github.com/eightys3v3n/" id="gitLink">Link to Personal Github</a>
       </li>
 
       <li>
         <p id="aboutName">Daniel Collins</p> 
-        <p>Contact: <a href="mailto:danielmcollins1996@gmail.com">danielmcollins1996@gmail.com</a></p>
-        <a href="https://github.com/DanielCollins96">Link to Personal Github</a>
+        <p>Contact: <a href="mailto:danielmcollins1996@gmail.com" id="emLink">danielmcollins1996@gmail.com</a></p>
+        <a href="https://github.com/DanielCollins96" id="gitLink">Link to Personal Github</a>
       </li>
 
       <li>
         <p id="aboutName">Joseph Power Romero</p> 
-        <p>Contact: <a href="mailto:rpowe271@mtroyal.ca">rpowe271@mtroyal.ca</a></p>
-        <a href="https://github.com/rpowe271">Link to Personal Github</a>
+        <p>Contact: <a href="mailto:rpowe271@mtroyal.ca" id="emLink">rpowe271@mtroyal.ca</a></p>
+        <a href="https://github.com/rpowe271" id="gitLink">Link to Personal Github</a>
       </li>
     </ul>
 
