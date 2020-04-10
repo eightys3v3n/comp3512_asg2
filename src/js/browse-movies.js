@@ -384,20 +384,13 @@ function add_movie(element, movie) {
     }
 	li.appendChild(fav);
     
-    // let fav_a = document.createElement("a");
-    // fav_a.textContent = "Favorite";
-	// li.appendChild(fav_a);
-    // fav_a.addEventListener("click", e=> {
-    //     favorite_movie(e, movie);
-    // });
-    
-	let view_a = document.createElement("a");
-    view_a.href = `single-movie.php?id=${movie.id}`;
-	view_a.textContent = "View";
-	li.appendChild(view_a);
+	let view = document.createElement("a");
+    view.href = `single-movie.php?id=${movie.id}`;
+	view.textContent = "View";
+	li.appendChild(view);
     
 	element.appendChild(li);
-	li.addEventListener("click", e => { window.location = view_a.href; });
+	li.addEventListener("click", e => { window.location = view.href; });
 }
 
 /**

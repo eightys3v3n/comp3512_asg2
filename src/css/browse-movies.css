@@ -48,11 +48,11 @@ center:hover{
 }
 
 .year:hover {
-	cursor: context-menu;
+	cursor: pointer;
 }
 
 .rating:hover {
-	cursor: context-menu;
+	cursor: pointer;
 }
 
 #matches-header:hover {
@@ -205,7 +205,7 @@ center:hover{
 	width: 92px;
 }
 
-#search ul li h3, #search ul li p, #search ul li a {
+#search ul li h3, #search ul li p, #search ul li a, #search ul li input[type="button"] {
 	margin: auto 0px auto 0px;
 }
 
@@ -216,10 +216,9 @@ center:hover{
 	font-weight: bold;
     text-align: center;
     height: 2em; /* set the height of <a> elements */
-}
-
-#search #matches ul li a {
-    line-height: 2em; /* Vertically center the "View" text in the <a> buttons */
+    line-height: 2em;
+    font-size: 1em;
+    text-decoration: none;
 }
 
 #no_matches
