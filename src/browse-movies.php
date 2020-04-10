@@ -14,12 +14,12 @@ $page_title ='Browse Movies';
 ?>
 <script type="text/javascript">
 <?php
-//   if (isset($_SESSION['fav_movies'])) {
-//       foreach ($movie in $_SESSION['fav_movies']) {
-//           echo $movie."<br>";
-//       }
-//   }
-// ?>
+   if (isset($_SESSION['u_id'])) {
+       echo "let logged_in = true;";
+   } else {
+       echo "let logged_in = false;";
+   }
+?>
 </script>
 <!DOCTYPE html>
 <html lang="en">
