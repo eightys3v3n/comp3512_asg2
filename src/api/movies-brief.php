@@ -5,11 +5,9 @@ include '../db-helpers.inc.php';
 
 if (isset($_GET['id']) && $_GET['id'] != 'ALL') {
     $movies = getBriefMovies($_GET['id']);
+    echo json_encode(['movie' => $movies]);
 } else {
     $movies = getBriefMovies('ALL');
+    echo json_encode(['movies' => $movies]);
 }
-
-// print_r($movies[0]);
-
-echo json_encode($movies);
 ?>

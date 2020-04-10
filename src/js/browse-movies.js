@@ -8,6 +8,7 @@ const imdb_url = "https://imdb.com/title/";
 const up_arrow = "&#8679;";
 const down_arrow = "&#8681;";
 let movies;
+let favorited_movies;
 const q_string = new URLSearchParams(window.location.search); // the query string parameters
 
 // FILTERS - Variables
@@ -64,10 +65,10 @@ function main() {
     
     // Expects an event as second argument. So we fake an event.
     switch_sort_mode(SORT_MODES.ALPHA, {'target': document.querySelector("#search #matches #matches-header #title")});
-    
-    get_movies(); // get all the movies and populate `movies`
-    display_movies(); // display all the movies after updating the filters and sorting.
 
+    get_movies(); // get all the movies and favorited movies and populate `movies` and `favorited_movies`
+
+    // add event listeners for static page elements (IE stuff that is displayed even when no movies have been fetched)
     // can use the enter key to submit filters
 	document.querySelector("#filters")
 		.addEventListener("keyup", e => {
@@ -178,6 +179,11 @@ function query_to_filters() {
    Also populated `filtered_movies` with a sorted version of `movies`.
   */
 function get_movies() {
+    let promises = [];
+    // a list of things that need to be retrieved before the movies can be displayed.
+    // the fetched stuff must return a json dictionary where the keys are the fetch
+    // result identifier. see the fetches below for examples.
+    
 	try {
 		movies = JSON.parse(window.localStorage.getItem("movies"));
 
@@ -187,16 +193,43 @@ function get_movies() {
 	}
 
 	if (! movies) {
-		console.log("Downloading movies...");
-		fetch(api_url)
-			.then(response => response.json())
-			.then(data => {
-				window.localStorage.setItem("movies", JSON.stringify(data));
-                movies = data;
+        console.log("Downloading movies...");
+        promises.push(fetch(api_url));
+        // will return the json {'movies': [all the data]}
+    }
+    if (! favorited_movies) {
+        console.log("Downloading favorites...");
+        promises.push(fetch('api/favorites.php'));
+        // will return the json {'favorites': [all the data]}
+    }
 
-                display_movies();
-			});
-	}
+    // only do the .then once all the promises have completed (all stuff received)
+    Promise.all(promises)
+		.then(resps => { // get the json of every response
+            let jsons = [];
+            for (resp of resps) {
+                jsons.push(resp.json());
+            }
+            return Promise.all(jsons);
+        })
+		.then(jsons => {
+            let json = {}; // a dictionary of all the retrieved data
+            for (j of jsons) {
+                Object.assign(json, j);
+            }
+
+            if ('movies' in json) {
+                movies = json['movies'];
+			    window.localStorage.setItem("movies", JSON.stringify(movies));
+            }
+
+            if ('favorites' in json) {
+                favorited_movies = json['favorites'];
+            }
+
+            console.log("Retrieved all initialization data");
+            display_movies();
+		});
 }
 
 /**
@@ -220,13 +253,12 @@ function hide_loading() {
    Adds a movie to the users favorites and changes the button text to Favorited if successful.
   */
 function favorite_movie(e, movie) { 
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,
-          {method: 'post'})
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`)
         .then(resp => {
             resp.text().then(body => {
                 body = body.trim();
                 if (body == "" || body == "Already favorited") {
-                    e.target.textContent = "Favorited";
+                    e.target.value = "Favorited";
                     console.log(`Favorited movie "${movie.title}"`);
                 } else {
                     console.warn(`Failed to favorite movie "${movie.title}"`);
@@ -339,13 +371,19 @@ function add_movie(element, movie) {
 	li.appendChild(rating);
 
 	//Create Favorite Movie Button
-    let fav_a = document.createElement("a");
-	fav_a.textContent = "Favorite";
-	li.appendChild(fav_a);
-    fav_a.addEventListener("click", e=> {
-        favorite_movie(e, movie);
-    });
-
+    let fav = document.createElement("input");
+    fav.type = "button";
+    if (is_favorited(movie['id'])) {
+        fav.value = "Favorited";
+        fav.disabled = true;
+    } else {
+        fav.value = "Favorite";
+        fav.addEventListener("click", e=> {
+            favorite_movie(e, movie);
+        });
+    }
+	li.appendChild(fav);
+    
     // let fav_a = document.createElement("a");
     // fav_a.textContent = "Favorite";
 	// li.appendChild(fav_a);
@@ -366,14 +404,13 @@ function add_movie(element, movie) {
    Adds a movie to the user's favorites. If successful, set the button to "Unfavorite"
   */
 function favorite_movie(e, movie) { 
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`,
-          {method: 'post'})
+	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`)
         .then(resp => {
             resp.text().then(body => {
                 body = body.trim();
                 if (body == "" || body == "Already favorited") {
-                    console.log(e.target);
-                    e.target.textContent = "Unfavorite";
+                    e.target.value = "Favorited";
+                    e.target.disabled = true;
                     console.log(`Favorited movie "${movie.title}"`);
                 } else {
                     console.warn(`Failed to favorite movie "${movie.title}"`);
@@ -386,6 +423,18 @@ function favorite_movie(e, movie) {
 	    })
     
     e.stopPropagation();
+}
+
+/**
+   Returns true if a movie is already favorited, false otherwise
+*/
+function is_favorited(movie_id) {
+    for (movie of favorited_movies) {
+        if (movie['id'] == movie_id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
