@@ -7,6 +7,7 @@
 session_start();
 $page_title ='Favorites';
 include 'db-helpers.inc.php';
+
 // tell the browser we are sending html
 header('Content-Type: text/html; charset=utf-8');
 ?>
@@ -25,15 +26,14 @@ header('Content-Type: text/html; charset=utf-8');
     <form action="" method="post">
       <input type='submit' id='removeFavBtn' value='Remove All Favorites' />
     </form>
-    <?php 
-// var_dump($_SESSION['fav_movies']);
-if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
-   if ($_POST["hi"]){
+    <?php
+     if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
+     if ($_POST["hi"]){
      echo $_POST["id"];
      echo $_POST["name"];
-   }
-  $_SESSION['fav_movies'] = array();
-}
+     }
+     $_SESSION['fav_movies'] = array();
+     }
 
 if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0) {
   $hi = count($_SESSION['fav_movies']);
