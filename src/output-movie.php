@@ -2,10 +2,7 @@
 
 if (isset($_GET["id"]))
     {
-        $m = getMovie((int)$_GET["id"]);
-        $movie_id = $m["id"];
-        
-        $movie = getMovie($movie_id);
+        $movie = getMovie((int)$_GET["id"]);
         
         $title = $movie["title"];
         $release_date = $movie["release_date"];
@@ -14,13 +11,13 @@ if (isset($_GET["id"]))
         $tagline = $movie["tagline"];
         $imdb_id = "https://imdb.com/title/" . $movie["imdb_id"];
         $tmdb_id = "https://www.themoviedb.org/movie/" . $movie["tmdb_id"];
-        $popularity = $movie["popularity"];
-        $vote_average = $movie["vote_average"];
-        $ratings = $movie["vote_count"];
+        $popularity = $movie['ratings']["popularity"];
+        $vote_average = $movie['ratings']["average"];
+        $ratings = $movie['ratings']["count"];
         $overview = $movie["overview"];
-        $poster = "https://image.tmdb.org/t/p/w342/" . $movie["poster_path"];
-        $companies = $movie["production_companies"];
-        $countries = $movie["production_countries"];
+        $poster = "https://image.tmdb.org/t/p/w342/" . $movie["poster"];
+        $companies = $movie["companies"];
+        $countries = $movie["countries"];
         $genres = $movie["genres"];
         $keywords = $movie["keywords"];
         $cast = $movie["cast"];
@@ -64,10 +61,14 @@ if (isset($_GET["id"]))
     
         function printCast($cast)
         {
-            foreach ($cast as $c)
-            {
-                echo '<p>Character: ' . $c["character"] . '</p>';
-                echo '<p>Name: ' . $c["name"] . '</p>';
+            if (is_iterable($cast)) {
+                foreach ($cast as $c)
+                {
+                    echo '<p>Character: ' . $c["character"] . '</p>';
+                    echo '<p>Name: ' . $c["name"] . '</p>';
+                }
+            } else {
+                echo "Error: As far as we can tell this is an error with the decoding of JSON strings containing escaped double quotes. For some reason they can't decode properly.";
             }
         }
     

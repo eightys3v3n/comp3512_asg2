@@ -243,33 +243,49 @@ function getMovie($movie_id) {
         echo $sql . "<br>" . $e->getMessage();
     }
 
-    $res['production_companies'] = json_decode($res['production_companies'], true);
-    $res['production_countries'] = json_decode($res['production_countries'], true);
-    $res['crew'] = json_decode($res['crew'], true);
-    $res['genres'] = json_decode($res['genres'], true);
-    $res['keywords'] = json_decode($res['keywords'], true);
-    $res['cast'] = json_decode($res['cast'], true);
+    $res = fixDBMovie($res);
 
     return $res;
 }
 
-/*
-  Get all the movies in the database and their information.
- */
-// function getMovies() {
-    // $movies = [];
-    
-    // try {
-        // $conn = getDatabaseConnection();
-        // $sql = "SELECT * FROM movie";
-        // $res = runQuery($conn, $sql);
-        // $movies = $res->fetchAll();
-    // } catch (PDOException $e) {
-        // echo $sql."<br>".$e->getMessage();
-    // }
+function fixDBMovie($movie) {
+    foreach ($movie as $k=>$v) {
+        if (is_integer($k)) {
+            unset($movie[$k]);
+        }
+    }
 
-    // return $movies;
-// }
+    // convert into integers
+    $movie['id'] = (int)$movie['id'];
+    $movie['tmdb_id'] = (int)$movie['tmdb_id'];
+    $movie['runtime'] = (int)$movie['runtime'];
+    $movie['revenue'] = (int)$movie['revenue'];
+
+    // json_decode
+    $movie['companies'] = json_decode($movie['production_companies'], true);
+    unset($movie['production_companies']);
+    $movie['countries'] = json_decode($movie['production_countries'], true);
+    unset($movie['production_countries']);
+    $movie['crew'] = json_decode($movie['crew'], true);
+    $movie['genres'] = json_decode($movie['genres'], true);
+    $movie['keywords'] = json_decode($movie['keywords'], true);
+    $movie['cast'] = json_decode($movie['cast'], true);
+    
+    // restructure some stuff
+    $movie['ratings'] = [
+        'average' => (float)$movie['vote_average'],
+        'count' => (int)$movie['vote_count'],
+        'popularity' => (float)$movie['popularity']
+    ];
+    unset($movie['vote_average']);
+    unset($movie['vote_count']);
+    unset($movie['popularity']);
+    
+    $movie['poster'] = $movie['poster_path'];
+    unset($movie['poster_path']);
+
+    return $movie;
+}
 
 /*
   Get all the movies in the database but without the companies, countries, keywords, genres, cast, and crew.
@@ -287,36 +303,15 @@ function getBriefMovies($id) {
         }
 
         foreach ($res as $movie) {
-            foreach ($movie as $k=>$v) {
-                if (is_integer($k)) {
-                    unset($movie[$k]);
-                }
-            }
+            $movie = fixDBMovie($movie);
 
-            $movie['id'] = (int)$movie['id'];
-            $movie['tmdb_id'] = (int)$movie['tmdb_id'];
-            $movie['runtime'] = (int)$movie['runtime'];
-            $movie['revenue'] = (int)$movie['revenue'];
-            
-            unset($movie['production_companies']);
-            unset($movie['production_countries']);
+            unset($movie['companies']);
+            unset($movie['countries']);
             unset($movie['genres']);
             unset($movie['keywords']);
             unset($movie['cast']);
             unset($movie['crew']);
-
-            $movie['ratings'] = [
-                'average' => (float)$movie['vote_average'],
-                'count' => (int)$movie['vote_count'],
-                'popularity' => (float)$movie['popularity']
-            ];
-            unset($movie['vote_average']);
-            unset($movie['vote_count']);
-            unset($movie['popularity']);
-
-            $movie['poster'] = $movie['poster_path'];
-            unset($movie['poster_path']);
-
+            
             array_push($movies, $movie);
         }
     } catch (PDOException $e) {
