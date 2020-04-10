@@ -373,6 +373,7 @@ function add_movie(element, movie) {
 	//Create Favorite Movie Button
     let fav = document.createElement("input");
     fav.type = "button";
+	fav.classList.add("linkStyle");		
     if (is_favorited(movie['id'])) {
         fav.value = "Favorited";
         fav.disabled = true;
@@ -388,6 +389,7 @@ function add_movie(element, movie) {
     view.href = `single-movie.php?id=${movie.id}`;
 	view.textContent = "View";
 	li.appendChild(view);
+	view.classList.add("linkStyle");
     
 	element.appendChild(li);
 	li.addEventListener("click", e => { window.location = view.href; });
