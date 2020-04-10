@@ -199,6 +199,9 @@ center:hover{
 	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
 	grid-gap: 10px;
 	margin: 5px 0px 5px 0px;
+	padding: 6px;
+	border: 0.5px solid grey;
+	border-radius: 5px;
 }
 
 #search #matches li .year, #search #matches li .rating {
