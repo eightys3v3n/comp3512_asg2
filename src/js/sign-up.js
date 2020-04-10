@@ -7,8 +7,8 @@ function main() {
         document.querySelector("#signupForm").style.display = "none";
     } else if (signup_attempt_status == "failure") {
         document.querySelector("#failure").style.display = "block";
-    } else {
-        console.warning("Invalid signup attempt status: '"+signup_attempt_status+"'");
+    } else if (signup_attempt_status) {
+        console.warn("Invalid signup attempt status: '"+signup_attempt_status+"'");
     }
 }
 
