@@ -370,19 +370,21 @@ function add_movie(element, movie) {
 	rating.textContent = movie.ratings.average.toFixed(1);
 	li.appendChild(rating);
 
-	//Create Favorite Movie Button
-    let fav = document.createElement("input");
-    fav.type = "button";
-    if (is_favorited(movie['id'])) {
-        fav.value = "Favorited";
-        fav.disabled = true;
-    } else {
-        fav.value = "Favorite";
-        fav.addEventListener("click", e=> {
-            favorite_movie(e, movie);
-        });
+    if (logged_in) {
+	    //Create Favorite Movie Button
+        let fav = document.createElement("input");
+        fav.type = "button";
+        if (is_favorited(movie['id'])) {
+            fav.value = "Favorited";
+            fav.disabled = true;
+        } else {
+            fav.value = "Favorite";
+            fav.addEventListener("click", e=> {
+                favorite_movie(e, movie);
+            });
+        }
+	    li.appendChild(fav);
     }
-	li.appendChild(fav);
     
 	let view = document.createElement("a");
     view.href = `single-movie.php?id=${movie.id}`;
