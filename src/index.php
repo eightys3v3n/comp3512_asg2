@@ -88,6 +88,7 @@ $page_title ='Home - Movies';
                  </form>  
             </div>
             <footer id="herosource">Background image: https://unsplash.com/photos/OaVJQZ-nFD0</footer>
+
        <?php
        }
      ?>
