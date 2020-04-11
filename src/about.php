@@ -29,8 +29,8 @@ $page_title ='About';
       <p>COMP 3512-001 Winter 2020</p>
       <p>Professor Randy Connolly</p>
       <p>Mount Royal University</p>
-      <p><a href="https://github.com/eightys3v3n/comp3512_asg2" id="gitLink">Access Our Github Here!</a></p>
-      <p id="desc">This is our movie database site...</p>
+      <p><a href="https://github.com/eightys3v3n/comp3512_asg2" id="gitLink">Github repo</a></p>
+      <p id="desc">This is our movie database site</p>
     </div>
 
     <ul class="aboutList">
