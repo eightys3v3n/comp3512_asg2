@@ -79,7 +79,14 @@ $page_title ='Home - Movies';
      </section>
      <?php      
        } else {
-           ?>You are not logged in :(<?php
+           ?>
+            <div id="searchindex">
+                <form id="search" method="get" action="browse-movies.php">
+                   <input type="text" placeholder="Type in a movie title" name="title">
+                   <input type="submit" value="Search">
+                 </form>  
+            </div>
+       <?php
        }
      ?>
     
