@@ -57,3 +57,28 @@ margin: auto;
 a {
     text-decoration: none;
 }
+
+#searchindex
+{
+    margin-left: 45%;
+    margin-top: 20%;
+}
+
+body
+{
+    background-image: url(../img/movies.jpg);
+}
+
+#herosource
+{
+    color: white;
+    margin-left: 40%;
+    margin-top: 20%;
+}
+
+#herosourcelogin
+{
+    color: white;
+    margin-left: 40%;
+    margin-top: 29%;
+}

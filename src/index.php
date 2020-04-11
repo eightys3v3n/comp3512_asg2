@@ -77,9 +77,18 @@ $page_title ='Home - Movies';
          I recommend you go watch some movies
        </div>
      </section>
+     <footer id="herosourcelogin">Background image: https://unsplash.com/photos/OaVJQZ-nFD0</footer>
      <?php      
        } else {
-           ?>You are not logged in :(<?php
+           ?>
+            <div id="searchindex">
+                <form id="search" method="get" action="browse-movies.php">
+                   <input type="text" placeholder="Type in a movie title" name="title">
+                   <input type="submit" value="Search">
+                 </form>  
+            </div>
+            <footer id="herosource">Background image: https://unsplash.com/photos/OaVJQZ-nFD0</footer>
+       <?php
        }
      ?>
     
