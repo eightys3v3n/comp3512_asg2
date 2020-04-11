@@ -67,6 +67,8 @@ a {
 body
 {
     background-image: url(../img/movies.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #herosource

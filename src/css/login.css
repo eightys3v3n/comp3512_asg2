@@ -5,6 +5,12 @@
     align-items: center;
     margin-top: 10px;
     height: 40vh;
+    flex-direction: column;
+    background-color: var(--maincolor);
+    box-shadow: 5px 5px grey;
+    padding: 10px;
+    width: 40vh;
+    margin-left: 40%;
 }
 
 #success {
