@@ -63,6 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <span id="success">Logged in. Redirecting to home page...</span>
     
     <div class = "box">
+     <h1>Login</h1>
       <form action = "login.php" method = "post">
         <label>Username  </label><input type = "text" name = "username" required value = "<?php echo $login_attempt["username"]; ?>" /><br /><br />
         <label>Password  </label><input type = "password" name = "password" required /><br/><br />
