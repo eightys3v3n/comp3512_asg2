@@ -287,17 +287,27 @@ function fixDBMovie($movie) {
     return $movie;
 }
 
-/*
-  Get all the movies in the database but without the companies, countries, keywords, genres, cast, and crew.
-*/
-function getBriefMovies($id) {
+/**
+  Get all the movies in the database or just the movies with the specified ids but
+  without the companies, countries, keywords, genres, cast, and crew.
+
+  This should only request the data it needs rather than getting everything. We would
+  need to change the fixDBMovie function to allow for missing expected fields. Then
+  change the select statement.
+  */
+function getBriefMovies($ids) {
     $movies = [];
 
     try {
         $conn = getDatabaseConnection();
 
-        if (isset($id) && $id != 'ALL') {
-            $res = runQuery($conn, "SELECT * FROM movie WHERE id=?", $id);
+        if (isset($ids)) {
+            $fill = [];
+            foreach ($ids as $i) { array_push($fill, '?'); }
+            $fill = join(',', $fill);
+            $fill = '('.$fill.')';
+
+            $res = runQuery($conn, "SELECT * FROM movie WHERE id IN ".$fill, $ids);
         } else {
             $res = runQuery($conn, "SELECT * FROM movie");
         }
@@ -317,39 +327,10 @@ function getBriefMovies($id) {
     } catch (PDOException $e) {
         die($e->getMessage);
     }
-
-    if (isset($id) && $id != 'ALL') {
-        $movies = $movies[0];
-    }
     
     return $movies;
 }
+
+
+print_r(getBriefMovies([2, 11, 13, 14, 15]));
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
