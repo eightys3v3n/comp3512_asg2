@@ -223,10 +223,8 @@ function get_movies() {
 			    window.localStorage.setItem("movies", JSON.stringify(movies));
             }
 
-            if ('favorites' in json) {
-                favorited_movies = json['favorites'];
-            }
-
+            favorited_movies = json['favorites'];
+         
             console.log("Retrieved all initialization data");
             display_movies();
 		});
