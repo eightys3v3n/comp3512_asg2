@@ -1,41 +1,245 @@
-#removeFavBtn {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    border-radius: 5px;
-    color: white;
-    padding: 15px;
+html, body {
+	width: 100%;
+	height: 100vh;
+	margin: 0px 0px 0px 0px;
+}
+
+header h2, h3 {
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+
+h1 {
+	font-size: 1.25em;
+	margin: 10px 0px 0px 0px;
+}
+
+h2 {
+	font-size: 1.15em;
+}
+
+input[type="button"] {
+	height: 2em;
+	width: auto;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+/* a:visited { */
+/* 	color: black; */
+/* } */
+
+/* .linkStyle { */
+/* 	color: black; */
+/* } */
+
+/* .linkStyle:hover { */
+/* 	color: red; */
+/* 	cursor: pointer; */
+/* } */
+
+/* center:hover{ */
+/* 	cursor: context-menu; */
+/* } */
+
+/* .title:hover { */
+/* 	cursor: pointer; */
+/* } */
+
+/* .icon:hover { */
+/* 	cursor: pointer; */
+/* } */
+
+/* .year:hover { */
+/* 	cursor: pointer; */
+/* } */
+
+/* .rating:hover { */
+/* 	cursor: pointer; */
+/* } */
+
+#list-header:hover {
+	cursor: context-menu;
+}
+
+#favorites {
+	/* display: grid; */
+	/* grid-template-columns: 1fr 2fr; */
+	/* grid-gap: 10px; */
+}
+
+#favorites #matches #loading {
+    /* display is set by JavaScript between block and none */
+	width: 100%;
+    background-color: "white";
+    cursor: "progress";
+}
+
+#favorites div {
+	background-color: rgb(230, 230, 230);
+}
+
+#favorites #filters_box {
+	grid-column-start: 1;
+
+	display: grid;
+	grid-template-columns: 10fr 1fr;
+	grid-template-rows: auto auto;
+	align-content: start;
+}
+
+#favorites #filters_box #filters {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
+#favorites #filters_box #hide_filters {
+	grid-column-start: 2;
+	grid-row-start: 1;
+	grid-row-end: span 3;
+
+	width: 2em;
+}
+
+#favorites #filters_box #hide_filters p {
+	font-size: 300%;
+	color: rgba(200, 200, 200, 1);
+	position: fixed;
+	top: 50%;
+}
+
+#favorites #year_filters div {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
+}
+
+#favorites #rating_filters div {
+	display: grid;
+	grid-template-columns: 1em 4em auto 1em;
+	grid-gap: 10px;
+}
+
+#favorites fieldset {
+	border: 0px;
+}
+
+#favorites legend {
+	font-weight: bold;
+}
+
+#favorites input[name=title] {
+	width: 99%;
+}
+
+#favorites fieldset div input[type="radio"] {
+	grid-column-start: 1;
+}
+
+#favorites fieldset div label {
+	grid-column-start: 2;
+}
+
+#favorites fieldset div input[type="number"], input[type="range"] {
+	grid-column-start: 3;
+	margin: 0px 0px 0px 0px;
+}
+
+#favorites fieldset div .range_value {
+	grid-column-start: 4;
+	margin: 0px 0px 0px 0px;
+}
+
+#favorites #buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin-bottom: 10px;
+}
+
+#favorites #buttons input {
+	width: 30%;
+	height: 2em;
+}
+
+#favorites #matches {
+	grid-column-start: 2;
+	padding-right: 0px;
+	padding-left: 10px;
+	height: 91vh;
+}
+
+#favorites #list-header {
+	display: grid;
+    width: calc(100% - 31px);
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+    overflow: none;
+}
+
+#favorites #list-header #title {
+	grid-column-start: 2;
+}
+
+#favorites #matches #no_favorites {
+    display: none;
+}
+
+#favorites #matches ul {
+    /* display is set by JavaScript between block and none */
+	height: 86%;
+	overflow: scroll;
+	padding-left: 0px;
+    padding-right: 1em;
+}   
+
+#favorites #matches li {
+	display: grid;
+	grid-template-columns: 1.5fr 5fr 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+	margin: 5px 0px 5px 0px;
+	padding: 6px;
+	border: 0.5px solid grey;
+	border-radius: 5px;
+}
+
+#favorites #matches li .year, #favorites #matches li .rating {
+	color: grey;
+}
+
+#favorites ul li img {
+	width: 92px;
+}
+
+#favorites ul li h3, #favorites ul li p, #favorites ul li a, #favorites ul li input[type="button"] {
+	margin: auto 0px auto 0px;
+}
+
+#favorites input[type="button"], input[type="reset"], #favorites a {
+	border: 1px solid blue;
+	background-color: rgb(200, 200, 200);
+	border-radius: 4px;
+	font-weight: bold;
     text-align: center;
+    height: 2em; /* set the height of <a> elements */
+    line-height: 2em;
+    font-size: 1em;
     text-decoration: none;
-    font-size: 16px;
 }
 
-h2{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-}
-#movies{ 
-    display: flex;
-    justify-content: center;
-    /* width: 300px; */
-    flex-wrap: wrap;
+#no_favorites
+{
+    margin-left: 40%;
+    margin-top: 25%;
+    font-size: 300%;
 }
 
-.fav_movie {
-    justify-content: space-around;
-    align-content: center;
-    text-align: center;
-    border: 1px black solid;
-    padding: 5px;
-    width: 200px;
-    margin: 20px;
-}
-img {
-    /* align-content: center; */
-margin: auto;
-    /* width: 80%; */
-}
-
-a {
-    text-decoration: none;
+@media (max-width: 800px) {
+	#details {
+		grid-template-columns: auto;
+	}
+	#details input[name="close"] {
+		grid-column-start: 1;
+	}
 }
