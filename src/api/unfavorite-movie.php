@@ -4,11 +4,21 @@ session_start();
 include '../db-helpers.inc.php';
 
 if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "GET") {
-    // echo json_encode({'a' => 1});
     $movieId = $_GET["movie_id"];
-    // for()
-    print_r($_SESSION["fav_movies"]);
-    echo $movieId;
+    $index = findMovie($movieId);
+    echo $index;
+    print_r($_SESSION["fav_movies"][$index]);
+    isset($_SESSION["fav_movies"][$index]) ? unset($_SESSION["fav_movies"][$index]) : die('Not there');
 }
+function findMovie($mov_id){
+    $x = 0;
+    foreach($_SESSION["fav_movies"] as $key => $value) {
+        if ($value['id'] == $mov_id){
+            return (int)$x;
+        };
+        ++$x;
+    }
+}
+
 
 ?>

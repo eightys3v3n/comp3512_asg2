@@ -28,10 +28,7 @@ header('Content-Type: text/html; charset=utf-8');
     </form>
     <?php
      if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
-     if ($_POST["hi"]){
-     echo $_POST["id"];
-     echo $_POST["name"];
-     }
+
      $_SESSION['fav_movies'] = array();
      }
 
@@ -45,7 +42,7 @@ if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0) {
       echo "<div class='fav_movie' id=". $mov['id'] . ">";
       echo "<h3><a href='single-movie.php?id=" . $mov['id'] . "' >" . $mov['title'] . "</a></h3>". "<br>";
       echo "<a href='single-movie.php?id=" . $mov['id'] . "'><img src='https://image.tmdb.org/t/p/w92/". $mov['poster'] . "' /></a>";
-      echo "<form  id='remove'>"; 
+      echo "<form  class='remove'>"; 
       echo "<input type='submit' value='Remove From Favorites' />";
       echo "</form>";
       echo "</div>";

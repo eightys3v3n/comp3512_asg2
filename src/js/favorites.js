@@ -3,9 +3,11 @@ document.addEventListener("DOMContentLoaded", main);
 
 function main() {
     // Stuff goes hereee!
-    let singleMovieform = document.querySelector('#remove');
+    let movieForms = document.querySelectorAll('.remove');
 
-    singleMovieform.addEventListener('click', async (event) => {
+    
+    for (let btn of movieForms){
+    btn.addEventListener('click', async (event) => {
         event.preventDefault();
         let movieId = event.currentTarget.parentNode.id;
         console.log(movieId);
@@ -15,15 +17,16 @@ function main() {
             console.log(res);
             res.text().then((response) => {
                 console.log(response);
+                // console.log(response.trim());
+                event.returnValue = true;
             })
-        })
-        .then(resp => {
-            console.log(resp);
         })
         .catch(err => console.log(err))
     })
+    };
 
     let unfavoriteMovie = () => {
+
     }
 
 }
