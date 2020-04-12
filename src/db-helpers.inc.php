@@ -27,6 +27,16 @@ function runQuery($db, $sql, $data=array()) {
         $data = array($data);
     }
 
+    // SQL insists that the array starts at index 0. If an element is removed from a PHP array it
+    // doesn't change the remaining indexes. This causes an obscure 'parameter not defined' error.
+    // So this foreach loop creates a new array with the correct indexes, starting at 0 and counting
+    // up.
+    $n_data = [];
+    foreach ($data as $d) {
+        array_push($n_data, $d);
+    }
+    $data = $n_data;
+
     $statement = null;
 
     try {
@@ -330,7 +340,4 @@ function getBriefMovies($ids) {
     
     return $movies;
 }
-
-
-print_r(getBriefMovies([2, 11, 13, 14, 15]));
 ?>
