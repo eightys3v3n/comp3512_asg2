@@ -26,23 +26,6 @@ input[type="button"] {
 	border-radius: 4px;
 }
 
-a:visited {
-	color: black;
-}
-
-.linkStyle {
-	color: black;
-}
-
-.linkStyle:hover {
-	color: red;
-	cursor: pointer;
-}
-
-center:hover{
-	cursor: context-menu;
-}
-
 .title:hover {
 	cursor: pointer;
 }
