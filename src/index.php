@@ -63,8 +63,7 @@ $page_title ='Home - Movies';
                     echo "<div class='fav_movie'>";
                     echo "<h3><a href='single-movie.php?id=" . $mov['id'] . "' >" . $mov['title'] . "</a></h3>". "<br>";
                     echo "<a href='single-movie.php?id=" . $mov['id'] . "'><img src='https://image.tmdb.org/t/p/w92/". $mov['poster'] . "' /></a>";
-                    echo "<form action='' method='post'>"; 
-                    echo "<input type='submit' name='hi' id='" . $mov['id'] . "' value='Remove From Favorites' />";
+                    echo "<input type='button' name='unfavorite' id='" . $mov['id'] . "' value='Remove From Favorites' />";
                     echo "</form>";
                     echo "</div>";
                 }

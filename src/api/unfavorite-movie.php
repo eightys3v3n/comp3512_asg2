@@ -14,5 +14,4 @@ if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "GET") {
     }
     
     $_SESSION['fav_movies'] = $new_favs;
-    print_r($_SESSION['fav_movies']);
 }
