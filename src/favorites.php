@@ -4,59 +4,56 @@
     Should display an error if user isn't logged in.
   -->
 <?php
+// start or resume a session with a user
 session_start();
-$page_title ='Favorites';
-include 'db-helpers.inc.php';
 
 // tell the browser we are sending html
 header('Content-Type: text/html; charset=utf-8');
+
+$page_title ='Favorite Movies'; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <?php include('meta.php'); ?>
-    <?php include('header.php'); ?>
-
+    
 	<link rel="stylesheet" href="css/favorites.css">
 	<script type="text/javascript" src="js/favorites.js"></script>
   </head>
   <body>
+    <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
-    <h2> Favorite movies </h2>
-    <form action="" method="post">
-      <input type='submit' id='removeFavBtn' value='Remove All Favorites' />
-    </form>
+
     <?php
-     if (isset($_SESSION["u_id"]) && $_SERVER['REQUEST_METHOD'] == "POST") {
-     if ($_POST["hi"]){
-     echo $_POST["id"];
-     echo $_POST["name"];
-     }
-     $_SESSION['fav_movies'] = array();
-     }
-
-if (isset($_SESSION["u_id"]) && count($_SESSION['fav_movies']) > 0) {
-  $hi = count($_SESSION['fav_movies']);
-  if (isset($_SESSION['fav_movies'])) {
-    $user_id = $_SESSION["u_id"];
-    $fav_movies = $_SESSION['fav_movies'];
-
-      foreach($fav_movies as $mov) {
-      echo "<div class='fav_movie' id=". $mov['id'] . ">";
-      echo "<h3><a href='single-movie.php?id=" . $mov['id'] . "' >" . $mov['title'] . "</a></h3>". "<br>";
-      echo "<a href='single-movie.php?id=" . $mov['id'] . "'><img src='https://image.tmdb.org/t/p/w92/". $mov['poster'] . "' /></a>";
-      echo "<form  id='remove'>"; 
-      echo "<input type='submit' value='Remove From Favorites' />";
-      echo "</form>";
-      echo "</div>";
-    }
-    echo '</div>'; 
-    }
-  } else {
-    echo "<p>No Favorite Movies</p>";
-  }
-  
-?>
+      if (isset($_SESSION['u_id'])) {
+    ?>
+	<section id="favorites">
+	  <div id="matches">
+		<h1><center>Favorites<center></h1>
+		<div id="list-header">
+		  <span id="title"><h2>Title</h2></span>
+		  <span id="year"><h2>Year</h2></span>
+		  <span id="rating"><h2>Rating</h2></span>
+		</div>
+		<div id="loading">
+		  <img src="public\ping.gif" title="Loading">
+		  <p>Loading...</p>
+		</div>
+		<p id="no_favorites">No favorites</p>
+		<ul>
+          <!--
+              This is filled with the favorite movie titles.
+            -->
+		</ul>
+	  </div>
+	</section>
+    <?php
+      } else {
+    ?>
+    <p>User not logged in</p>
+    <?php
+      }
+    ?>
 
     <?php include('footer.php'); ?>
   </body>
