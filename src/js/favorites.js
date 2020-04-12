@@ -26,6 +26,12 @@ function main() {
 
     get_movies(); // get all the movies and favorited movies and populate `movies` and `favorited_movies`
 
+    // unfavorite all movies
+    document.querySelector("#favorites #list-header #unfavorite-all")
+        .addEventListener("click", e => {
+            unfavorite_all(e);
+        });
+    
     // change the sort mode when a heading title is clicked
     document.querySelector("#favorites #list-header #title")
         .addEventListener("click", e => {
@@ -53,8 +59,6 @@ function get_movies() {
             movies = data['favorite_movies_brief'];
             console.log("Retrieved all initialization data");
             display_movies();
-            
-            console.log(movies);
         });
 }
 
@@ -185,31 +189,6 @@ function add_movie(element, movie) {
 	li.addEventListener("click", e => { window.location = view.href; });
 }
 
-/**
-   Adds a movie to the user's favorites. If successful, set the button to "Unfavorite"
-  */
-function favorite_movie(e, movie) { 
-	fetch(`api/favorite-movie.php?movie_id=${movie.id}&poster=${movie.poster}&title=${movie.title}`)
-        .then(resp => {
-            resp.text().then(body => {
-                body = body.trim();
-                if (body == "" || body == "Already favorited") {
-                    e.target.value = "Favorited";
-                    e.target.disabled = true;
-                    console.log(`Favorited movie "${movie.title}"`);
-                } else {
-                    console.warn(`Failed to favorite movie "${movie.title}"`);
-                    console.warn(body);
-                }
-            })
-        })
-	    .catch((err) => {
-		    console.warn("Failed to favorite movie: "+err);
-	    })
-    
-    e.stopPropagation();
-}
-
 function unfavorite_movie(e, movie) {
     fetch(`api/unfavorite-movie.php?movie_id=${movie.id}`)
         .then(resp => {
@@ -217,7 +196,17 @@ function unfavorite_movie(e, movie) {
             e.target.disabled = true;
         });
 
-    e.stopPropagation();
+    if (e) {
+        e.stopPropagation();
+    }
+}
+
+function unfavorite_all(e) {
+    let buttons = document.querySelectorAll("#favorites ul li input[value='Unfavorite']");
+
+    for (let button of buttons) {
+        button.click();
+    }
 }
 
 

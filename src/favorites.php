@@ -34,6 +34,7 @@ $page_title ='Favorite Movies';
 		  <span id="title"><h2>Title</h2></span>
 		  <span id="year"><h2>Year</h2></span>
 		  <span id="rating"><h2>Rating</h2></span>
+          <span id="unfavorite-all"><input type="button" value="Unfavorite All"></span>
 		</div>
 		<div id="loading">
 		  <img src="public\ping.gif" title="Loading">
