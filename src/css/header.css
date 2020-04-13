@@ -46,6 +46,7 @@ a.brand-logo {
     text-align: center;
     min-width: 120px;
     padding: 0 30px;
+    border-radius: 10px;
 }
 
 .navbar ul li a:hover {
