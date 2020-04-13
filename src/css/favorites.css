@@ -182,6 +182,10 @@ input[type="button"] {
 	grid-column-start: 2;
 }
 
+#favorites #list-header span {
+    cursor: pointer;
+}
+
 #favorites #matches #no_favorites {
     display: none;
 }
@@ -216,7 +220,7 @@ input[type="button"] {
 	margin: auto 0px auto 0px;
 }
 
-#favorites input[type="button"], input[type="reset"], #favorites a {
+#favorites input[type="button"], input[type="reset"], #favorites ul li a {
 	border: 1px solid blue;
 	background-color: rgb(200, 200, 200);
 	border-radius: 4px;
@@ -226,6 +230,7 @@ input[type="button"] {
     line-height: 2em;
     font-size: 1em;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #no_favorites

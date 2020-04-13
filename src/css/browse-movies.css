@@ -165,6 +165,11 @@ input[type="button"] {
 	grid-column-start: 2;
 }
 
+
+#favorites #list-header span {
+    cursor: pointer;
+}
+
 #search #matches #no_matches {
     display: none;
 }
@@ -199,7 +204,7 @@ input[type="button"] {
 	margin: auto 0px auto 0px;
 }
 
-#search input[type="button"], input[type="reset"], #search a {
+#search input[type="button"], input[type="reset"], #search ul li a {
 	border: 1px solid blue;
 	background-color: rgb(200, 200, 200);
 	border-radius: 4px;
@@ -209,6 +214,7 @@ input[type="button"] {
     line-height: 2em;
     font-size: 1em;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #no_matches
