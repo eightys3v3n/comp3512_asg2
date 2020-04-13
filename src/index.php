@@ -17,7 +17,6 @@ $page_title ='Home - Movies';
 <html lang="en">
   <head>
     <?php include('meta.php'); ?>
-    <?php include('header.php'); ?>
     
     <link rel="stylesheet" href="css/index.css">
     <script type="text/javascript" src="js/index.js"></script>

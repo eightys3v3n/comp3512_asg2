@@ -5,9 +5,9 @@
       <a href="index.php" class="brand-logo">Home</a>
         <nav class="navbar">
           <button class="navbar-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="burg"></span>
+            <span class="burg"></span>
+            <span class="burg"></span>
           </button>
           <ul class="nav-list">
             <li><a href="about.php">About</a></li>
