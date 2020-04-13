@@ -10,6 +10,7 @@ body {
 }
 header {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     background: var(--maincolor);
     border-bottom: 2px solid black;
