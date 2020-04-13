@@ -60,7 +60,8 @@ a.brand-logo {
         padding: 0;
     }
     .navbar ul {
-        display: block;
+        /* display: block; */
+        flex-direction: column;
         width: 100%;
         padding: 0;
         /* background-color: rgba(0,0,0,0.9); */
@@ -71,19 +72,27 @@ a.brand-logo {
         text-decoration: none;
     }
 
-    /* .navbar-toggle {
+    .nav-list {
+        display: none;
+    }
+
+    .navbar-toggle {
         display: block;
+        float: right;
         background: var(--maincolor);
         border: 0;
-    } */
+    } 
 
-    /* span {
+    .active {
+        display: block;
+    }
+    .burg {
         display: block;
         width: 33px;
         height: 4px;
         margin: 5px;
         background-color: white;
         border-radius: 3px;
-    } */
+    }
 }
 
