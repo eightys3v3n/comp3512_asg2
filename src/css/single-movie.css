@@ -7,9 +7,7 @@ html,body {
 header {
 	text-align: center;
 	background-color: rgb(230, 230, 230);
-	/* TODO: text should be vertically centered */
 	height: 4em;
-	margin-bottom: 10px;
 	padding-top: 5px;
 }
 
@@ -60,7 +58,8 @@ input[type="button"] {
 }
 
 #details .border {
-	border: 1px solid black;
+	border: 1px solid grey;
+    border-radius: 5px;
 	padding: 15px 15px 15px 15px;
 	margin-top: 10px;
 }
@@ -79,6 +78,7 @@ input[type="button"] {
 
 #details #castcrew {
 	padding: 10px 10px 10px 10px;
+    border-radius: 5px;
 
 	background-color: white;
     overflow: scroll;
