@@ -19,9 +19,9 @@ $page_title ='Favorite Movies';
     
 	<link rel="stylesheet" href="css/favorites.css">
 	<script type="text/javascript" src="js/favorites.js"></script>
+  <?php include('header.php'); ?>
   </head>
   <body>
-    <?php include('header.php'); ?>
     <?php include('nav.php'); ?>
 
     <?php

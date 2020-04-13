@@ -231,4 +231,16 @@ input[type="button"] {
 	#details input[name="close"] {
 		grid-column-start: 1;
 	}
+	#search {
+		display: inline-block;
+	}
+	#hide_filters {
+		display: none;
+	}
+}
+
+@media (max-width: 500px) {
+	#search {
+		display: inline-block;
+	}
 }

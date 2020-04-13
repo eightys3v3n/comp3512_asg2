@@ -20,10 +20,10 @@ $page_title ='About';
   </head>
   <body>
     <?php include('nav.php'); ?>
-     
     <h1 class="pageTitle">About Our Site</h1>
+     
     <!--
-        We can add more things if we feel like it, personal pictures etc.
+      We can add more things if we feel like it, personal pictures etc.
     -->
     <div id="aboutTop">
       <p>COMP 3512-001 Winter 2020</p>
