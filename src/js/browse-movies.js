@@ -189,7 +189,7 @@ function get_movies() {
 
         display_movies();
 	} catch(e) {
-		console.log("Failed to get movies from local storage.");
+		console.log("Failed to get movies from local storage.".e);
 	}
 
 	if (! movies) {
