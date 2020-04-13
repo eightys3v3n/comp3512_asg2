@@ -311,7 +311,7 @@ function getBriefMovies($ids) {
     try {
         $conn = getDatabaseConnection();
 
-        if (isset($ids)) {
+        if (isset($ids) && sizeof($ids) > 0) {
             $fill = [];
             foreach ($ids as $i) { array_push($fill, '?'); }
             $fill = join(',', $fill);
