@@ -27,7 +27,8 @@ header('Content-Type: text/html; charset=utf-8');
     <?php include('nav.php'); ?>
     <?php include('output-movie.php'); ?>
     
-   	<!--<section id="details">
+   	<!-- This is a template
+        <section id="details">
 	  <input type="button" name="close" value="Close">
 	  <div id="info">
 		<div id="text">
