@@ -187,7 +187,7 @@ function get_movies() {
 	try {
 		movies = JSON.parse(window.localStorage.getItem("movies"));
 
-        display_movies();
+        console.log("Retrieved movies from local cache");
 	} catch(e) {
 		console.log("Failed to get movies from local storage.");
         console.log(e);
@@ -225,7 +225,7 @@ function get_movies() {
             }
 
             favorited_movies = json['favorites'];
-         
+            
             console.log("Retrieved all initialization data");
             display_movies();
 		});
@@ -425,12 +425,19 @@ function favorite_movie(e, movie) {
    Returns true if a movie is already favorited, false otherwise
 */
 function is_favorited(movie_id) {
-    for (movie of favorited_movies) {
-        if (movie['id'] == movie_id) {
-            return true;
+    if (favorited_movies) {
+        if (favorited_movies.length == 0) {
+            return false;
         }
+        for (movie of favorited_movies) {
+            if (movie['id'] == movie_id) {
+                return true;
+            }
+        }
+        return false;
+    } else {
+        console.warn("Tried to check if a movie was favorited before favorites were downloaded");
     }
-    return false;
 }
 
 
@@ -581,7 +588,7 @@ function switch_sort_mode(new_mode, event) {
 
     switch_sort_indicator(sort_mode);
 
-    if (movies) {    
+    if (movies && favorited_movies) {
         filtered_movies = sort_movies(filtered_movies);
         populate_movies(filtered_movies);
     }

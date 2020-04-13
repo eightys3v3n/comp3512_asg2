@@ -8,6 +8,9 @@ session_start();
 
 // tell the browser we are sending html
 header('Content-Type: text/html; charset=utf-8');
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 $page_title ='Browse Movies';
  
