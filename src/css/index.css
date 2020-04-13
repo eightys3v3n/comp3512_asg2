@@ -87,3 +87,8 @@ body
     margin-top: 29%;
 }
 
+@media (max-width: 750px) {
+    #content {
+        grid-template-columns: 1fr;
+    }
+}
