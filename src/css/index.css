@@ -61,7 +61,9 @@ a {
 
 #searchindex
 {
-    margin-left: 45%;
+    display: flex;
+    justify-content: center;
+    /* margin-left: 45%; */
     margin-top: 20%;
 }
 
